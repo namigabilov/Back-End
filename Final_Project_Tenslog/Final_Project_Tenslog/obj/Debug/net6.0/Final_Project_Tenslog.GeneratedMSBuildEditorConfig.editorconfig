@@ -1,0 +1,57 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Final_Project_Tenslog
+build_property.RootNamespace = Final_Project_Tenslog
+build_property.ProjectDir = C:\Users\ASUS\Desktop\Final Project\Back-End\Final_Project_Tenslog\Final_Project_Tenslog\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\ASUS\Desktop\Final Project\Back-End\Final_Project_Tenslog\Final_Project_Tenslog
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Acconut/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb251dFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Direct/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Direct/MobileChat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0XE1vYmlsZUNoYXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Nofications/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm9maWNhdGlvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Profile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Reels/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVlbHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

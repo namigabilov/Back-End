@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/assets/Css/login.css">
+    <link rel="shortcut icon" href="~/assets/Photos/Logo/Tenslog.png" type="image/x-icon">
+    <title>Tenslog</title>
+</head>
+<body>
+    <div class="ocean">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+    <div class="desktop">
+        <section>
+            <div class="logo">
+                <img style="width: 30%;" src="~/assets/Photos/Logo/Tenslog.png" alt="">
+            </div>
+            <div class="container" id="container">
+                <div class="form-container sign-up-container">
+                    <form action="#">
+                        <h1>Sign Up</h1>
+                        <div class="social-container">
+                            <a href="https://github.com/namigabilov" target="_blank" class="social"><i class="fab fa-github"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100074206579639" target="_blank" class="social"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="mailto:namiqmemu1@gmail.com" target="_blank" class="social"><i class="fab fa-google"></i></a>
+                        </div>
+                        <span>Or use your Email for registration</span>
+                        <label>
+                            <input type="text" placeholder="Name" />
+                        </label>
+                        <label>
+                            <input type="text" placeholder="SurName" />
+                        </label>
+                        <label>
+                            <input type="text" placeholder="UserName" pattern="^[a-zA-Z0-9\._]+$" />
+                        </label>
+                        <label>
+                            <input type="email" placeholder="Email" />
+                        </label>
+                        <label>
+                            <input type="password" placeholder="Password" />
+                        </label>
+                        <button style="margin-top: 9px;cursor: pointer;">Sign Up</button>
+                    </form>
+                </div>
+                <div class="form-container sign-in-container">
+                    <form action="#">
+                        <h1>Sign in</h1>
+                        <div class="social-container">
+                            <a href="https://github.com/namigabilov" target="_blank" class="social"><i class="fab fa-github"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100074206579639" target="_blank" class="social"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="mailto:namiqmemu1@gmail.com" target="_blank" class="social"><i class="fab fa-google"></i></a>
+                        </div>
+                        <span> Or sign in using E-Mail Address</span>
+                        <label>
+                            <input type="email" placeholder="Email" />
+                        </label>
+                        <label>
+                            <input type="password" placeholder="Password" />
+                        </label>
+                        <a href="#">Forgot your password?</a>
+                        <button style="cursor: pointer">Sign In</button>
+                    </form>
+                </div>
+                <div class="overlay-container">
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-left">
+                            <h1>Log in</h1>
+                            <p>Sign in here if you already have an account </p>
+                            <button style="cursor: pointer;" class="ghost mt-5" id="signIn">Sign In</button>
+                        </div>
+                        <div class="overlay-panel overlay-right">
+                            <h1>Create, Account!</h1>
+                            <p>Sign up if you still don't have an account ... </p>
+                            <button style="cursor: pointer" class="ghost" id="signUp">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="mobile">
+        <div class="containerMobile ">
+            <div class="form-container " id="signInMobile" style="width: 100%;">
+                <form action="#">
+                    <h1>Sign Up</h1>
+                    <div class="social-container">
+                        <a href="https://github.com/namigabilov" target="_blank" class="social"><i class="fab fa-github"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100074206579639" target="_blank" class="social"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="mailto:namiqmemu1@gmail.com" target="_blank" class="social"><i class="fab fa-google"></i></a>
+                    </div>
+                    <span>Or use your Email for registration</span>
+                    <label>
+                        <input type="text" placeholder="Name" />
+                    </label>
+                    <label>
+                        <input type="text" placeholder="SurName" />
+                    </label>
+                    <label>
+                        <input type="text" placeholder="UserName" />
+                    </label>
+                    <label>
+                        <input type="email" placeholder="Email" />
+                    </label>
+                    <label>
+                        <input type="password" placeholder="Password" />
+                    </label>
+                    <button style="margin-top: 9px;cursor: pointer;">Sign Up</button>
+                    <a onclick="goLogIn(); event.preventDefault();" style="margin: 0;" href=""><h6>Already Have An Acconut ?</h6></a>
+                </form>
+            </div>
+            <div class="form-container " id="logInMobile" style="width: 100%;">
+                <form action="#">
+                    <h1>Log in</h1>
+                    <div class="social-container">
+                        <a href="https://github.com/namigabilov" target="_blank" class="social"><i class="fab fa-github"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100074206579639" target="_blank" class="social"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="mailto:namiqmemu1@gmail.com" target="_blank" class="social"><i class="fab fa-google"></i></a>
+                    </div>
+                    <span>Sign in using E-Mail Or Username</span>
+                    <label>
+                        <input type="email" placeholder="Email Or Username" />
+                    </label>
+                    <label>
+                        <input type="password" placeholder="Password" />
+                    </label>
+                    <a href="#">Forgot your password?</a>
+                    <button style="cursor: pointer">Sign In</button>
+                    <a onclick="goSignIn(); event.preventDefault();" style="margin: 0;" href=""><h6>You Dont Have An Acconut ? Create New One !</h6></a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="~/assets/Js/login.js"></script>
+</html>
