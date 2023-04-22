@@ -1,0 +1,38 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "Login";
+}
+<section>
+    <div class="logo">
+        <img style="width: 14%;" src="assets/Photos/Logo/Tenslog.png" alt="">
+    </div>
+    <div class="flex-container">
+        <div class="content-container">
+            <div class="form-container">
+                <form method="post">
+                    <h1>
+                        Login
+                    </h1>
+                    <div style="color:red;font-size:15px" asp-validation-summary="ModelOnly"></div>
+                    <span class="subtitle">Email</span>
+                    <br>
+                    <input class="form-control bg-dark text-light" asp-for="Email"><br />
+                    <span asp-validation-for="Email" style="color:red"></span>
+                    <br>
+                    <span class="subtitle">Password</span>
+                    <br>
+                    <input class="form-control bg-dark text-light" asp-for="Password"><br />
+                    <span asp-validation-for="Password" style="color:red"></span>
+                    <br />
+                    <div style="display:flex; align-items:center"> 
+                        <input style="width:5%" asp-for="RemindMe">
+                        <span class="text-light mx-3">Remind me</span>
+                    </div>
+                    <br>
+                    <input type="submit" value="SUBMIT" class="submit-btn">
+                    <a class="btn btn-primary mx-5" asp-action="Register" asp-controller="Acconut">Create One !</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

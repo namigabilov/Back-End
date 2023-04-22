@@ -1,0 +1,43 @@
+﻿@model RegisterVM
+@{
+    ViewData["Title"] = "Register";
+}
+<section>
+    <div class="logo">
+        <img style="width: 14%;" src="assets/Photos/Logo/Tenslog.png" alt="">
+    </div>
+    <div class="flex-container">
+        <div class="content-container">
+            <div class="form-container">
+                <form method="post">
+                    <h4 class="text-light">
+                        Register
+                    </h4>
+                    <div style="color:red;font-size:15px" asp-validation-summary="ModelOnly"></div>
+                    <span class="subtitle">Name:</span>
+                    <input class="form-control bg-dark text-light" asp-for="Name">
+                    <span style="color:red;font-size:15px" asp-validation-for="Name"></span>
+                    <br>
+                    <span class="subtitle">Email:</span>
+                    <input class="form-control bg-dark text-light" asp-for="Email">
+                    <span style="color:red;font-size:15px" asp-validation-for="Email"></span>
+                    <br>
+                    <span class="subtitle">USERNAME:</span>
+                    <input class="form-control bg-dark text-light" asp-for="UserName">
+                    <span style="color:red;font-size:15px" asp-validation-for="UserName"></span>
+                    <br>
+                    <span class="subtitle">Password:</span>
+                    <input class="form-control bg-dark text-light" asp-for="Password">
+                    <span style="color:red;font-size:15px" asp-validation-for="Password"></span>
+                    <br>
+                    <span class="subtitle">Confirm Password:</span>
+                    <input class="form-control bg-dark text-light" asp-for="ConfirmPassword">
+                    <span style="color:red;font-size:15px" asp-validation-for="ConfirmPassword"></span>
+                    <br />
+                    <input type="submit" class="submit-btn">
+                    <a class="btn btn-primary mx-5" asp-action="login" asp-controller="acconut">Log In !</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
