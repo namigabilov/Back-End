@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Final_Project_Tenslog", "Final_Project_Tenslog\Final_Project_Tenslog.csproj", "{23F05E06-9721-4AEF-A6B7-0269BB52AC73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23F05E06-9721-4AEF-A6B7-0269BB52AC73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23F05E06-9721-4AEF-A6B7-0269BB52AC73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23F05E06-9721-4AEF-A6B7-0269BB52AC73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23F05E06-9721-4AEF-A6B7-0269BB52AC73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25BDA147-2044-4A46-AE21-2D4280BC9230}
+	EndGlobalSection
+EndGlobal
