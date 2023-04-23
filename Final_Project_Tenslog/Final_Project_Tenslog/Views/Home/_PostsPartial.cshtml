@@ -5,7 +5,7 @@
         <div class="card bg-dark text-light" style="border:1px solid #383838">
             <div class="navForPost">
                 <img src="~/assets/Photos/ProfilePhotos/@post.User.ProfilePhotoUrl" alt="">
-                <a style="text-decoration: none; color: #fff;" href="profile.html"><span class="postOwnerName">@post.User.Name @post.User.SurName<span>@((DateTime.UtcNow.AddHours(4) - post.CreatedAt)?.ToString("mm"))</span></span></a>
+                <a style="text-decoration: none; color: #fff;" asp-action="UserProfile" asp-controller="Profile" asp-route-id="@post.UserId"><span class="postOwnerName">@post.User.Name @post.User.SurName<span>@((DateTime.UtcNow.AddHours(4) - post.CreatedAt)?.ToString("mm"))</span></span></a>
                 <i class="fa-solid fa-ellipsis settingsForPost"></i>
             </div>
             <img class="card-img-top" src="~/assets/Photos/Posts/@post.ImageUrl" alt="Card image cap">

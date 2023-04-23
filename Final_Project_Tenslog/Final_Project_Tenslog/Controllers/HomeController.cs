@@ -24,7 +24,7 @@ namespace Final_Project_Tenslog.Controllers
             HomeVM homeVM = new HomeVM
             {
                 Posts = await _context.Posts.Where(p => p.IsDeleted == false).ToListAsync(),
-                Users = await _context.Users.Take(5).ToListAsync(),
+                Users = await _context.Users.Take(4).ToListAsync(),
                 MyProfile = await _userManager.Users.FirstOrDefaultAsync(u=>u.UserName == User.Identity.Name)
 
             };

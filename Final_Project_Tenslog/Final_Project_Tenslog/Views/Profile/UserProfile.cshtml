@@ -13,7 +13,7 @@
         <div class="navigation">
             <ul>
                 <li class="navItems">
-                    <a href="index.html">
+                    <a asp-controller="Home" asp-action="index">
                         <i class="navIcons fa-solid fa-house"></i>
                         <span class="navs">Home</span>
                     </a>
@@ -89,16 +89,17 @@
                         <strong>@Model.User.UserName</strong>
                         @if (Model.User.HaveBlueTic)
                         {
-                            <i style="color: blue;" class="fas fa-check-circle"></i>
+                            <i style="color: #3797F0;" class="fas fa-check-circle"></i>
                         }
                         <br />
-                        @if (Model.User.Followers.Any(u => u.UserFollowerId != (Model.MyProfile.Id)) && Model.User.Followers.Any(u=>u.UserId == Model.User.Id))
+                        @if (Model.User.Followers.Any(u => u.UserFollowerId == Model.MyProfile.Id) &&
+                        (Model.MyProfile.Followings.Any(u => u.UserFollowingId == Model.User.Id)))
                         {
-                            <a asp-controller="Profile" asp-action="Follow" asp-route-id="@Model.User.Id" class="btn btn-primary my-2">Follow</a>
+                            <a asp-controller="Profile" asp-action="Unfollow" asp-route-id="@Model.User.Id" class="btn btn-danger my-2">UnFollow</a>
                         }
                         else
                         {
-                            <a asp-controller="Profile" asp-action="Follow" asp-route-id="@Model.User.Id" class="btn btn-danger my-2">UnFollow</a>
+                            <a asp-controller="Profile" asp-action="Follow" asp-route-id="@Model.User.Id" class="btn btn-primary my-2">Follow</a>
                         }
                     </div>
                     <div class="postInfo my-2">

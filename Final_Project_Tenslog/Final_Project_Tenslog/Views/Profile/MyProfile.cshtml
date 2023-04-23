@@ -13,26 +13,26 @@
         <div class="navigation">
             <ul>
                 <li class="navItems">
-                    <a href="index.html">
+                    <a asp-action="Index" asp-controller="Home">
                         <i class="navIcons fa-solid fa-house"></i>
                         <span class="navs">Home</span>
                     </a>
                 </li>
                 <li class="navItems">
-                    <a href="/reels.html">
+                    <a asp-action="Index" asp-controller="reels">
                         <i class="navIcons fa-solid fa-magnifying-glass"></i>
                         <span class="navs">Search</span>
                     </a>
                 </li>
                 <li class="navItems">
-                    <a href="direct.html">
+                    <a asp-action="Index" asp-controller="Direct">
                         <i class="navIcons fa-solid fa-inbox"></i>
                         <span class="navs">Messages</span>
                     </a>
                 </li>
                 <li class="navItems">
                     <div>
-                        <a href="activty.html" data-toggle="modal" data-target="reelsModal">
+                        <a asp-action="Index" asp-controller="nofications" data-toggle="modal" data-target="reelsModal">
                             <i class="navIcons fa-regular fa-heart"></i>
                             <span onclick="openNav()" class="navs">Nofications</span>
                         </a>
@@ -46,7 +46,7 @@
                     </label>
                 </li>
                 <li class="navItems">
-                    <a href="MyProfile.html">
+                    <a asp-action="MyProfile" asp-controller="profile">
                         <span class="navIcons"><img style="width: 25px;border-radius: 30px;" src="~/assets/Photos/ProfilePhotos/@Model.ProfilePhotoUrl" alt=""></span>
                         <span class="navs">Profile</span>
                     </a>
@@ -184,11 +184,11 @@
 </div>
 <div class="mobileHome">
     <nav>
-        <a class="nav-item" href="index.html">
+        <a class="nav-item" asp-action="Index" asp-controller="Home">
             <i class="fa-solid fa-house"></i><span>Home</span>
         </a>
 
-        <a class="nav-item" href="reels.html">
+        <a class="nav-item" asp-action="Index" asp-controller="reels">
             <i class="fa-solid fa-magnifying-glass"></i><span>Activity</span>
         </a>
 
@@ -199,11 +199,11 @@
             </label>
         </a>
 
-        <a class="nav-item" href="activty.html">
+        <a class="nav-item" asp-action="Index" asp-controller="nofication">
             <i class="fa-regular fa-heart"></i><span>Nofications</span>
         </a>
 
-        <a class="nav-item" href="profile.html">
+        <a class="nav-item" asp-action="myprofile" asp-controller="profile">
             <img src="~/assets/Photos/ProfilePhotos/download.jpg" alt=""><span>Profile</span>
         </a>
     </nav>
