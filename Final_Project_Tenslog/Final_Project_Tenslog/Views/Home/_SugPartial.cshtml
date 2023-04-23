@@ -1,0 +1,11 @@
+﻿@model IEnumerable<AppUser>
+@foreach (AppUser user in Model)
+{
+    <div class="navForSug">
+        <div>
+            <img src="~/assets/Photos/ProfilePhotos/@user.ProfilePhotoUrl" alt="">
+            <a style="color: #fff;" asp-action="UserProfile" asp-controller="Profile" asp-route-id="@user.Id"><span class="postOwnerName">@user.Name @user.SurName</span></a>
+        </div>
+        <a href="">Follow</a>
+    </div>
+}

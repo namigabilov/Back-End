@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Post>
+    @foreach (Post post in Model)
+    {
+    <div class="post">
+        <div class="card bg-dark text-light" style="border:1px solid #383838">
+            <div class="navForPost">
+                <img src="~/assets/Photos/ProfilePhotos/@post.User.ProfilePhotoUrl" alt="">
+                <a style="text-decoration: none; color: #fff;" href="profile.html"><span class="postOwnerName">@post.User.Name @post.User.SurName<span>@((DateTime.UtcNow.AddHours(4) - post.CreatedAt)?.ToString("mm"))</span></span></a>
+                <i class="fa-solid fa-ellipsis settingsForPost"></i>
+            </div>
+            <img class="card-img-top" src="~/assets/Photos/Posts/@post.ImageUrl" alt="Card image cap">
+            <div class="card-body">
+                <div class="actions">
+                    <div class="left">
+                        <i class="fa-regular fa-heart like"></i>
+                        <a class="text-light" href="mobilePost.html"><i class="fa-regular fa-comment"></i></a>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </div>
+                    <div class="right">
+                        <i class="fa-regular fa-bookmark savePost"></i>
+                    </div>
+                </div>
+                <span>@(post.Likes == null ? "0" : post.Likes.Count()) Likes</span>
+                <p class="card-text">@post.Description</p>
+                <a style="text-decoration: none; color: #fff;" href="mobilePost.html">View All <span>@(post.Comments == null ? "0" : post.Comments.Count())</span> Comments</a><br>
+                <form action="">
+                    <div class="addComment">
+                        <input placeholder="Add a Comment..." style="border: none;" type="text" class="mt-2 text-light bg-dark form-control">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}

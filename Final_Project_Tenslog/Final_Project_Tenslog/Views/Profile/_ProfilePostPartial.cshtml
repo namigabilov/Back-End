@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Post>
+
+@if (Model != null && Model.Count() > 0)
+{
+    foreach (Post post in Model)
+    {
+        <a href="mobilePost.html"><img src="~/assets/Photos/Posts/@post.ImageUrl" alt=""></a>
+    }
+}
+else
+{
+    <h3 class="text-light my-5">No Posts Yet</h3>
+}

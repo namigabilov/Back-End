@@ -22,21 +22,6 @@ namespace Final_Project_Tenslog.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("AppUserAppUser", b =>
-                {
-                    b.Property<string>("FollowersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("FollowingId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("FollowersId", "FollowingId");
-
-                    b.HasIndex("FollowingId");
-
-                    b.ToTable("AppUserAppUser");
-                });
-
             modelBuilder.Entity("Final_Project_Tenslog.Models.AppUser", b =>
                 {
                     b.Property<string>("Id")
@@ -66,10 +51,10 @@ namespace Final_Project_Tenslog.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("HaveBlueTic")
+                    b.Property<bool>("HaveBlueTic")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsPrivate")
+                    b.Property<bool>("IsPrivate")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("JoinedDate")
@@ -101,6 +86,10 @@ namespace Final_Project_Tenslog.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ProfilePhotoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -179,6 +168,36 @@ namespace Final_Project_Tenslog.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Final_Project_Tenslog.Models.Follower", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserFollowerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "UserFollowerId");
+
+                    b.HasIndex("UserFollowerId");
+
+                    b.ToTable("Followers");
+                });
+
+            modelBuilder.Entity("Final_Project_Tenslog.Models.Following", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserFollowingId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "UserFollowingId");
+
+                    b.HasIndex("UserFollowingId");
+
+                    b.ToTable("Followings");
                 });
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.Like", b =>
@@ -411,14 +430,13 @@ namespace Final_Project_Tenslog.Migrations
                     b.Property<string>("ProviderKey")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("LoginProvider", "ProviderKey");
+                    b.HasKey("LoginProvider", "ProviderKey", "UserId");
 
                     b.HasIndex("UserId");
 
@@ -459,21 +477,6 @@ namespace Final_Project_Tenslog.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("AppUserAppUser", b =>
-                {
-                    b.HasOne("Final_Project_Tenslog.Models.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("FollowersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Final_Project_Tenslog.Models.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("FollowingId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Final_Project_Tenslog.Models.Comment", b =>
                 {
                     b.HasOne("Final_Project_Tenslog.Models.Post", "Post")
@@ -487,6 +490,44 @@ namespace Final_Project_Tenslog.Migrations
                     b.Navigation("Post");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Final_Project_Tenslog.Models.Follower", b =>
+                {
+                    b.HasOne("Final_Project_Tenslog.Models.AppUser", "UserFollower")
+                        .WithMany()
+                        .HasForeignKey("UserFollowerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Final_Project_Tenslog.Models.AppUser", "User")
+                        .WithMany("Followers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("UserFollower");
+                });
+
+            modelBuilder.Entity("Final_Project_Tenslog.Models.Following", b =>
+                {
+                    b.HasOne("Final_Project_Tenslog.Models.AppUser", "UserFollowing")
+                        .WithMany()
+                        .HasForeignKey("UserFollowingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Final_Project_Tenslog.Models.AppUser", "User")
+                        .WithMany("Followings")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("UserFollowing");
                 });
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.Like", b =>
@@ -581,6 +622,10 @@ namespace Final_Project_Tenslog.Migrations
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.AppUser", b =>
                 {
+                    b.Navigation("Followers");
+
+                    b.Navigation("Followings");
+
                     b.Navigation("Posts");
 
                     b.Navigation("Saveds");

@@ -493,8 +493,11 @@ body{
   border-color: transparent !important;
   color: orange;
 }
+.profileMain .profilePost a{
+    display:contents;
+}
 .profileMain .profilePost img{
-  width: 100%;
+  width: 33%;
   height: 17vh;
   object-fit: cover;
   padding: 1px;
@@ -1275,6 +1278,9 @@ button:focus {
   border-radius: 100%;
   background-color: red;
   color: #fff;
+}
+.myProfileContent .myProfilePosts a {
+    display: contents;
 }
 .myProfileContent .myProfilePosts img{
   width: 40vh;

@@ -47,7 +47,12 @@ namespace Final_Project_Tenslog.Controllers
             {
                 UserName = registerVM.UserName,
                 Email = registerVM.Email,
-                Name = registerVM.Name
+                Name = registerVM.Name,
+                JoinedDate = DateTime.UtcNow.AddHours(4),
+                Gender = "Perfer Not To Say",
+                IsPrivate = false,
+                HaveBlueTic = false,
+                ProfilePhotoUrl = "DefaultProfilePhoto.png"
             };
             IdentityResult identityResult = await _userManager.CreateAsync(appUser, registerVM.Password);
             if (!identityResult.Succeeded)
@@ -161,29 +166,30 @@ namespace Final_Project_Tenslog.Controllers
             return RedirectToAction("Index", "Home");
         }
         #region CreateAdminAndRoles
-        //[HttpGet]
-        //public async Task<IActionResult> CreateRole()
-        //{
-        //    await _roleManager.CreateAsync(new IdentityRole("SuperAdmin"));
-        //    await _roleManager.CreateAsync(new IdentityRole("Admin"));
-        //    await _roleManager.CreateAsync(new IdentityRole("Member"));
-        //    return Content("Ugurlu");
-        //}
-        //[HttpGet]
-        //public async Task<IActionResult> CreateAdmin()
-        //{
-        //    AppUser appUser = new AppUser
-        //    {
-        //        Name = "Super",
-        //        SurName = "Admin",
-        //        UserName = "SuperAdmin",
-        //        Email = "superadmin@gmail.com",
+        [HttpGet]
+        public async Task<IActionResult> CreateRole()
+        {
+            await _roleManager.CreateAsync(new IdentityRole("SuperAdmin"));
+            await _roleManager.CreateAsync(new IdentityRole("Member"));
+            return Content("Ugurlu");
+        }
+        [HttpGet]
+        public async Task<IActionResult> CreateAdmin()
+        {
+            AppUser appUser = new AppUser
+            {
+                Name = "Super",
+                SurName = "Admin",
+                UserName = "SuperAdmin",
+                Email = "superadmin@gmail.com",
+                ProfilePhotoUrl = "DefaultProfilePhoto.png",
+                HaveBlueTic = true
 
-        //    };
-        //    await _userManager.CreateAsync(appUser, "SuperAdmin123");
-        //    await _userManager.AddToRoleAsync(appUser, "SuperAdmin");
-        //    return Content("Ugurlu");
-        //}
+            };
+            await _userManager.CreateAsync(appUser, "SuperAdmin123");
+            await _userManager.AddToRoleAsync(appUser, "SuperAdmin");
+            return Content("Ugurlu");
+        }
         #endregion
 
 

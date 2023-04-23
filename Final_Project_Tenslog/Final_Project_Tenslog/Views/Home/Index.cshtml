@@ -1,4 +1,4 @@
-﻿
+﻿@model HomeVM
 @{
     ViewData["Title"] = "Index";
 }
@@ -47,8 +47,8 @@
                     </label>
                   </li>
                   <li class="navItems">
-                      <a asp-action="Index" asp-controller="Profile" >
-                          <span class="navIcons"><img style="width: 25px;border-radius: 30px;" src="~/assets/Photos/ProfilePhotos/Photo.JPG" alt=""></span>
+                      <a asp-action="Myprofile" asp-controller="Profile" >
+                          <span class="navIcons"><img style="width: 25px;border-radius: 30px;" src="~/assets/Photos/ProfilePhotos/@Model.MyProfile.ProfilePhotoUrl" alt=""></span>
                           <span class="navs">Profile</span>
                       </a>
                   </li>
@@ -84,111 +84,19 @@
         <div class="main-container ">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="post">
-                        <div class="card bg-dark text-light" style="border:1px solid #383838" >
-                            <div class="navForPost">
-                                <img src="~/assets/Photos/ProfilePhotos/download (2).jpg" alt="">
-                                <a style="text-decoration: none; color: #fff;" href="profile.html"><span class="postOwnerName">MuradAliyev <span >15m</span></span></a>
-                                <i class="fa-solid fa-ellipsis settingsForPost"></i>
-                            </div>
-                            <img class="card-img-top" src="~/assets/Photos/Posts/images (2).jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <div class="actions">
-                                    <div class="left">
-                                        <i class="fa-regular fa-heart like"></i>
-                                        <a class="text-light" href="mobilePost.html"><i class="fa-regular fa-comment"></i></a>
-                                        <i class="fa-solid fa-paper-plane"></i>
-                                    </div>
-                                    <div class="right">
-                                        <i class="fa-regular fa-bookmark savePost"></i>
-                                    </div>
-                                </div>
-                              <span>135 Likes</span>
-                              <p class="card-text">Description here</p>
-                              <a style="text-decoration: none; color: #fff;" href="mobilePost.html">View All <span>12</span> Comments</a><br>
-                              <form action="">
-                                <div class="addComment">
-                                    <input placeholder="Add a Comment..." style="border: none;" type="text" class="mt-2 text-light bg-dark form-control">
-                                  </div>
-                              </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div class="card bg-dark text-light" style="border:1px solid #383838" >
-                            <div class="navForPost">
-                                <img src="~/assets/Photos/ProfilePhotos/download (1).jpg" alt="">
-                                <a style="text-decoration: none; color: #fff;" href="profile.html"><span class="postOwnerName">MuradAliyev <span >15m</span></span></a>
-                                <i class="fa-solid fa-ellipsis settingsForPost"></i>
-                            </div>
-                            <img class="card-img-top" src="~/assets/Photos/Posts/images (1).jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <div class="actions">
-                                    <div class="left">
-                                        <i class="fa-regular fa-heart like"></i>
-                                        <a class="text-light" href="mobilePost.html"><i class="fa-regular fa-comment"></i></a>
-                                        <i class="fa-solid fa-paper-plane"></i>
-                                    </div>
-                                    <div class="right">
-                                        <i class="fa-regular fa-bookmark savePost"></i>
-                                    </div>
-                                </div>
-                              <span>135 Likes</span>
-                              <p class="card-text">Description here</p>
-                              <a style="text-decoration: none; color: #fff;" href="mobilePost.html">View All <span>12</span> Comments</a><br>
-                              <form action="">
-                                <div class="addComment">
-                                    <input placeholder="Add a Comment..." style="border: none;" type="text" class="mt-2 text-light bg-dark form-control">
-                                  </div>
-                              </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div class="card bg-dark text-light" style="border:1px solid #383838" >
-                            <div class="navForPost">
-                                <img src="~/assets/Photos/ProfilePhotos/download.jpg" alt="">
-                                <a style="text-decoration: none; color: #fff;" href="profile.html"><span class="postOwnerName">MuradAliyev <span >15m</span></span></a>
-                                <i class="fa-solid fa-ellipsis settingsForPost"></i>
-                            </div>
-                            <img class="card-img-top" src="~/assets/Photos/Posts/images (3).jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <div class="actions">
-                                    <div class="left">
-                                        <i class="fa-regular fa-heart like"></i>
-                                        <a class="text-light" href="mobilePost.html"><i class="fa-regular fa-comment"></i></a>
-                                        <i class="fa-solid fa-paper-plane"></i>
-                                    </div>
-                                    <div class="right">
-                                        <i class="fa-regular fa-bookmark savePost"></i>
-                                    </div>
-                                </div>
-                              <span>135 Likes</span>
-                              <p class="card-text">Description here</p>
-                              <a style="text-decoration: none; color: #fff;" href="mobilePost.html">View All <span>12</span> Comments</a><br>
-                              <form action="">
-                                <div class="addComment">
-                                    <input placeholder="Add a Comment..." style="border: none;" type="text" class="mt-2 text-light bg-dark form-control">
-                                  </div>
-                              </form>
-                            </div>
-                        </div>
-                    </div>
+                    @await Html.PartialAsync("_PostsPartial.cshtml",@Model.Posts)
                 </div>
                 <div class="col-lg-4 suggestions">
                     <div style="position: sticky;">
                         <div class="myProfile">
                             <div class="left">
                                 <div class="img">
-                                    <img src="~/assets/Photos/ProfilePhotos/Photo.JPG" alt="">
+                                    <img src="~/assets/Photos/ProfilePhotos/@Model.MyProfile.ProfilePhotoUrl" alt="">
                                 </div>
                                 <div class="detail">
-                                    <a asp-controller="Profile" asp-action="Index" >Username</a><br>
-                                    <span>Name And Surname</span>
+                                    <a asp-controller="Profile" asp-action="MyProfile" >@Model.MyProfile.UserName</a><br>
+                                    <span>@Model.MyProfile.Name @Model.MyProfile.SurName</span>
                                 </div>
-                            </div>
-                            <div class="switch">
-                                <a href="">Switch</a>
                             </div>
                         </div>
                         <div class="suggestions text-light mt-2">
@@ -197,35 +105,7 @@
                                 <a href="">See All</a>
                             </div>
                             <div class="profiles">
-                                <div class="navForSug">
-                                    <div>
-                                        <img src="~/assets/Photos/ProfilePhotos/download (2).jpg" alt="">
-                                        <a style="color: #fff;" href="profile.html"><span class="postOwnerName">MuradAliyev</span></a>
-                                    </div>
-                                    <a href="">Follow</a>
-                                </div>
-                                <div class="navForSug">
-                                    <div>
-                                        <img src="~/assets/Photos/ProfilePhotos/download (2).jpg" alt="">
-                                        <a style="color: #fff;" href="profile.html"><span class="postOwnerName">MuradAliyev</span></a>
-                                    </div>
-                                    <a href="">Follow</a>
-                                </div>
-                                <div class="navForSug">
-                                    <div>
-                                        <img src="~/assets/Photos/ProfilePhotos/download (2).jpg" alt="">
-                                        <a style="color: #fff;" href="profile.html"><span class="postOwnerName">MuradAliyev</span></a>
-                                    </div>
-                                    <a href="">Follow</a>
-                                </div>
-                                <div class="navForSug">
-                                    <div>
-                                        <img src="~/assets/Photos/ProfilePhotos/download (2).jpg" alt="">
-                                        <a style="color: #fff;" href="profile.html"><span class="postOwnerName">MuradAliyev</span></a>
-                                    </div>
-                                    <a href="">Follow</a>
-                                </div>
-                                
+                               @await Html.PartialAsync("_SugPartial.cshtml",@Model.Users)
                             </div>
                             <div class="info my-5">
                                 <img width="50%" src="~/assets/Photos/Logo/ezgif-4-cf4d42424a.gif" alt="">
@@ -367,14 +247,12 @@
                 </label>
             </a>
 
-        <a class="nav-item" asp-action="Index" asp-controller="Nofications">
+            <a class="nav-item" asp-action="Index" asp-controller="Nofications">
                 <i class="fa-regular fa-heart"></i><span>Nofications</span>
             </a>
-            
-            <a class="nav-item" asp-controller="Profile" asp-action="Index">
-                <img src="~/assets/Photos/ProfilePhotos/download.jpg" alt=""><span>Profile</span>
-            </a>
-          
+             <a class="nav-item" asp-controller="Profile" asp-action="Myprofile">
+               <img src="~/assets/Photos/ProfilePhotos/download.jpg" alt=""><span>Profile</span>
+             </a>
         </nav>
         <div class="container">
             <div class="navbarMobile">
