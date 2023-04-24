@@ -31,6 +31,7 @@ namespace Final_Project_Tenslog.Controllers
         [HttpGet]
         public async Task<IActionResult> UserProfile(string? id)
         {
+
             UserProfileVM userVM = new UserProfileVM
             {
                 User = await _userManager.Users
@@ -43,6 +44,12 @@ namespace Final_Project_Tenslog.Controllers
                 .Include(u => u.Followings)
                 .FirstOrDefaultAsync(u => u.UserName == User.Identity.Name)
             };
+
+            if (userVM.User.Id == userVM.MyProfile.Id)
+            {
+                return RedirectToAction(nameof(MyProfile));
+            }
+
             return View(userVM);
         }
         [HttpGet]
@@ -91,7 +98,7 @@ namespace Final_Project_Tenslog.Controllers
 
             ;
             following.Followers.Remove(following.Followers.FirstOrDefault(f => f.UserId == id));
-            follower.Followings.Remove(follower.Followings.FirstOrDefault(f=>f.UserFollowingId == follower.Id));
+            follower.Followings.Remove(follower.Followings.FirstOrDefault(f=>f.UserId == follower.Id));
             
             
             await _context.SaveChangesAsync();

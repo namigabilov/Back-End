@@ -1,6 +1,7 @@
 ﻿using Final_Project_Tenslog.DataAccessLayer;
 using Final_Project_Tenslog.Models;
 using Final_Project_Tenslog.ViewModels.HomeViewMoel;
+using Final_Project_Tenslog.ViewModels.PostViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,14 +21,27 @@ namespace Final_Project_Tenslog.Controllers
 
         public async Task<IActionResult> Index()
         {
+            PostsVM postsVM = new PostsVM
+            {
+                Posts = await _context.Posts
+                .Include(c=>c.Likes.Where(l=>l.IsDeleted == false))
+                .Include(c=>c.Comments.Where(cm=>cm.IsDeleted == false ))
+                .Include(u => u.User)
+                .ThenInclude(b => b.Followings)
+                .Include(u => u.User)
+                .ThenInclude(b => b.Followers)
+                .Where(p => p.IsDeleted == false).ToListAsync(),
+                MyProfile = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name)
+            };
 
             HomeVM homeVM = new HomeVM
             {
-                Posts = await _context.Posts.Where(p => p.IsDeleted == false).ToListAsync(),
+                Posts = postsVM,
                 Users = await _context.Users.Take(4).ToListAsync(),
                 MyProfile = await _userManager.Users.FirstOrDefaultAsync(u=>u.UserName == User.Identity.Name)
 
             };
+
             return View(homeVM);
         }
     }

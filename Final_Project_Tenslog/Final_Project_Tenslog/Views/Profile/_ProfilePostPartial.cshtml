@@ -4,7 +4,7 @@
 {
     foreach (Post post in Model)
     {
-        <a href="mobilePost.html"><img src="~/assets/Photos/Posts/@post.ImageUrl" alt=""></a>
+        <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id"><img src="~/assets/Photos/Posts/@post.ImageUrl" alt=""></a>
     }
 }
 else

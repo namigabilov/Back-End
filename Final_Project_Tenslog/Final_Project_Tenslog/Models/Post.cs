@@ -7,7 +7,7 @@ namespace Final_Project_Tenslog.Models
         public string ImageUrl { get; set; }
         [StringLength(100)]
         public string Description { get; set; }
-        public AppUser? User { get; set; }
+        public AppUser User { get; set; }
         public string? UserId { get; set; }
 
         public IEnumerable<Like>? Likes { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Final_Project_Tenslog.Models;
+using Final_Project_Tenslog.ViewModels.PostViewModels;
 
 namespace Final_Project_Tenslog.ViewModels.HomeViewMoel
 {
@@ -6,7 +7,7 @@ namespace Final_Project_Tenslog.ViewModels.HomeViewMoel
     {
         public IEnumerable<AppUser> Users { get; set; }
 
-        public IEnumerable<Post> Posts { get; set; }
+        public PostsVM Posts { get; set; }
 
         public AppUser MyProfile { get; set; }
 
