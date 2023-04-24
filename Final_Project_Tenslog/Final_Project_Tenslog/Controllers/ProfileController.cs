@@ -2,12 +2,14 @@
 using Final_Project_Tenslog.Models;
 using Final_Project_Tenslog.ViewModels.AcconutViewModel;
 using Final_Project_Tenslog.ViewModels.UserProfileViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Final_Project_Tenslog.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

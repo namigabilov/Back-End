@@ -2,12 +2,14 @@
 using Final_Project_Tenslog.Models;
 using Final_Project_Tenslog.ViewModels.HomeViewMoel;
 using Final_Project_Tenslog.ViewModels.PostViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Final_Project_Tenslog.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -33,11 +35,15 @@ namespace Final_Project_Tenslog.Controllers
                 .Where(p => p.IsDeleted == false).ToListAsync(),
                 MyProfile = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name)
             };
-
+            SugVM sugVM = new SugVM
+            {
+                Suggestions = await _context.Users.Include(u=>u.Followers).Take(4).ToListAsync(),
+                MyProfile = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name)
+            };
             HomeVM homeVM = new HomeVM
             {
                 Posts = postsVM,
-                Users = await _context.Users.Take(4).ToListAsync(),
+                Users = sugVM,
                 MyProfile = await _userManager.Users.FirstOrDefaultAsync(u=>u.UserName == User.Identity.Name)
 
             };

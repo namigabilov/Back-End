@@ -10,8 +10,8 @@ namespace Final_Project_Tenslog.Models
         public AppUser User { get; set; }
         public string? UserId { get; set; }
 
-        public IEnumerable<Like>? Likes { get; set; }
-        public IEnumerable<Comment>? Comments { get; set; }
-        public IEnumerable<Saved>? Saved { get; set; }
+        public List<Like>? Likes { get; set; }
+        public List<Comment>? Comments { get; set; }
+        public List<Saved>? Saved { get; set; }
     }
 }

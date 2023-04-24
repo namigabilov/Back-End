@@ -5,7 +5,7 @@ namespace Final_Project_Tenslog.ViewModels.HomeViewMoel
 {
     public class HomeVM
     {
-        public IEnumerable<AppUser> Users { get; set; }
+        public SugVM Users { get; set; }
 
         public PostsVM Posts { get; set; }
 

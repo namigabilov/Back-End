@@ -1,11 +1,23 @@
-﻿@model IEnumerable<AppUser>
-@foreach (AppUser user in Model)
+﻿@model SugVM
+@foreach (AppUser user in Model.Suggestions)
 {
     <div class="navForSug">
         <div>
             <img src="~/assets/Photos/ProfilePhotos/@user.ProfilePhotoUrl" alt="">
             <a style="color: #fff;" asp-action="UserProfile" asp-controller="Profile" asp-route-id="@user.Id"><span class="postOwnerName">@user.Name @user.SurName</span></a>
         </div>
-        <a href="">Follow</a>
+        
+        @if (user.Followers.Any(u=>u.UserFollowerId == Model.MyProfile.Id))
+        {
+            <a asp-controller="Profile" asp-action="UnFollow" asp-route-id="@user.Id">UnFollow</a>
+        }
+        else if (user.Id == Model.MyProfile.Id)
+        {
+            <div class="d-none"></div>
+        }
+        else
+        {
+            <a asp-controller="Profile" asp-action="Follow" asp-route-id="@user.Id">Follow</a>
+        }
     </div>
 }

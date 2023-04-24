@@ -1,12 +1,14 @@
 ﻿using Final_Project_Tenslog.DataAccessLayer;
 using Final_Project_Tenslog.Models;
 using Final_Project_Tenslog.ViewModels.PostViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Final_Project_Tenslog.Controllers
 {
+    [Authorize]
     public class PostController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -40,19 +42,27 @@ namespace Final_Project_Tenslog.Controllers
 
             AppUser user = await _userManager.Users.FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
 
-            Final_Project_Tenslog.Models.Like like = new Like
+            bool isLiked = post.Likes.Any(l=>l.UserId == user.Id && l.PostId == post.Id); 
+            if (isLiked)
             {
-                UserId = user.Id,
-                PostId = post.Id,
-                IsDeleted = false,
-                CreatedAt = DateTime.UtcNow.AddHours(4),
-                CreatedBy = $"{user.Name} {user.SurName}",
-            };
+                Final_Project_Tenslog.Models.Like like = post.Likes.FirstOrDefault(p => p.UserId == user.Id && p.PostId == post.Id);
 
-            post.Likes.Append(like);
+                post.Likes.Remove(like);
+            }
+            else
+            {
+                Final_Project_Tenslog.Models.Like like = new Like
+                {
+                    UserId = user.Id,
+                    PostId = post.Id,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.UtcNow.AddHours(4),
+                    CreatedBy = $"{user.Name} {user.SurName}",
+                };
 
+                post.Likes.Add(like);
+            }
             await _context.SaveChangesAsync();
-
             return RedirectToAction(nameof(Index), new { id = id});
         }
     }
