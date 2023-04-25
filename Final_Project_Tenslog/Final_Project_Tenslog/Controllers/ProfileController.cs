@@ -24,10 +24,13 @@ namespace Final_Project_Tenslog.Controllers
         public async Task<IActionResult> MyProfile()
         {
             AppUser appUser = await _userManager.Users
+                .Include(u=>u.Saveds)
+                .ThenInclude(s=>s.Post)
                 .Include(u => u.Followers)
                 .Include(u => u.Followings)
                 .Include(u => u.Posts.Where(p => p.IsDeleted == false).OrderBy(u => u.CreatedAt))
                 .FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+
             return View(appUser);
         }
         [HttpGet]

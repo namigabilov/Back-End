@@ -28,6 +28,7 @@ namespace Final_Project_Tenslog.Controllers
                 Posts = await _context.Posts
                 .Include(c=>c.Likes.Where(l=>l.IsDeleted == false))
                 .Include(c=>c.Comments.Where(cm=>cm.IsDeleted == false ))
+                .Include(p=>p.Saved)
                 .Include(u => u.User)
                 .ThenInclude(b => b.Followings)
                 .Include(u => u.User)
@@ -37,7 +38,7 @@ namespace Final_Project_Tenslog.Controllers
             };
             SugVM sugVM = new SugVM
             {
-                Suggestions = await _context.Users.Include(u=>u.Followers).Take(4).ToListAsync(),
+                Suggestions = await _context.Users.Where(u=>u.UserName != User.Identity.Name).Include(u=>u.Followers).Take(4).ToListAsync(),
                 MyProfile = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name)
             };
             HomeVM homeVM = new HomeVM

@@ -28,6 +28,8 @@ namespace Final_Project_Tenslog.Controllers
                 MyProfile = await _userManager.FindByNameAsync(User.Identity.Name),
                 Post = await _context.Posts
                 .Include(p=>p.Comments.Where(c=>c.IsDeleted== false))
+                .ThenInclude(c=>c.User)
+                .Include(p=>p.Saved.Where(c=>c.IsDeleted == false))
                 .Include(p=>p.Likes.Where(pd=>pd.IsDeleted == false))
                 .Include(p=>p.User).FirstOrDefaultAsync(p=>p.Id == id)
                
@@ -37,12 +39,17 @@ namespace Final_Project_Tenslog.Controllers
         }
         [HttpGet]
         public async Task<IActionResult> Like(int? id)
-        {
+        { 
+            if (id == null) return BadRequest();
+
             Post post = await _context.Posts.Include(p=>p.Likes.Where(l=>l.IsDeleted == false)).FirstOrDefaultAsync(p => p.Id == id);
+
+            if (post == null) return NotFound();
 
             AppUser user = await _userManager.Users.FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
 
             bool isLiked = post.Likes.Any(l=>l.UserId == user.Id && l.PostId == post.Id); 
+
             if (isLiked)
             {
                 Final_Project_Tenslog.Models.Like like = post.Likes.FirstOrDefault(p => p.UserId == user.Id && p.PostId == post.Id);
@@ -63,7 +70,76 @@ namespace Final_Project_Tenslog.Controllers
                 post.Likes.Add(like);
             }
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index), new { id = id});
+
+            return Json(post.Likes.Count());
+        }
+        [HttpGet]
+        public async Task<IActionResult> Save(int? id)
+        {
+            if (id == null) return BadRequest();
+
+            Post post = await _context.Posts
+                .Include(p=>p.Saved)
+                .Include(p => p.Likes.Where(l => l.IsDeleted == false)).FirstOrDefaultAsync(p => p.Id == id);
+
+            if (post == null) return NotFound();
+
+            AppUser user = await _userManager.Users.FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
+
+            bool isSaved = post.Saved.Any(s => s.UserId == user.Id && s.PostId == post.Id);
+
+            if (isSaved)
+            {
+                Saved saved = post.Saved.FirstOrDefault(s => s.UserId == user.Id && s.PostId == post.Id);
+
+                post.Saved.Remove(saved);
+            }
+            else
+            {
+                Saved saved = new Saved
+                {
+                    UserId = user.Id,
+                    PostId = post.Id,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.UtcNow.AddHours(4),
+                    CreatedBy = $"{user.Name} {user.SurName}",
+                };
+                post.Saved.Add(saved);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return Json(1);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddComment(int? id,Comment comment)
+        {
+            if (comment == null) return BadRequest();
+
+            if (id == null) return BadRequest();
+
+            AppUser appUser = await _context.Users.FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
+
+            Post post = await _context.Posts.Include(p=>p.Comments).Where(p=>p.IsDeleted ==false).FirstOrDefaultAsync(p=>p.Id == id);
+
+            if (post == null) return NotFound();
+
+            Comment dbComment = new Comment
+            {
+                UserId = appUser.Id,
+                PostId = post.Id,
+                Description= comment.Description,
+                IsDeleted = false,
+                CreatedAt = DateTime.UtcNow.AddHours(4),
+                CreatedBy = $"{appUser.Name} {appUser.SurName}",
+            };
+
+            post.Comments.Add(dbComment);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index), new { id = id });
         }
     }
 }

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Saved>
+
+@if (Model != null && Model.Count() > 0)
+{
+    foreach (Saved saved in Model)
+    {
+        <a asp-controller="Post" asp-action="Index" asp-route-id="@saved.PostId"><img src="~/assets/Photos/Posts/@saved.Post.ImageUrl" alt=""></a>
+    }
+}
+else
+{
+    <h3 class="text-light my-5">No Saveds Yet</h3>
+}

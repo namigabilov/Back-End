@@ -1,4 +1,14 @@
-$( document ).ready(function() {
+$(document).ready(function () {
+    $('.myPostsProfile').on('click', function (e) {
+        e.preventDefault();
+        $('.myProfilePosts').removeClass('d-none');
+        $('.myProfileSaveds').addClass('d-none');
+    })
+    $('.mySavedProfile').on('click', function (e) {
+        e.preventDefault();
+        $('.myProfileSaveds').removeClass('d-none');
+        $('.myProfilePosts').addClass('d-none');
+    })
   $('.edit').on('click',function(e){
     e.preventDefault()
     if($('.editProfile').hasClass('d-none')){
@@ -7,7 +17,28 @@ $( document ).ready(function() {
       $('.editProfile').addClass('d-none')
     }
   })
-
+    $('.addLikePost').on('click', function (e) {
+        e.preventDefault()
+        var id = $(this).data('id');
+        fetch('/post/like/' + id)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                $('.postLikeCount').text(data);
+            });
+    })
+    $('.addSavedPost').on('click', function (e) {
+        e.preventDefault()
+        var id = $(this).data('id');
+        fetch('/post/save/' + id)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                console.log(data);
+            });
+    })
   $('.verificationBtn').on('click',function(e){
     e.preventDefault()
     if($('.verification').hasClass('d-none')){

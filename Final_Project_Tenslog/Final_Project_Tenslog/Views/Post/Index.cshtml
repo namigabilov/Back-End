@@ -104,53 +104,26 @@
                     <div>
                         <div class="actions">
                             <div class="left">
-                                <a asp-controller="Post" asp-action="Like" asp-route-id="@Model.Post.Id" style="color:#fff"><i class=" @(Model.Post.Likes.Any(p=>p.UserId == Model.MyProfile.Id) ? "activeForLike fa-solid" : "fa-regular") fa-heart like"></i></a>
+                                <a class="addLikePost" data-id="@Model.Post.Id" asp-controller="Post" asp-action="Like" asp-route-id="@Model.Post.Id" style="color:#fff"><i class=" @(Model.Post.Likes.Any(p=>p.UserId == Model.MyProfile.Id) ? "activeForLike fa-solid" : "fa-regular") fa-heart like"></i></a>
                                 <a class="text-light" asp-controller="Post" asp-action="Index" asp-route-id="@Model.Post.Id"><i class="fa-regular fa-comment"></i></a>
                                 <i class="fa-solid fa-paper-plane"></i>
                             </div>
                             <div class="right">
-                                <i class="fa-regular fa-bookmark savePost"></i>
+                                <a style="color:#fff" asp-controller="Post" asp-action="Save" asp-route-id="@Model.Post.Id"><i class="@(Model.Post.Saved.Any(p=>p.UserId == Model.MyProfile.Id) ? "fa-solid" : "fa-regular") fa-bookmark"></i></a>
                             </div>
                         </div>
                     </div>
-                    <span>@(Model.Post.Likes == null ? "0" : Model.Post.Likes.Count()) Likes</span><br />
+                    <span>
+                        <span class="postLikeCount"> @(Model.Post.Likes == null ? "0" : Model.Post.Likes.Count())</span> Likes
+                    </span><br />
                     <span>
                         @Model.Post.Description
                     </span>
-                    <form class="my-3" action="">
-                        <input class="form-control bg-dark text-light" placeholder="Add Comment" type="text">
-                    </form>
+                    @await Html.PartialAsync("_AddCommentPartial.cshtml", new CommentVM{Post = Model.Post , Comment = new Comment()})
                 </div>
                 <hr class="text-light">
                 <div class="comments">
-                    <div class="comment text-light">
-                        <img src="~/assets/Photos/ProfilePhotos/download (2).jpg" alt="">
-                        <a style="text-decoration: none; color: #fff;" href="profile.html"><span class="postOwnerName">MuradAliyev</span></a>
-                        <div class="commentArea">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure repellat perspiciatis totam consectetur veniam quaerat assumenda maxime ex numquam beatae vel voluptas odio iste est doloribus eligendi, similique sit non. Ratione repellat a ut, recusandae qui eaque assumenda, consectetur eligendi dicta, maiores facere. Necessitatibus ratione animi accusantium nobis adipisci at rerum itaque autem, laborum non exercitationem temporibus deleniti hic fuga quaerat ab explicabo recusandae nemo harum ullam tempora. Itaque, dolore.</span>
-                        </div>
-                    </div>
-                    <div class="comment text-light">
-                        <img src="~/assets/Photos/ProfilePhotos/download (2).jpg" alt="">
-                        <a style="text-decoration: none; color: #fff;" href="profile.html"><span class="postOwnerName">MuradAliyev</span></a>
-                        <div class="commentArea">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis saepe ratione voluptates sint placeat earum reiciendis suscipit culpa eaque rerum.</span>
-                        </div>
-                    </div>
-                    <div class="comment text-light">
-                        <img src="~/assets/Photos/ProfilePhotos/download (2).jpg" alt="">
-                        <a style="text-decoration: none; color: #fff;" href="profile.html"><span class="postOwnerName">MuradAliyev</span></a>
-                        <div class="commentArea">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis saepe ratione voluptates sint placeat earum reiciendis suscipit culpa eaque rerum.</span>
-                        </div>
-                    </div>
-                    <div class="comment text-light">
-                        <img src="~/assets/Photos/ProfilePhotos/download (2).jpg" alt="">
-                        <a style="text-decoration: none; color: #fff;" href="profile.html"><span class="postOwnerName">MuradAliyev</span></a>
-                        <div class="commentArea">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis saepe ratione voluptates sint placeat earum reiciendis suscipit culpa eaque rerum.</span>
-                        </div>
-                    </div>
+                    @await Html.PartialAsync("_PostCommentsPartial.cshtml",@Model.Post.Comments)
                 </div>
             </div>
         </div>

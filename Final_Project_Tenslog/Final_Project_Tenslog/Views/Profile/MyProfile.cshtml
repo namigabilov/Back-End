@@ -109,18 +109,21 @@
             <div class="posts">
                 <div class="row text-center">
                     <div class="col-6">
-                        <a href="">
+                        <a class="myPostsProfile" href="">
                             <i class="fa-solid fa-table-cells"></i> <span style="font-size: 20px;">Posts</span>
                         </a>
                     </div>
                     <div class="col-6">
-                        <a href="">
+                        <a class="mySavedProfile" href="">
                             <i class="fa-regular fa-bookmark"></i> <span style="font-size: 20px;">Saved</span>
                         </a>
                     </div>
                 </div>
                 <div class="myProfilePosts mt-4 row text-center">
                     @await Html.PartialAsync("_ProfilePostPartial.cshtml",Model.Posts)
+                </div>
+                <div  class="myProfileSaveds mt-4 row text-center d-none">
+                    @await Html.PartialAsync("_ProfileSavedsPartial.cshtml",Model.Saveds)
                 </div>
 
             </div>

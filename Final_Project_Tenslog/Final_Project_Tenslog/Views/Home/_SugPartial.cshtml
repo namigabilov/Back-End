@@ -11,10 +11,6 @@
         {
             <a asp-controller="Profile" asp-action="UnFollow" asp-route-id="@user.Id">UnFollow</a>
         }
-        else if (user.Id == Model.MyProfile.Id)
-        {
-            <div class="d-none"></div>
-        }
         else
         {
             <a asp-controller="Profile" asp-action="Follow" asp-route-id="@user.Id">Follow</a>

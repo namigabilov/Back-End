@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Comment>
+
+@foreach (Comment comment in Model)
+{
+    <div style="justify-content:space-between;" class="comment text-light">
+        <div style="display:flex;align-items:center;">
+            <div style="margin-right:5px;">
+                <img src="~/assets/Photos/ProfilePhotos/@comment.User.ProfilePhotoUrl" alt="">
+            </div>
+            <a style="text-decoration: none; color: #fff;" href="profile.html"><span class="postOwnerName">@comment.User.Name @comment.User.SurName</span></a>
+            <div class="commentArea">
+                <span>@comment.Description</span>
+            </div>
+        </div>
+        <div>
+            <span class="mx-2">@comment.CreatedAt?.ToString("dd MMMM HH:mm")</span>
+        </div>
+    </div>
+}

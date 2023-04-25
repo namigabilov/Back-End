@@ -16,25 +16,20 @@
                     <div class="card-body">
                         <div class="actions">
                             <div class="left">
-                                <a style="color: @(post.Likes.Any(p=>p.UserId == Model.MyProfile.Id) ? "red" : "#fff")" asp-controller="Post" asp-action="Like" asp-route-id="@post.Id"><i class="@(post.Likes.Any(p=>p.UserId == Model.MyProfile.Id) ? "activeForLike fa-solid" : "fa-regular") fa-heart like"></i></a>                                <a class="text-light" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id"><i class="fa-regular fa-comment"></i></a>
+                                <a class="addLikePost" data-id="@post.Id" style="color: @(post.Likes.Any(p=>p.UserId == Model.MyProfile.Id) ? "red" : "#fff")" asp-controller="Post" asp-action="Like" asp-route-id="@post.Id"><i class="@(post.Likes.Any(p=>p.UserId == Model.MyProfile.Id) ? "activeForLike fa-solid" : "fa-regular") fa-heart like"></i></a>                                <a class="text-light" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id"><i class="fa-regular fa-comment"></i></a>
                                 <i class="fa-solid fa-paper-plane"></i>
                             </div>
                             <div class="right">
-                                <i class="fa-regular fa-bookmark savePost"></i>
+                                <a style="color:#fff" asp-controller="Post" asp-action="Save" asp-route-id="@post.Id"><i class="@(post.Saved.Any(p=>p.UserId == Model.MyProfile.Id) ? "fa-solid" : "fa-regular") fa-bookmark"></i></a>
                             </div>
                         </div>
-                        <span>@(post.Likes == null ? "0" : post.Likes.Count()) Likes</span>
+                        <span class="postLikeCount">@(post.Likes == null ? "0" : post.Likes.Count()) Likes</span>
                         <p class="card-text">@post.Description</p>
                         @if (post.Comments != null && post.Comments.Count() > 0)
                         {
                             <a style="text-decoration: none; color: #fff;" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">View All <span>@(post.Comments == null ? "0" : post.Comments.Count())</span> Comments</a>
                             <br>
                         }
-                        <form action="">
-                            <div class="addComment">
-                                <input placeholder="Add a Comment..." style="border: none;" type="text" class="mt-2 text-light bg-dark form-control">
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -57,26 +52,21 @@
                 <div class="card-body">
                     <div class="actions">
                         <div class="left">
-                            <a style="color: #fff" asp-controller="Post" asp-action="Like" asp-route-id="@post.Id"><i class="@(post.Likes.Any(p=>p.UserId == Model.MyProfile.Id) ? "activeForLike fa-solid" : "fa-regular") fa-heart like"></i></a>
+                            <a class="addLikePost" data-id="@post.Id" style="color: #fff" asp-controller="Post" asp-action="Like" asp-route-id="@post.Id"><i class="@(post.Likes.Any(p=>p.UserId == Model.MyProfile.Id) ? "activeForLike fa-solid" : "fa-regular") fa-heart like"></i></a>
                             <a class="text-light" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id"><i class="fa-regular fa-comment"></i></a>
                             <i class="fa-solid fa-paper-plane"></i>
                         </div>
                         <div class="right">
-                            <i class="fa-regular fa-bookmark savePost"></i>
+                            <a class="addSavedPost" data-id="@post.Id" style="color:#fff" asp-controller="Post" asp-action="Save" asp-route-id="@post.Id"><i class="@(post.Saved.Any(p=>p.UserId == Model.MyProfile.Id) ? "fa-solid" : "fa-regular") fa-bookmark"></i></a>
                         </div>
                     </div>
-                    <span>@(post.Likes == null ? "0" : post.Likes.Count()) Likes</span>
+                    <span class="postLikeCount">@(post.Likes == null ? "0" : post.Likes.Count()) </span><span> Likes</span>
                     <p class="card-text">@post.Description</p>
                     @if (post.Comments != null && post.Comments.Count() > 0)
                     {
                         <a style="text-decoration: none; color: #fff;" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">View All <span>@(post.Comments == null ? "0" : post.Comments.Count())</span> Comments</a>
                         <br>
                     }
-                    <form action="">
-                        <div class="addComment">
-                            <input placeholder="Add a Comment..." style="border: none;" type="text" class="mt-2 text-light bg-dark form-control">
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
