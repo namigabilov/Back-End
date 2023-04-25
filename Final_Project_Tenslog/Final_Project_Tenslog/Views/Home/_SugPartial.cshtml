@@ -5,6 +5,10 @@
         <div>
             <img src="~/assets/Photos/ProfilePhotos/@user.ProfilePhotoUrl" alt="">
             <a style="color: #fff;" asp-action="UserProfile" asp-controller="Profile" asp-route-id="@user.Id"><span class="postOwnerName">@user.Name @user.SurName</span></a>
+            @if (user.HaveBlueTic)
+            {
+                <i style="color: #3797F0;font-size: 16px;margin-left: 10px;" class="fas fa-check-circle"></i>
+            }
         </div>
         
         @if (user.Followers.Any(u=>u.UserFollowerId == Model.MyProfile.Id))

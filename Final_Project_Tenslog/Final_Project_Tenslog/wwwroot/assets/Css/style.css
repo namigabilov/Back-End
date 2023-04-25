@@ -52,6 +52,14 @@ nav {
     z-index: 99;
 }
 
+.swal2-popup {
+    margin: 50px;
+    height: 13rem !important;
+    width: 20rem !important;
+}
+.swal2-title{
+    padding:0 !important;
+}
 .mobileHome .navbarMobile {
     display: flex;
     justify-content: space-between;
@@ -316,6 +324,8 @@ nav {
 
 .mobileHome .nav-item img {
     width: 30px;
+    height : 30px;
+    object-fit : cover;
     border-radius: 15px;
     padding: 2px;
     border: 2px solid #fff;
@@ -457,6 +467,8 @@ nav {
 
         .myProfile .left img {
             width: 50px;
+            height : 50px;
+            object-fit : cover;
             border-radius: 2rem;
         }
 
@@ -1421,7 +1433,7 @@ button:focus {
     width: 32%;
     height: 40vh;
     margin: 0.5px 3px;
-    object-fit: center;
+    object-fit: cover;
     cursor: pointer;
 }
 
@@ -1494,7 +1506,6 @@ button:focus {
 
     .comments .comment .commentArea {
         margin-left: 10px;
-        width: 50%;
     }
 
     .comments .comment img {

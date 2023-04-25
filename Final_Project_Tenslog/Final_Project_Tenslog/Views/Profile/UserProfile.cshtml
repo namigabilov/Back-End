@@ -138,7 +138,7 @@
                         {
                             @await Html.PartialAsync("_ProfilePostPartial.cshtml",@Model.User.Posts)
                         }
-                        
+
                     }
                 </div>
 
@@ -203,11 +203,11 @@
 </div>
 <div class="mobileHome">
     <nav>
-        <a class="nav-item" href="index.html">
+        <a class="nav-item" asp-action="Index" asp-controller="Home">
             <i class="fa-solid fa-house"></i><span>Home</span>
         </a>
 
-        <a class="nav-item" href="reels.html">
+        <a class="nav-item" asp-action="Index" asp-controller="reels">
             <i class="fa-solid fa-magnifying-glass"></i><span>Activity</span>
         </a>
 
@@ -218,77 +218,84 @@
             </label>
         </a>
 
-        <a class="nav-item" href="activty.html">
+        <a class="nav-item" asp-action="Index" asp-controller="nofication">
             <i class="fa-regular fa-heart"></i><span>Nofications</span>
         </a>
 
-        <a class="nav-item" href="MyProfile.html">
-            <img src="~/assets/Photos/ProfilePhotos/download.jpg" alt=""><span>Profile</span>
+        <a class="nav-item" asp-action="myprofile" asp-controller="profile">
+            <img src="~/assets/Photos/ProfilePhotos/@Model.MyProfile.ProfilePhotoUrl" alt=""><span>Profile</span>
         </a>
     </nav>
     <div class="profileMain">
         <div class="profile m-4">
             <div class="row">
                 <div class="col-3">
-                    <img src="~/assets/Photos/ProfilePhotos/Photo.JPG" alt="">
+                    <img src="~/assets/Photos/ProfilePhotos/@Model.User.ProfilePhotoUrl" alt="">
                 </div>
                 <div class="col-9 right">
                     <div class="top">
-                        <h3 class="text-light" style="display: inline;">UserName</h3>
-                        <i style="color: blue;" class="fas fa-check-circle"></i>
+                        <h3 class="text-light" style="display: inline;">@Model.User.UserName</h3>
+                        @if (Model.User.HaveBlueTic)
+                        {
+                            <i style="color: #3797F0;" class="fas fa-check-circle"></i>
+                        }
                     </div>
-                    <div class="bottom mb-2">
-                        <button class="btn btn-primary">Follow</button>
-                    </div>
-                    <div class="bottom d-none">
-                        <button class="btn btn-outline-dark text-light">Setting</button>
-                        <button class="btn btn-primary">Mesaj</button>
-                    </div>
+
+                    @if (Model.User.Followers.Any(u => u.UserFollowerId == Model.MyProfile.Id) &&
+                    (Model.MyProfile.Followings.Any(u => u.UserFollowingId == Model.User.Id)))
+                    {
+                        <div class="bottom mb-2">
+                            <a asp-controller="Profile" asp-action="Unfollow" asp-route-id="@Model.User.Id" class="btn btn-danger my-2">UnFollow</a>
+                        </div>
+                        <div class="bottom">
+                            <button class="btn btn-light">Mesaj</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="bottom mb-2">
+                            <a asp-controller="Profile" asp-action="Follow" asp-route-id="@Model.User.Id" class="btn btn-primary my-2">Follow</a>
+                        </div>
+                    }
                 </div>
             </div>
             <div class="biography text-light my-4">
-                <h5>Name Surname</h5>
-                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde voluptatum voluptate fuga alias saepe pariatur numquam consectetur quis aperiam labore autem, esse dicta, nihil dolorum. Tempora fugit blanditiis beatae perferendis.</span>
+                <h5>@Model.User.Name @Model.User.SurName</h5>
+                <span>@Model.User.Bio</span>
             </div>
         </div><hr class=" text-light">
         <div class="row text-center text-light">
-            <div class="col-4">9 Posts</div>
-            <div class="col-4">100 Followers</div>
-            <div class="col-4">100 Following</div>
+            <div class="col-4">@(Model.User.Posts == null ? "0" : Model.User.Posts.Count()) Posts</div>
+            <div class="col-4">@(Model.User.Followers == null ? "0" : Model.User.Followers.Count()) Followers</div>
+            <div class="col-4">@(Model.User.Followings == null ? "0" : Model.User.Followings.Count()) Following</div>
         </div>
         <hr class=" text-light">
-        <div class="IsFolow d-none">
-            <div class="row text-light text-center">
-                <div class="col-4">
-                    <i class="fa-solid fa-table-cells"></i>
+        @if (Model.User.IsPrivate)
+        {
+            @if (Model.User.Followers.Any(u => u.UserFollowerId == Model.MyProfile.Id) &&
+           (Model.MyProfile.Followings.Any(u => u.UserFollowingId == Model.User.Id)))
+            {
+                <div class="IsFolow">
+                    <div class="row profilePost">
+                        @await Html.PartialAsync("_ProfilePostPartial.cshtml",@Model.User.Posts)
+                    </div>
                 </div>
-                <div class="col-4">
-                    <i class="fa-regular fa-bookmark">
-                    </i>
+            }
+            else
+            {
+                <div class="NotFollow text-light text-center">
+                    <h4>Profil Gizlidir !</h4>
                 </div>
-                <div class="col-4">
-                    <i class="fa-solid fa-user-tag"></i>
+            }
+        }
+        else
+        {
+            <div class="IsFolow">
+                <div class="row profilePost">
+                    @await Html.PartialAsync("_ProfilePostPartial.cshtml",@Model.User.Posts)
                 </div>
             </div>
-            <hr class=" text-light">
-            <div class="row profilePost">
-                <div class="col-4">
-                    <a href="mobilePost.html"><img src="~/assets/Photos/Posts/images (1).jpg" alt=""></a>
-                    <a href="mobilePost.html"><img src="~/assets/Photos/Posts/images (1).jpg" alt=""></a>
-                </div>
-                <div class="col-4">
-                    <a href="mobilePost.html"><img src="~/assets/Photos/Posts/images (3).jpg" alt=""></a>
-                    <a href="mobilePost.html"><img src="~/assets/Photos/Posts/images (1).jpg" alt=""></a>
+        }
 
-                </div>
-                <div class="col-4">
-                    <a href="mobilePost.html"><img src="~/assets/Photos/Posts/images (1).jpg" alt=""></a>
-                    <a href="mobilePost.html"><img src="~/assets/Photos/Posts/images (3).jpg" alt=""></a>
-                </div>
-            </div>
-        </div>
-        <div class="NotFollow text-light text-center">
-            <h4>Profil Gizlidir !</h4>
-        </div>
     </div>
 </div>

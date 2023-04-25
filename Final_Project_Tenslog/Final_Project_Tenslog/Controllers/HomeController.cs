@@ -33,6 +33,7 @@ namespace Final_Project_Tenslog.Controllers
                 .ThenInclude(b => b.Followings)
                 .Include(u => u.User)
                 .ThenInclude(b => b.Followers)
+                .OrderBy(c => c.CreatedAt)
                 .Where(p => p.IsDeleted == false).ToListAsync(),
                 MyProfile = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name)
             };

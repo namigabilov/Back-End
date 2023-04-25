@@ -23,6 +23,10 @@ namespace Final_Project_Tenslog.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(int? id)
         {
+            if (id == null)
+            {
+                return BadRequest();
+            }
             PostVM postVM = new PostVM
             {
                 MyProfile = await _userManager.FindByNameAsync(User.Identity.Name),
@@ -34,6 +38,11 @@ namespace Final_Project_Tenslog.Controllers
                 .Include(p=>p.User).FirstOrDefaultAsync(p=>p.Id == id)
                
             };
+
+            if (postVM.Post == null || postVM.MyProfile == null)
+            {
+                return NotFound();
+            }
 
             return View(postVM);
         }
