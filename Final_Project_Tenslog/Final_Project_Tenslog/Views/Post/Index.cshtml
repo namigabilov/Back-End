@@ -117,9 +117,9 @@
                             </div>
                         </div>
                     </div>
-                    <span>
-                        <span class="postLikeCount"> @(Model.Post.Likes == null ? "0" : Model.Post.Likes.Count())</span> Likes
-                    </span><br />
+                    <div style="cursor:pointer" class="likersCommentsBtn">
+                        <span class="postLikeCount"> @(Model.Post.Likes == null ? "0" : Model.Post.Likes.Count())</span><span> Likes </span>
+                    </div>
                     <span>@(Model.Post.Comments == null ? "0 Comment" : $"{Model.Post.Comments.Count()} Comments")</span>
                     <span>
                         @Model.Post.Description
@@ -128,7 +128,12 @@
                 </div>
                 <hr class="text-light">
                 <div class="comments mx-3">
-                    @await Html.PartialAsync("_PostCommentsPartial.cshtml",@Model.Post.Comments)
+                    <div class="commentsArea">
+                        @await Html.PartialAsync("_PostCommentsPartial.cshtml",@Model.Post.Comments)
+                    </div>
+                    <div class="likersArea d-none">
+                        @await Html.PartialAsync("_LikersPartial.cshtml",@Model.Post.Likes)
+                    </div>
                 </div>
             </div>
         </div>
@@ -238,20 +243,26 @@
                     <i class="fa-solid fa-paper-plane"></i>
                 </div>
                 <div class="right">
-                    <a style="color:#fff" asp-controller="Post" asp-action="Save" asp-route-id="@Model.Post.Id"><i class="@(Model.Post.Saved.Any(p=>p.UserId == Model.MyProfile.Id) ? "fa-solid" : "fa-regular") fa-bookmark"></i></a>
+                    <a style="color:#fff" asp-controller="Post" asp-action="Save" asp-route-id="@Model.Post.Id"><i class="@(Model.Post.Saved.Any(p=>p.UserId == Model.MyProfile.Id) ? "fa-solid" : "fa-regular") saveBtn fa-bookmark"></i></a>
                 </div>
             </div>
             <div class="text-light mx-1">
                 <span>
-                    <span class="postLikeCount"> @(Model.Post.Likes == null ? "0" : Model.Post.Likes.Count())</span> Likes
-                </span><br />
+                    <div style="cursor:pointer" class="likersCommentsBtn">
+                        <span class="postLikeCount"> @(Model.Post.Likes == null ? "0" : Model.Post.Likes.Count())</span><span> Likes </span>
+                    </div>
+                </span>
                 <span class="my-2">@(Model.Post.Comments == null ? "0 Comment" : $"{Model.Post.Comments.Count()} Comments")</span>
                 @await Html.PartialAsync("_AddCommentPartial.cshtml", new CommentVM{Post = Model.Post , Comment = new Comment()})
             </div>
             <div class="comments">
-                @await Html.PartialAsync("_PostCommentsPartial.cshtml",@Model.Post.Comments)
+                <div class="commentsArea">
+                    @await Html.PartialAsync("_PostCommentsPartial.cshtml",@Model.Post.Comments)
+                </div>
+                <div class="likersArea d-none">
+                    @await Html.PartialAsync("_LikersPartial.cshtml",@Model.Post.Likes)
+                </div>
             </div>
         </div>
     </div>
-
 </div>

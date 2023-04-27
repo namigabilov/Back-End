@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Final_Project_Tenslog.Controllers
 {
@@ -31,10 +32,11 @@ namespace Final_Project_Tenslog.Controllers
             {
                 MyProfile = await _userManager.FindByNameAsync(User.Identity.Name),
                 Post = await _context.Posts
-                .Include(p=>p.Comments.Where(c=>c.IsDeleted== false))
+                .Include(p=>p.Comments.OrderBy(c=>c.CreatedAt).Where(c=>c.IsDeleted== false))
                 .ThenInclude(c=>c.User)
                 .Include(p=>p.Saved.Where(c=>c.IsDeleted == false))
                 .Include(p=>p.Likes.Where(pd=>pd.IsDeleted == false))
+                .ThenInclude(u=>u.User)
                 .Include(p=>p.User).FirstOrDefaultAsync(p=>p.Id == id)
                
             };
@@ -118,7 +120,7 @@ namespace Final_Project_Tenslog.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Json(1);
+            return NoContent();
         }
 
         [HttpPost]

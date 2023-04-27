@@ -1,6 +1,6 @@
 ﻿@model CommentVM
 
-<form class="my-3" method="post">
+<form class="my-3" id="addCommentForm" method="post">
     <input class="form-control bg-dark text-light" placeholder="Add Comment" asp-for="@Model.Comment.Description">
     <button type="Sumbit" class="d-none" asp-controller="Post" asp-action="AddComment" asp-route-id="@Model.Post.Id" ></button>
 </form>

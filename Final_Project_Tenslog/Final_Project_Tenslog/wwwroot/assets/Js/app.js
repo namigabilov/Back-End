@@ -1,4 +1,25 @@
 $(document).ready(function () {
+    $('.saveBtn').on('click', function () {
+        if ($('.saveBtn').hasClass('fa-solid')) {
+            $('.saveBtn').addClass('fa-regular')
+            $('.saveBtn').removeClass('fa-solid')
+        }
+        else {
+            $('.saveBtn').addClass('fa-solid')
+            $('.saveBtn').removeClass('fa-regular')
+        }
+    })
+    $('.likersCommentsBtn').on('click', function (e) {
+        e.preventDefault()
+        if ($('.commentsArea').hasClass('d-none')) {
+            $('.likersArea').addClass('d-none')
+            $('.commentsArea').removeClass('d-none')
+        }
+        else {
+            $('.commentsArea').addClass('d-none')
+            $('.likersArea').removeClass('d-none')
+        }
+    })
     $('.myPostsProfile').on('click', function (e) {
         e.preventDefault();
         $('.myProfilePosts').removeClass('d-none');
@@ -189,7 +210,6 @@ $(document).ready(function () {
         });
     });
 });
-feather.replace();
 document.querySelector(".nav-item").focus();
 function openNav() {
     document.getElementById("mySidenav").style.width = "400px";
