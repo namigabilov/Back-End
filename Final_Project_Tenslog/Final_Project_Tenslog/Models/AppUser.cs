@@ -7,7 +7,7 @@ namespace Final_Project_Tenslog.Models
     public class AppUser : IdentityUser
     {
         [StringLength(100)]
-        public string Name { get; set; }
+        public string Name { get; set; }    
         [StringLength(100)]
         public string? SurName { get; set; }
         [StringLength(150)]
@@ -18,6 +18,8 @@ namespace Final_Project_Tenslog.Models
         public bool ActivtyStatusIsVisible { get; set; } = false;
         public bool HaveBlueTic { get; set; } = false;
         public string? ProfilePhotoUrl { get; set; }
+        [NotMapped]
+        public IFormFile? File { get; set; }
 
         public IEnumerable<Post>? Posts { get; set; }
         public IEnumerable<Saved>? Saveds { get; set; }

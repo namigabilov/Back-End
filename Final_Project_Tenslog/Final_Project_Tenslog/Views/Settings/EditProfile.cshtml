@@ -114,13 +114,14 @@
                 </div>
                 <div class="col-9 p-5">
                     <div class="tabSetting editProfile">
-                        <form asp-controller="Settings" asp-action="UpdateProfile" id="editProfileForm" method="post">
+                        <form asp-controller="Settings" asp-action="UpdateProfile" id="editProfileForm" method="post" enctype="multipart/form-data">
                             <div style="color:red" asp-validation-summary="ModelOnly"></div>
                             <div class="head">
-                                <img src="~/assets/Photos/ProfilePhotos/download.jpg" alt="">
+                                <img src="~/assets/Photos/ProfilePhotos/@Model.User.ProfilePhotoUrl" alt="">
                                 <div class="info">
-                                    <h6>Username</h6>
-                                    <span>Change Profile Photo</span>
+                                    <h6>@Model.User.UserName</h6>
+                                    <input style="margin-top: 30px;height: 26px;font-size: 8px;" class="text-light form-control bg-dark" asp-for="@Model.User.File">
+                                    <span style="color:red" asp-validation-for="@Model.User.File"></span>
                                 </div>
                             </div>
                             <div class="name my-3">
@@ -233,25 +234,9 @@
                         <p>If the payment is approved, your account will be verified</p>
                         <div class="paymet">
                             <p>Total Amount 10$</p>
-                            <form action="">
-                                <div class="name my-3">
-                                    <h5>Card Owner Name</h5>
-                                    <input placeholder="Namiq Abilov" class="form-control bg-dark text-light" type="text">
-                                </div>
-                                <div class="name my-3">
-                                    <h5>Card Number</h5>
-                                    <input placeholder="ex : 1111 1111 1111 1111" class="form-control bg-dark text-light" type="number">
-                                </div>
-                                <div class="name my-3">
-                                    <h5>Expiry date</h5>
-                                    <input placeholder="ex : 1111 1111 1111 1111" class="form-control text-dark" type="date">
-                                </div>
-                                <div class="name my-3">
-                                    <h5>Cvv</h5>
-                                    <input placeholder="ex : 123" class="form-control bg-dark text-light" type="number">
-                                </div>
-                                <button class="btn btn-primary" type="sumbit">Sumbit</button>
-                            </form>
+                        <form id="paymentForVerfication">
+                            <button id="sumbitForVerification" class="btn btn-primary" type="sumbit">Sumbit</button>
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -462,23 +447,7 @@
                     <p>If the payment is approved, your account will be verified</p>
                     <div class="paymet">
                         <p>Total Amount 10$</p>
-                        <form action="">
-                            <div class="name my-3">
-                                <h5>Card Owner Name</h5>
-                                <input placeholder="Namiq Abilov" class="form-control bg-dark text-light" type="text">
-                            </div>
-                            <div class="name my-3">
-                                <h5>Card Number</h5>
-                                <input placeholder="ex : 1111 1111 1111 1111" class="form-control bg-dark text-light" type="number">
-                            </div>
-                            <div class="name my-3">
-                                <h5>Expiry date</h5>
-                                <input placeholder="ex : 1111 1111 1111 1111" class="form-control text-dark" type="date">
-                            </div>
-                            <div class="name my-3">
-                                <h5>Cvv</h5>
-                                <input placeholder="ex : 123" class="form-control bg-dark text-light" type="number">
-                            </div>
+                        <form asp-controller="settings" asp-action="pay" id="paymentForVerfication">
                             <button class="btn btn-primary" type="sumbit">Sumbit</button>
                         </form>
                     </div>

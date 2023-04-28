@@ -1,4 +1,5 @@
 ﻿using Final_Project_Tenslog.DataAccessLayer;
+using Final_Project_Tenslog.Extentions;
 using Final_Project_Tenslog.Models;
 using Final_Project_Tenslog.ViewModels.PostViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -13,12 +14,13 @@ namespace Final_Project_Tenslog.Controllers
     public class PostController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly IWebHostEnvironment _env;
         private readonly AppDbContext _context;
-        public PostController(UserManager<AppUser> userManager, AppDbContext context)
+        public PostController(UserManager<AppUser> userManager, AppDbContext context, IWebHostEnvironment env)
         {
             _userManager = userManager;
             _context = context;
-
+            _env = env;
         }
 
         [HttpGet]
@@ -151,6 +153,43 @@ namespace Final_Project_Tenslog.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index), new { id = id });
+        }
+        [HttpGet]
+        public async Task<IActionResult> AddPost()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddPost(Post post)
+        {
+            AppUser user = await _userManager.Users.FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
+
+            if (!ModelState.IsValid) return View(post);
+            if (post.File == null)
+            {
+                ModelState.AddModelError("File", "Add Post Please !");
+                return View(post);
+            }
+            else
+            {
+                if (post.File?.Length / 1000000 > 10 )
+                {
+                    ModelState.AddModelError("File", "Max Size 10 MB for File !");
+                    return View(post);
+                }
+                if (post.File != null)
+                {
+                    post.ImageUrl = post.File.CreateFileAsync(_env, "assets", "Photos", "Posts").Result;
+                }
+                post.CreatedAt = DateTime.UtcNow.AddHours(4);
+                post.CreatedBy = $"{user.Name} {user.SurName}";
+                post.UserId = user.Id;
+            }
+
+            await _context.Posts.AddAsync(post);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index","Home");
         }
     }
 }

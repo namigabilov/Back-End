@@ -6,19 +6,25 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Configuration;
+using Stripe.Checkout;
+using Stripe;
+using Final_Project_Tenslog.Extentions;
 
 namespace Final_Project_Tenslog.Controllers
 {
     public class SettingsController : Controller
     {
+        public string sessionId = "";
         private readonly UserManager<AppUser> _userManager;
+        private readonly IWebHostEnvironment _env;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly AppDbContext _context;
-        public SettingsController(UserManager<AppUser> userManager, AppDbContext context, SignInManager<AppUser> signInManager)
+        public SettingsController(UserManager<AppUser> userManager, AppDbContext context, SignInManager<AppUser> signInManager, IWebHostEnvironment env)
         {
             _userManager = userManager;
             _context = context;
             _signInManager = signInManager;
+            _env = env;
         }
 
         public async Task<IActionResult> EditProfile()
@@ -49,14 +55,22 @@ namespace Final_Project_Tenslog.Controllers
             {
                 User = settings.User,
             };
+            AppUser dbAppUser = await _context.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "Form verileri doğru değil.");
                 return View("EditProfile", settingsVM);
             }
 
-
-            AppUser dbAppUser = await _context.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+            if (settings.User.File != null)
+            {
+                if (settings.User.File.Length /1000000 > 10)
+                {
+                    ModelState.AddModelError("File", "File Large than 10 mb chose another one !");
+                    return View(settingsVM);
+                }
+                dbAppUser.ProfilePhotoUrl = settings.User.File.CreateFileAsync(_env, "assets", "Photos", "ProfilePhotos").Result;
+            }
 
             if (settings.User == null) return BadRequest();
 
@@ -189,7 +203,7 @@ namespace Final_Project_Tenslog.Controllers
 
             await _userManager.UpdateAsync(appUser);
 
-            return RedirectToAction("profile", "MyProfile");
+            return RedirectToAction("MyProfile", "Profile");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -207,7 +221,7 @@ namespace Final_Project_Tenslog.Controllers
 
             if (settings.Support == null) return BadRequest();
 
-            AppUser appUser = await _context.Users.FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
+            AppUser appUser = await _context.Users.Include(u=>u.Supports).FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
 
             Final_Project_Tenslog.Models.Support support = new Support
             {
@@ -223,6 +237,7 @@ namespace Final_Project_Tenslog.Controllers
 
             return RedirectToAction("Index","Home");
         }
+
     }
     
 }

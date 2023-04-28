@@ -40,11 +40,10 @@
                       </div>
                   </li>
                   <li class="navItems">
-                    <input type="file" name="file" id="file" class="inputfile">
-                    <label for="file">
-                        <i class="fa-solid navIcons fa-plus"></i>
-                        <span class="navs">Add Post</span>
-                    </label>
+                    <a asp-action="AddPost" asp-controller="Post">
+                          <i class="fa-solid navIcons fa-plus"></i>
+                           <span class="navs">Add Post</span>
+                     </a>
                   </li>
                   <li class="navItems">
                       <a asp-action="Myprofile" asp-controller="Profile" >

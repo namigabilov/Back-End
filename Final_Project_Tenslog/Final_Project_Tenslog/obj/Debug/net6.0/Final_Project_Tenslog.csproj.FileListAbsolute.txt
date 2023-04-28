@@ -277,3 +277,4 @@ C:\Users\ASUS\Desktop\Final Project\Back-End\Final_Project_Tenslog\Final_Project
 C:\Users\ASUS\Desktop\Final Project\Back-End\Final_Project_Tenslog\Final_Project_Tenslog\bin\Debug\net6.0\MimeKit.dll
 C:\Users\ASUS\Desktop\Final Project\Back-End\Final_Project_Tenslog\Final_Project_Tenslog\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\ASUS\Desktop\Final Project\Back-End\Final_Project_Tenslog\Final_Project_Tenslog\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\ASUS\Desktop\Final Project\Back-End\Final_Project_Tenslog\Final_Project_Tenslog\bin\Debug\net6.0\Stripe.net.dll
