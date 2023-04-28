@@ -15,6 +15,7 @@ namespace Final_Project_Tenslog.DataAccessLayer
         public DbSet<Saved> Saveds { get; set; }
         public DbSet<Follower> Followers { get; set; }
         public DbSet<Following> Followings { get; set; }
+        public DbSet<Support> Supports { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

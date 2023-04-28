@@ -23,6 +23,6 @@ namespace Final_Project_Tenslog.Models
         public IEnumerable<Saved>? Saveds { get; set; }
         public ICollection<Following>? Followings { get; set; }
         public ICollection<Follower>? Followers { get; set; }
-
+        public List<Support>? Supports { get; set; }
     }
 }

@@ -41,6 +41,8 @@ namespace Final_Project_Tenslog.Controllers
 
             return View(settingsVM);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateProfile(SettingsVM settings)
         {
             SettingsVM settingsVM = new SettingsVM
@@ -124,9 +126,10 @@ namespace Final_Project_Tenslog.Controllers
 
             await _signInManager.RefreshSignInAsync(dbAppUser);
 
-            return View("EditProfile", settingsVM);
+            return RedirectToAction("myprofile","profile");
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(SettingsVM settings)
         {
             SettingsVM settingsVM = new SettingsVM
@@ -165,7 +168,8 @@ namespace Final_Project_Tenslog.Controllers
 
             return RedirectToAction("Login","acconut");
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Security(SettingsVM settings)
         {
             AppUser appUser = await _context.Users.FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
@@ -180,20 +184,44 @@ namespace Final_Project_Tenslog.Controllers
                 User = settings.User,
                 Security= securityVM,
             };
-
-            if (!ModelState.IsValid)
-            {
-                ModelState.AddModelError("", "Fill !");
-                return View("EditProfile", settingsVM);
-            }
-
-
             appUser.IsPrivate = settings.Security.IsPrivate;
             appUser.ActivtyStatusIsVisible = settings.Security.ActivtyStatusIsVisible;
 
             await _userManager.UpdateAsync(appUser);
 
-            return View("EditProfile", settingsVM);
+            return RedirectToAction("profile", "MyProfile");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Support(SettingsVM settings)
+        {
+            SettingsVM settingsVM = new SettingsVM
+            {
+                User = settings.User,
+                Security = settings.Security,
+            };
+            if (!ModelState.IsValid)
+            {
+                return View("EditProfile", settingsVM);
+            }
+
+            if (settings.Support == null) return BadRequest();
+
+            AppUser appUser = await _context.Users.FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
+
+            Final_Project_Tenslog.Models.Support support = new Support
+            {
+                Description = settings.Support.Description,
+                SupportTitle = settings.Support.SupportTitle,
+                IsDeleted = false,
+                UserId = appUser.Id
+            };
+
+            appUser.Supports.Add(support);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index","Home");
         }
     }
     

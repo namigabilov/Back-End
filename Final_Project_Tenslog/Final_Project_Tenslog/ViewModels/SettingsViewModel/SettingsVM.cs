@@ -9,5 +9,7 @@ namespace Final_Project_Tenslog.ViewModels.SettingsViewModel
         public ResetPassVM? ResetPass { get; set; }
 
         public SecurityVM? Security { get; set; }
+
+        public Support? Support { get; set; }
     }
 }

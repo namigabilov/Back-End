@@ -18,13 +18,13 @@
                     </a>
                 </li>
                 <li class="navItems">
-                    <a href="/reels.html">
+                    <a asp-controller="reels" asp-action="index">
                         <i class="navIcons fa-solid fa-magnifying-glass"></i>
                         <span class="navs">Search</span>
                     </a>
                 </li>
                 <li class="navItems">
-                    <a href="direct.html">
+                    <a asp-controller="home" asp-action="index">
                         <i class="navIcons fa-solid fa-inbox"></i>
                         <span class="navs">Messages</span>
                     </a>
@@ -45,7 +45,7 @@
                     </label>
                 </li>
                 <li class="navItems">
-                    <a href="MyProfile.html">
+                    <a asp-controller="Profile" asp-action="Myprofile">
                         <span class="navIcons"><img style="width: 25px;border-radius: 30px;" src="assets/Photos/ProfilePhotos/Photo.JPG" alt=""></span>
                         <span class="navs">Profile</span>
                     </a>
@@ -108,7 +108,7 @@
                             <a href="">Help</a>
                         </div>
                         <div class="p-3">
-                            <a style="text-decoration: none;" class="text-danger" href="login-register.html">Log Out</a>
+                            <a style="text-decoration: none;" class="text-danger" asp-controller="acconut" asp-action="logout">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -218,9 +218,14 @@
                     <div class="tabSetting help d-none">
                         <h4>Help</h4>
                         <p>Please provide detailed information about the problem you are experiencing in writing. You will be contacted as soon as possible. Sincerely, Tenslog.</p>
-                        <form action="">
-                            <textarea placeholder="Write the problem here..." class="form-control bg-dark text-light" name="" id="" cols="2" rows="3"></textarea>
-                            <button class="btn btn-primary my-4">Sumbit</button>
+                        <form asp-controller="settings" asp-action="Support" method="post">
+                            <div class="name my-3">
+                                <h4 class="mx-2">Gender</h4>
+                                <select class="form-control bg-dark text-light" asp-for="@Model.Support.SupportTitle" asp-items="@Html.GetEnumSelectList<SupportTitles>()">
+                                </select>
+                            </div>
+                            <textarea placeholder="Write the problem here..." class="form-control bg-dark text-light" asp-for="@Model.Support.Description" cols="2" rows="3"></textarea>
+                            <button type="submit" class="btn btn-primary my-4">Sumbit</button>
                         </form>
                     </div>
                     <div class="tabSetting verification d-none">

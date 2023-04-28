@@ -30,7 +30,7 @@ namespace Final_Project_Tenslog.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("ActivtyStatusIsVisible")
+                    b.Property<bool>("ActivtyStatusIsVisible")
                         .HasColumnType("bit");
 
                     b.Property<string>("Bio")
@@ -67,6 +67,7 @@ namespace Final_Project_Tenslog.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -88,7 +89,6 @@ namespace Final_Project_Tenslog.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("ProfilePhotoUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
@@ -167,7 +167,7 @@ namespace Final_Project_Tenslog.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments", (string)null);
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.Follower", b =>
@@ -182,7 +182,7 @@ namespace Final_Project_Tenslog.Migrations
 
                     b.HasIndex("UserFollowerId");
 
-                    b.ToTable("Followers", (string)null);
+                    b.ToTable("Followers");
                 });
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.Following", b =>
@@ -197,7 +197,7 @@ namespace Final_Project_Tenslog.Migrations
 
                     b.HasIndex("UserFollowingId");
 
-                    b.ToTable("Followings", (string)null);
+                    b.ToTable("Followings");
                 });
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.Like", b =>
@@ -225,7 +225,7 @@ namespace Final_Project_Tenslog.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("PostId")
+                    b.Property<int?>("PostId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -236,7 +236,6 @@ namespace Final_Project_Tenslog.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -245,7 +244,7 @@ namespace Final_Project_Tenslog.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Likes", (string)null);
+                    b.ToTable("Likes");
                 });
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.Post", b =>
@@ -296,7 +295,7 @@ namespace Final_Project_Tenslog.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Posts", (string)null);
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.Saved", b =>
@@ -343,7 +342,59 @@ namespace Final_Project_Tenslog.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Saveds", (string)null);
+                    b.ToTable("Saveds");
+                });
+
+            modelBuilder.Entity("Final_Project_Tenslog.Models.Support", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("SupportTitle")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Supports");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -535,15 +586,11 @@ namespace Final_Project_Tenslog.Migrations
                 {
                     b.HasOne("Final_Project_Tenslog.Models.Post", "Post")
                         .WithMany("Likes")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PostId");
 
                     b.HasOne("Final_Project_Tenslog.Models.AppUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Post");
 
@@ -570,6 +617,15 @@ namespace Final_Project_Tenslog.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("Post");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Final_Project_Tenslog.Models.Support", b =>
+                {
+                    b.HasOne("Final_Project_Tenslog.Models.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
