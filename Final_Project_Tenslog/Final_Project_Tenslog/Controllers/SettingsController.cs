@@ -56,6 +56,7 @@ namespace Final_Project_Tenslog.Controllers
                 User = settings.User,
             };
             AppUser dbAppUser = await _context.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "Form verileri doğru değil.");
@@ -69,6 +70,7 @@ namespace Final_Project_Tenslog.Controllers
                     ModelState.AddModelError("File", "File Large than 10 mb chose another one !");
                     return View(settingsVM);
                 }
+                FileHelper.DeleteFile(dbAppUser.ProfilePhotoUrl, _env, "assets", "Photos", "ProfilePhotos");
                 dbAppUser.ProfilePhotoUrl = settings.User.File.CreateFileAsync(_env, "assets", "Photos", "ProfilePhotos").Result;
             }
 

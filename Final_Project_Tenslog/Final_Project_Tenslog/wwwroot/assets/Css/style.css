@@ -278,7 +278,13 @@ nav {
     margin: 8px;
     border-bottom: 1px solid #383838;
 }
-
+.navForPostInProfile {
+    display: flex;
+    align-items: center;
+    margin: 8px;
+    justify-content:space-between;
+    border-bottom: 1px solid #383838;
+}
 .navForSug {
     display: flex;
     align-items: center;
@@ -508,6 +514,8 @@ nav {
 }
 
 .profile img {
+    height:5rem;
+    object-fit:cover;
     width: 5rem;
     border-radius: 5rem;
 }

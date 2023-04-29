@@ -11,12 +11,11 @@
                 <div class="card bg-dark text-light" style="border:1px solid #383838">
                     <div class="navForPost">
                         <img src="~/assets/Photos/ProfilePhotos/@post.User.ProfilePhotoUrl" alt="">
-                        <a style="text-decoration: none; color: #fff;" asp-action="UserProfile" asp-controller="Profile" asp-route-id="@post.UserId"><span class="postOwnerName">@post.User.Name @post.User.SurName<span>@((DateTime.UtcNow.AddHours(4) - post.CreatedAt)?.ToString("HH"))</span></span></a>
+                        <a style="text-decoration: none; color: #fff;" asp-action="UserProfile" asp-controller="Profile" asp-route-id="@post.UserId"><span class="postOwnerName">@post.User.Name @post.User.SurName</span></a>
                         @if (post.User.HaveBlueTic)
                         {
                             <i style="color: #3797F0;font-size: 16px;margin-left: 10px;" class="fas fa-check-circle"></i>
                         }
-                        <i class="fa-solid fa-ellipsis settingsForPost"></i>
                     </div>
                     <img id="postImage" data-id="@post.Id" class="card-img-top" src="~/assets/Photos/Posts/@post.ImageUrl" alt="Card image cap">
                     <div class="card-body">
@@ -51,12 +50,11 @@
             <div class="card bg-dark text-light" style="border:1px solid #383838">
                 <div class="navForPost">
                     <img src="~/assets/Photos/ProfilePhotos/@post.User.ProfilePhotoUrl" alt="">
-                    <a style="text-decoration: none; color: #fff;" asp-action="UserProfile" asp-controller="Profile" asp-route-id="@post.UserId"><span class="postOwnerName">@post.User.Name @post.User.SurName<span>@((DateTime.UtcNow.AddHours(4) - post.CreatedAt)?.ToString("mm"))</span></span></a>
+                    <a style="text-decoration: none; color: #fff;" asp-action="UserProfile" asp-controller="Profile" asp-route-id="@post.UserId"><span class="postOwnerName">@post.User.Name @post.User.SurName</span></a>
                     @if (post.User.HaveBlueTic)
                     {
                         <i style="color: #3797F0;font-size: 16px;margin-left: 10px;" class="fas fa-check-circle"></i>
                     }
-                    <i class="fa-solid fa-ellipsis settingsForPost"></i>
                 </div>
                 <img class="card-img-top" src="~/assets/Photos/Posts/@post.ImageUrl" alt="Card image cap">
                 <div class="card-body">

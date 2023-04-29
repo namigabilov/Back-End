@@ -124,7 +124,6 @@ namespace Final_Project_Tenslog.Controllers
 
             return NoContent();
         }
-
         [HttpPost]
         public async Task<IActionResult> AddComment(int? id,Comment comment)
         {
@@ -190,6 +189,27 @@ namespace Final_Project_Tenslog.Controllers
             await _context.Posts.AddAsync(post);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index","Home");
+        }
+        [HttpGet]
+        public async Task<IActionResult> DeletePost(int? id)
+        {
+            if (id == null) return BadRequest();
+
+            Post post = await _context.Posts.FirstOrDefaultAsync(p=>p.Id == id);
+
+            if (post == null) return NotFound();
+
+            FileHelper.DeleteFile(post.ImageUrl, _env, "assets", "Photos", "Posts");
+
+            IEnumerable<Comment> comments = await _context.Comments.Where(c=>c.PostId == post.Id).ToListAsync();
+            IEnumerable<Like> likes = await _context.Likes.Where(c => c.PostId == post.Id).ToListAsync() ;
+
+            _context.Comments.RemoveRange(comments);
+            _context.Likes.RemoveRange(likes);
+            _context.Posts.Remove(post);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -96,12 +96,18 @@
                 }
             </div>
             <div class="col-6">
-                <div class="navForPost">
-                    <img src="~/assets/Photos/ProfilePhotos/@Model.Post.User.ProfilePhotoUrl" alt="">
+                <div class="navForPostInProfile navForPost">
+                    <div>
+                        <img src="~/assets/Photos/ProfilePhotos/@Model.Post.User.ProfilePhotoUrl" alt="">
                     <a style="text-decoration: none; color: #fff;" asp-controller="Profile" asp-action="UserProfile" asp-route-id="@Model.Post.User.Id"><span class="postOwnerName">@Model.Post.User.Name @Model.Post.User.SurName</span></a>
                     @if (Model.Post.User.HaveBlueTic)
                     {
                         <i style="color: #3797F0;font-size: 16px;margin-left: 10px;" class="fas fa-check-circle"></i>
+                    }
+                    </div>
+                    @if(Model.Post.UserId == Model.MyProfile.Id)
+                    {
+                        <a asp-action="DeletePost" asp-controller="Post" asp-route-id="@Model.Post.Id" class="btn btn-danger text-light ">Delete</a>
                     }
                 </div>
                 <div class="postDescription text-light mx-3">
