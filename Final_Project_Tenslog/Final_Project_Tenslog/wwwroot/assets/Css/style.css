@@ -40,7 +40,6 @@
         display: block;
     }
 }
-
 nav {
     display: flex;
     justify-content: space-around;
@@ -425,8 +424,16 @@ nav {
         object-fit:cover;
         height: 318px;
     }
-    .reels-content a{
-        text-decoration:none;
+    .reels-content video {
+        cursor: pointer;
+        width: 318px !important;
+        object-fit: cover !important;
+        height: 318px;
+        margin-left:3px;
+        margin-bottom : 3px;
+    }
+    .reels-content a {
+        text-decoration: none;
     }
 
     .forReelsImage {
@@ -612,7 +619,12 @@ body {
     object-fit: cover;
     padding: 1px;
 }
-
+.profileMain .profilePost video {
+    width: 33% !important;
+    height: 17vh;
+    object-fit: cover !important;
+    padding: 1px;
+}
 @media (max-width: 1000px) {
     body, html {
         font-size: 15px;
@@ -1448,6 +1460,13 @@ button:focus {
     object-fit: cover;
     cursor: pointer;
 }
+.myProfileContent .myProfilePosts video {
+    width: 32% !important;
+    height: 40vh;
+    margin: 0.5px 3px;
+    object-fit: cover !important;
+    cursor: pointer;
+}
 
 .myProfileContent .myProfileSaveds a {
     display: contents;
@@ -1460,7 +1479,13 @@ button:focus {
     object-fit: center;
     cursor: pointer;
 }
-
+.myProfileContent .myProfileSaveds video {
+    width: 32% !important;
+    height: 40vh;
+    margin: 0.5px 3px;
+    object-fit: cover !important;
+    cursor: pointer;
+}
 .sidenav {
     height: 100%;
     width: 0;
@@ -1762,5 +1787,12 @@ button:focus {
         margin-left: 3px;
         height: 15rem;
         width: 99%;
-        object-fit: fill;
+        object-fit: cover;
+    }
+    .mobileHome .reelsMobile .reelsMobileConten a video {
+        margin-bottom: 3px;
+        margin-left: 3px;
+        height: 15rem;
+        width: 99% !important;
+        object-fit: cover !important;
     }

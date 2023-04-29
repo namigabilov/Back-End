@@ -4,7 +4,22 @@
 {
     foreach (Saved saved in Model)
     {
-        <a asp-controller="Post" asp-action="Index" asp-route-id="@saved.PostId"><img src="~/assets/Photos/Posts/@saved.Post.ImageUrl" alt=""></a>
+        <a asp-controller="Post" asp-action="Index" asp-route-id="@saved.PostId">
+
+            @if (saved.Post.ImageUrl.EndsWith(".MOV") || saved.Post.ImageUrl.EndsWith(".mp4") || saved.Post.ImageUrl.EndsWith(".MP4"))
+            {
+                <video style="width: 100%;object-fit: contain;">
+                    <source src="~/assets/Photos/Posts/@saved.Post.ImageUrl" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            }
+            else
+            {
+                <img src="~/assets/Photos/Posts/@saved.Post.ImageUrl" alt="">
+            }
+            <img src="~/assets/Photos/Posts/@saved.Post.ImageUrl" alt="">
+            
+        </a>
     }
 }
 else

@@ -172,9 +172,9 @@ namespace Final_Project_Tenslog.Controllers
             }
             else
             {
-                if (post.File?.Length / 1000000 > 10 )
+                if (post.File?.Length / 1000000 > 50 )
                 {
-                    ModelState.AddModelError("File", "Max Size 10 MB for File !");
+                    ModelState.AddModelError("File", "Max Size 50 MB for File !");
                     return View(post);
                 }
                 if (post.File != null)
@@ -185,7 +185,10 @@ namespace Final_Project_Tenslog.Controllers
                 post.CreatedBy = $"{user.Name} {user.SurName}";
                 post.UserId = user.Id;
             }
-
+            if (post.Description == null)
+            {
+                post.Description = "";
+            }
             await _context.Posts.AddAsync(post);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index","Home");

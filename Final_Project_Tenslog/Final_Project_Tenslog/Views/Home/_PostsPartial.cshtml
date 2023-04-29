@@ -1,7 +1,7 @@
 ﻿@model PostsVM
 @foreach (Post post in Model.Posts)
 {
-    var postClass = $"postLikeCount{post.Id}"  ;
+    var postClass = $"postLikeCount{post.Id}";
     var postImage = $"postImage{post.Id}";
     if (post.User.IsPrivate)
     {
@@ -17,7 +17,17 @@
                             <i style="color: #3797F0;font-size: 16px;margin-left: 10px;" class="fas fa-check-circle"></i>
                         }
                     </div>
-                    <img id="postImage" data-id="@post.Id" class="card-img-top" src="~/assets/Photos/Posts/@post.ImageUrl" alt="Card image cap">
+                    @if (post.ImageUrl.EndsWith(".MOV") || post.ImageUrl.EndsWith(".mp4") || post.ImageUrl.EndsWith(".MP4"))
+                    {
+                        <video autoplay style="width: 100%;height: 100vh;object-fit: contain;" controls>
+                            <source src="~/assets/Photos/Posts/@post.ImageUrl" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    }
+                    else
+                    {
+                        <img id="postImage" data-id="@post.Id" class="card-img-top" src="~/assets/Photos/Posts/@post.ImageUrl" alt="Card image cap">
+                    }
                     <div class="card-body">
                         <div class="actions">
                             <div class="left">
@@ -56,7 +66,17 @@
                         <i style="color: #3797F0;font-size: 16px;margin-left: 10px;" class="fas fa-check-circle"></i>
                     }
                 </div>
-                <img class="card-img-top" src="~/assets/Photos/Posts/@post.ImageUrl" alt="Card image cap">
+                @if (post.ImageUrl.EndsWith(".MOV") || post.ImageUrl.EndsWith(".mp4") || post.ImageUrl.EndsWith(".MP4"))
+                {
+                    <video autoplay style="width: 100%;object-fit: contain;" controls>
+                        <source src="~/assets/Photos/Posts/@post.ImageUrl" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                }
+                else
+                {
+                    <img id="postImage" data-id="@post.Id" class="card-img-top" src="~/assets/Photos/Posts/@post.ImageUrl" alt="Card image cap">
+                }
                 <div class="card-body">
                     <div class="actions">
                         <div class="left">

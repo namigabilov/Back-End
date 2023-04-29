@@ -82,7 +82,7 @@ namespace Final_Project_Tenslog.Controllers
             }
             else
             {
-                dbAppUser.Name = dbAppUser.Name.Trim();
+                dbAppUser.Name = dbAppUser.Name;
             }
             if (settings.User.SurName != null)
             {
@@ -90,9 +90,9 @@ namespace Final_Project_Tenslog.Controllers
             }
             else
             {
-                dbAppUser.SurName = dbAppUser.SurName.Trim();
+                dbAppUser.SurName = dbAppUser.SurName;
             }
-            dbAppUser.Bio = settings.User.Bio.Trim();
+            dbAppUser.Bio = settings.User.Bio;
 
             if ( _context.Users.Any(u=>u.UserName.Trim().ToLower() == settings.User.UserName.Trim().ToLowerInvariant()))
             {
