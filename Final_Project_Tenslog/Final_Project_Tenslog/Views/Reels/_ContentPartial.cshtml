@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Post>
+    @if (Model != null && Model.Count() > 0)
+    {
+        @foreach (Post post in Model)
+        {
+            <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
+                <img style="margin-bottom: 3px;margin-left:3px" src="~/assets/Photos/Posts/@post.ImageUrl" alt="">
+            </a>
+        }
+    }

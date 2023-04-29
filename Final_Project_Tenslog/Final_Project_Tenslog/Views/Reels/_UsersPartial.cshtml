@@ -1,0 +1,27 @@
+﻿@model IEnumerable<AppUser>
+
+<div>
+   @if (Model != null && Model.Count() > 0)
+    {
+        @foreach (AppUser user in Model)
+        {
+            <div class="my-3 text-light" style="display:flex;justify-content:space-between;align-items:center">
+                <div style="display:flex;justify-content:start;align-items:center">
+                    <div style="margin-right">
+                        <img style="width:50px;height:50px;border-radius:25px;object-fit:cover" src="~/assets/Photos/ProfilePhotos/@user.ProfilePhotoUrl" alt="">
+                    </div>
+                    <a asp-controller="profile" asp-action="userprofile" asp-route-id="@user.Id" style="text-decoration: none; color: #fff;"><span class="postOwnerName">@user.UserName</span></a>
+                    @if (user.HaveBlueTic)
+                    {
+                        <i style="color: #3797F0;font-size: 16px;margin-left: 10px;" class="fas fa-check-circle"></i>
+                    }
+                    <div class="commentArea">
+                    </div>
+                </div>
+                <div>
+                    <span class="mx-2">@user.Name @user.SurName</span>
+                </div>
+            </div>
+        }
+    }
+</div>

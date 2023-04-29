@@ -219,7 +219,7 @@ nav {
 }
 
 .main-container-reels {
-    margin-left: 255px;
+    margin-left: 250px;
     margin-bottom: 100px;
 }
 
@@ -416,12 +416,16 @@ nav {
     .reels-content img {
         cursor: pointer;
         width: 318px;
+        object-fit:cover;
         height: 318px;
     }
+    .reels-content a{
+        text-decoration:none;
+    }
 
-.forReelsImage {
-    position: relative;
-}
+    .forReelsImage {
+        position: relative;
+    }
 
 .katman {
     position: absolute;
@@ -1728,4 +1732,27 @@ button:focus {
         width: 23%;
         margin-right: 7px;
         border-radius: 100%;
+    }
+
+.reelsContent {
+    display: flex;
+    width: 105%;
+    justify-content: center;
+    margin-bottom: 5px;
+    flex-wrap:wrap;
+}
+.mobileHome .reelsMobile .reelsMobileConten a {
+    text-decoration: none;
+    width: 50%;
+}
+.mobileHome .reelsMobile .reelsMobileConten {
+    display:flex;
+    flex-wrap:wrap;
+}
+    .mobileHome .reelsMobile .reelsMobileConten a img {
+        margin-bottom: 3px;
+        margin-left: 3px;
+        height: 15rem;
+        width: 99%;
+        object-fit: fill;
     }

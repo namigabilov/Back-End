@@ -1,4 +1,46 @@
 $(document).ready(function () {
+    $('#searchUserInput').on('keyup', function () {
+        console.log($(this).val())
+        if ($(this).val() != "") {
+            console.log($(this).val())
+            $('.reelsContent').addClass('d-none')
+            $('.searchUser').removeClass('d-none')
+
+            fetch('/Reels/SearchUser?search=' + $(this).val())
+                .then(res => {
+                    return res.text();
+                })
+                .then(data => {
+                    $('.searchUser').html(data)
+                })
+
+        }
+        else {
+            $('.reelsContent').removeClass('d-none')
+            $('.searchUser').addClass('d-none')
+        }
+    })
+    $('#searchMobileUserInput').on('keyup', function () {
+        console.log($(this).val())
+        if ($(this).val() != "") {
+            console.log($(this).val())
+            $('.reelsMobileConten').addClass('d-none')
+            $('.searchUser').removeClass('d-none')
+
+            fetch('/Reels/SearchUser?search=' + $(this).val())
+                .then(res => {
+                    return res.text();
+                })
+                .then(data => {
+                    $('.searchUser').html(data)
+                })
+
+        }
+        else {
+            $('.reelsMobileConten').removeClass('d-none')
+            $('.searchUser').addClass('d-none')
+        }
+    })
     $('.saveBtn').on('click', function () {
         if ($('.saveBtn').hasClass('fa-solid')) {
             $('.saveBtn').addClass('fa-regular')
