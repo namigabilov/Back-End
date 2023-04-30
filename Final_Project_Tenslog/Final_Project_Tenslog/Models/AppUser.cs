@@ -18,10 +18,14 @@ namespace Final_Project_Tenslog.Models
         public bool ActivtyStatusIsVisible { get; set; } = false;
         public bool HaveBlueTic { get; set; } = false;
         public string? ProfilePhotoUrl { get; set; }
+        [StringLength(100)]
+        public string? ConnectionId { get; set; }
+
         [NotMapped]
         public IFormFile? File { get; set; }
 
         public IEnumerable<Post>? Posts { get; set; }
+        public List<Nofication> Nofications { get; set; }
         public IEnumerable<Saved>? Saveds { get; set; }
         public ICollection<Following>? Followings { get; set; }
         public ICollection<Follower>? Followers { get; set; }

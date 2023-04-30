@@ -1796,3 +1796,17 @@ button:focus {
         width: 99% !important;
         object-fit: cover !important;
     }
+.noficationPoint {
+    padding: 4px;
+    background-color: red;
+    position: absolute;
+    border-radius: 4px;
+    margin-top: 12px;
+    margin-left: 10px;
+}
+.notificationIcon {
+    padding: 4px;
+    background-color: red;
+    border-radius: 4px;
+    margin-left: 10px;
+}

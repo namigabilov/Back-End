@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\assets\\Js\\login.js"
     },
     {
+      "Id": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Js\\nofication.js",
+      "PackagePath": "staticwebassets\\assets\\Js\\nofication.js"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\Logo\\Tenslog.png",
       "PackagePath": "staticwebassets\\assets\\Photos\\Logo\\Tenslog.png"
     },
@@ -61,10 +65,6 @@
       "PackagePath": "staticwebassets\\assets\\Photos\\Posts\\98ddd4cf-ebc0-4784-a178-a8cf03f6f63e-20230429205433483-IMG_7216.JPG"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\Posts\\e2478baf-3941-4676-9034-fe56e805ddaa-20230429210942456-MHLI5124.MOV",
-      "PackagePath": "staticwebassets\\assets\\Photos\\Posts\\e2478baf-3941-4676-9034-fe56e805ddaa-20230429210942456-MHLI5124.MOV"
-    },
-    {
       "Id": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\Posts\\ezgif-4-cf4d42424a.gif",
       "PackagePath": "staticwebassets\\assets\\Photos\\Posts\\ezgif-4-cf4d42424a.gif"
     },
@@ -93,12 +93,20 @@
       "PackagePath": "staticwebassets\\assets\\Photos\\ProfilePhotos\\8129dee3-0f92-4db6-bf42-423a42c2043d-20230429210001157-IMG_7714.JPG"
     },
     {
+      "Id": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\ProfilePhotos\\DefaultProfilePhoto.png",
+      "PackagePath": "staticwebassets\\assets\\Photos\\ProfilePhotos\\DefaultProfilePhoto.png"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\ProfilePhotos\\bcb0a3b1-b30b-4bc5-b4aa-0c0281fbd88f-20230429205355944-IMG_6937.JPG",
       "PackagePath": "staticwebassets\\assets\\Photos\\ProfilePhotos\\bcb0a3b1-b30b-4bc5-b4aa-0c0281fbd88f-20230429205355944-IMG_6937.JPG"
     },
     {
       "Id": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\ProfilePhotos\\ezgif-4-cf4d42424a.gif",
       "PackagePath": "staticwebassets\\assets\\Photos\\ProfilePhotos\\ezgif-4-cf4d42424a.gif"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\signalr\\dist\\webworker\\signalr.min.js",
+      "PackagePath": "staticwebassets\\assets\\signalr\\dist\\webworker\\signalr.min.js"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Final_Project_Tenslog.Microsoft.AspNetCore.StaticWebAssets.props",

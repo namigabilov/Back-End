@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "x6fTWeqOWfGB1aquOL7X2Hkv48STuYvK6L3ftFwNx2s=",
+  "Hash": "GV5y1Z5Zs7I04WkpzPVDNVhF8aIkBr/E2xUrlhIGP5o=",
   "Source": "Final_Project_Tenslog",
   "BasePath": "_content/Final_Project_Tenslog",
   "Mode": "Default",
@@ -117,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\Js\\login.js"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Js\\nofication.js",
+      "SourceId": "Final_Project_Tenslog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\",
+      "BasePath": "_content/Final_Project_Tenslog",
+      "RelativePath": "assets/Js/nofication.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Js\\nofication.js"
     },
     {
       "Identity": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\Logo\\ezgif-4-cf4d42424a.gif",
@@ -272,23 +289,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\Photos\\Posts\\98ddd4cf-ebc0-4784-a178-a8cf03f6f63e-20230429205433483-IMG_7216.JPG"
     },
     {
-      "Identity": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\Posts\\e2478baf-3941-4676-9034-fe56e805ddaa-20230429210942456-MHLI5124.MOV",
-      "SourceId": "Final_Project_Tenslog",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\",
-      "BasePath": "_content/Final_Project_Tenslog",
-      "RelativePath": "assets/Photos/Posts/e2478baf-3941-4676-9034-fe56e805ddaa-20230429210942456-MHLI5124.MOV",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\Photos\\Posts\\e2478baf-3941-4676-9034-fe56e805ddaa-20230429210942456-MHLI5124.MOV"
-    },
-    {
       "Identity": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\Posts\\ezgif-4-cf4d42424a.gif",
       "SourceId": "Final_Project_Tenslog",
       "SourceType": "Discovered",
@@ -425,6 +425,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\Photos\\ProfilePhotos\\bcb0a3b1-b30b-4bc5-b4aa-0c0281fbd88f-20230429205355944-IMG_6937.JPG"
     },
     {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\ProfilePhotos\\DefaultProfilePhoto.png",
+      "SourceId": "Final_Project_Tenslog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\",
+      "BasePath": "_content/Final_Project_Tenslog",
+      "RelativePath": "assets/Photos/ProfilePhotos/DefaultProfilePhoto.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Photos\\ProfilePhotos\\DefaultProfilePhoto.png"
+    },
+    {
       "Identity": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\ProfilePhotos\\ezgif-4-cf4d42424a.gif",
       "SourceId": "Final_Project_Tenslog",
       "SourceType": "Discovered",
@@ -440,6 +457,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\Photos\\ProfilePhotos\\ezgif-4-cf4d42424a.gif"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\signalr\\dist\\webworker\\signalr.min.js",
+      "SourceId": "Final_Project_Tenslog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\",
+      "BasePath": "_content/Final_Project_Tenslog",
+      "RelativePath": "assets/signalr/dist/webworker/signalr.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\signalr\\dist\\webworker\\signalr.min.js"
     }
   ]
 }

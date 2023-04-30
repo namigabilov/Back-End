@@ -70,7 +70,10 @@ namespace Final_Project_Tenslog.Controllers
                     ModelState.AddModelError("File", "File Large than 10 mb chose another one !");
                     return View(settingsVM);
                 }
-                FileHelper.DeleteFile(dbAppUser.ProfilePhotoUrl, _env, "assets", "Photos", "ProfilePhotos");
+                if (dbAppUser.ProfilePhotoUrl != "DefaultProfilePhoto.png")
+                {
+                    FileHelper.DeleteFile(dbAppUser.ProfilePhotoUrl, _env, "assets", "Photos", "ProfilePhotos");
+                }
                 dbAppUser.ProfilePhotoUrl = settings.User.File.CreateFileAsync(_env, "assets", "Photos", "ProfilePhotos").Result;
             }
 

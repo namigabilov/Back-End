@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Nofication>
+
+@foreach (Nofication nofication in Model)
+{
+    <div class="navForPostComment text-light mb-3">
+        <div>
+            <img src="~/assets/Photos/ProfilePhotos/@nofication.User.ProfilePhotoUrl" alt="">
+        </div>
+        <div class="info">
+            <span style="display: block;">@nofication.User.UserName</span>
+            @if ((int)nofication.NoficationType == 1)
+            {
+                <span class="">Liked Your Photo</span>
+                <div>
+                    <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId"><img style="border-radius: 0;width: 50px; height: 50px;" src="assets/Photos/Posts/@nofication.Post.ImageUrl" alt=""></a>
+                </div>
+            }
+            else if ((int)nofication.NoficationType == 2)
+            {
+                <span class="">Follow You</span>
+                <div class="buttons">
+                    <button class="btn btn-primary p-1">Accept</button>
+                    <button class="btn btn-dark p-1">Cancel</button>
+                </div>
+            }
+            else
+            {
+                <span class="">Add A comment</span>
+                <div>
+                    <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId"><img style="border-radius: 0;width: 50px; height: 50px;" src="assets/Photos/Posts/@nofication.Post.ImageUrl" alt=""></a>
+                </div>
+            }
+        </div>
+    </div>
+}

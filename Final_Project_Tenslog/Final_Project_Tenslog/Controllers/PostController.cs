@@ -57,6 +57,8 @@ namespace Final_Project_Tenslog.Controllers
 
             Post post = await _context.Posts.Include(p=>p.Likes.Where(l=>l.IsDeleted == false)).FirstOrDefaultAsync(p => p.Id == id);
 
+            AppUser postOwner = await _context.Users.Include(p => p.Nofications).FirstOrDefaultAsync(p => p.Id == post.UserId);
+
             if (post == null) return NotFound();
 
             AppUser user = await _userManager.Users.FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
@@ -79,9 +81,20 @@ namespace Final_Project_Tenslog.Controllers
                     CreatedAt = DateTime.UtcNow.AddHours(4),
                     CreatedBy = $"{user.Name} {user.SurName}",
                 };
-
+                Nofication nofication = new Nofication
+                {
+                    NoficationType = (Enums.NoficationType)1,
+                    UserId = postOwner.Id,
+                    CreatedAt = DateTime.UtcNow.AddHours(4),
+                    IsRead = false,
+                    IsDeleted = false,
+                    PostId = post.Id
+                };
                 post.Likes.Add(like);
+                postOwner.Nofications.Add(nofication);
             }
+
+
             await _context.SaveChangesAsync();
 
             return Json(post.Likes.Count());
@@ -135,6 +148,8 @@ namespace Final_Project_Tenslog.Controllers
 
             Post post = await _context.Posts.Include(p=>p.Comments).Where(p=>p.IsDeleted ==false).FirstOrDefaultAsync(p=>p.Id == id);
 
+            AppUser postOwner = await _context.Users.Include(p=>p.Nofications).FirstOrDefaultAsync(p => p.Id == post.UserId);
+
             if (post == null) return NotFound();
 
             Comment dbComment = new Comment
@@ -147,7 +162,18 @@ namespace Final_Project_Tenslog.Controllers
                 CreatedBy = $"{appUser.Name} {appUser.SurName}",
             };
 
+            Nofication nofication = new Nofication
+            {
+                NoficationType = (Enums.NoficationType)3,
+                UserId = postOwner.Id,
+                CreatedAt = DateTime.UtcNow.AddHours(4),
+                IsRead = false,
+                IsDeleted = false,
+                PostId = post.Id
+            };
+
             post.Comments.Add(dbComment);
+            postOwner.Nofications.Add(nofication);
 
             await _context.SaveChangesAsync();
 
@@ -206,9 +232,12 @@ namespace Final_Project_Tenslog.Controllers
 
             IEnumerable<Comment> comments = await _context.Comments.Where(c=>c.PostId == post.Id).ToListAsync();
             IEnumerable<Like> likes = await _context.Likes.Where(c => c.PostId == post.Id).ToListAsync() ;
+            IEnumerable<Saved> saveds = await _context.Saveds.Where(c=>c.PostId == post.Id).ToListAsync() ;
+            
 
             _context.Comments.RemoveRange(comments);
             _context.Likes.RemoveRange(likes);
+            _context.Saveds.RemoveRange(saveds);
             _context.Posts.Remove(post);
             await _context.SaveChangesAsync();
 

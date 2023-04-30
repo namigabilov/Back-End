@@ -1,4 +1,5 @@
 using Final_Project_Tenslog.DataAccessLayer;
+using Final_Project_Tenslog.Hubs;
 using Final_Project_Tenslog.Models;
 using Final_Project_Tenslog.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -12,7 +13,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
-
+builder.Services.AddSignalR();
 builder.Services.AddMvc();
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
@@ -43,6 +44,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Acconut}/{action=Login}/{id?}"
 );
-
+app.MapHub<NoficationHub>("/nofication");
 app.UseStaticFiles();
 app.Run();
+

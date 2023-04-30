@@ -41,6 +41,10 @@ namespace Final_Project_Tenslog.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ConnectionId")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -247,6 +251,60 @@ namespace Final_Project_Tenslog.Migrations
                     b.ToTable("Likes");
                 });
 
+            modelBuilder.Entity("Final_Project_Tenslog.Models.Nofication", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("NoficationType")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Nofications");
+                });
+
             modelBuilder.Entity("Final_Project_Tenslog.Models.Post", b =>
                 {
                     b.Property<int>("Id")
@@ -270,12 +328,10 @@ namespace Final_Project_Tenslog.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -597,6 +653,23 @@ namespace Final_Project_Tenslog.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Final_Project_Tenslog.Models.Nofication", b =>
+                {
+                    b.HasOne("Final_Project_Tenslog.Models.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId");
+
+                    b.HasOne("Final_Project_Tenslog.Models.AppUser", "User")
+                        .WithMany("Nofications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Final_Project_Tenslog.Models.Post", b =>
                 {
                     b.HasOne("Final_Project_Tenslog.Models.AppUser", "User")
@@ -624,7 +697,7 @@ namespace Final_Project_Tenslog.Migrations
             modelBuilder.Entity("Final_Project_Tenslog.Models.Support", b =>
                 {
                     b.HasOne("Final_Project_Tenslog.Models.AppUser", "User")
-                        .WithMany()
+                        .WithMany("Supports")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
@@ -687,9 +760,13 @@ namespace Final_Project_Tenslog.Migrations
 
                     b.Navigation("Followings");
 
+                    b.Navigation("Nofications");
+
                     b.Navigation("Posts");
 
                     b.Navigation("Saveds");
+
+                    b.Navigation("Supports");
                 });
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.Post", b =>
