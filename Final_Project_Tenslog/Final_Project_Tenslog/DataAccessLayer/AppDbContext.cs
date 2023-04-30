@@ -42,7 +42,18 @@ namespace Final_Project_Tenslog.DataAccessLayer
                 .HasForeignKey(f => f.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-        }
+            modelBuilder.Entity<Nofication>()
+                .HasOne(n => n.User)
+                .WithMany(u => u.Nofications)
+                .HasForeignKey(n => n.UserId);
+
+            modelBuilder.Entity<Nofication>()
+                .HasOne(n => n.FromUser)
+                .WithMany()
+                .HasForeignKey(n => n.FromUserId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired(false);
+                    }
 
 
     }

@@ -63,14 +63,34 @@ namespace Final_Project_Tenslog.Controllers
             return View(userVM);
         }
         [HttpGet]
+        public async Task<IActionResult> RejectFollow(string? id)
+        {
+
+            AppUser appUser = await _context.Users.Include(u=>u.Nofications).FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+
+            //Nofication nofication = new Nofication
+            //{
+            //    FromUserId = id,
+            //    UserId = appUser.Id
+            //};
+            Nofication nofication = _context.Nofications.FirstOrDefault(u => u.FromUserId == id && u.UserId == appUser.Id);
+            _context.Nofications.Remove(nofication);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index","Home");
+        }
+        [HttpGet]
         public async Task<IActionResult> AcceptFollow(string? id)
         {
             AppUser follower = await _context.Users
+                .Include(u => u.Nofications)
                 .Include(u => u.Followings)
                 .Include(u => u.Followers)
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             AppUser following = await _context.Users
+                .Include(u=>u.Nofications)
                 .Include(u => u.Followings)
                 .Include(u => u.Followers)
                 .FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
@@ -88,6 +108,12 @@ namespace Final_Project_Tenslog.Controllers
 
             follower.Followings.Add(followingDb);
             following.Followers.Add(followerDb);
+
+            Nofication nofication = _context.Nofications.FirstOrDefault(u => u.UserId == following.Id && u.FromUserId == id);
+            
+
+            _context.Nofications.Remove(nofication);
+
             await _context.SaveChangesAsync();
 
             return RedirectToAction("UserProfile", "Profile", new { id = id });
@@ -138,6 +164,7 @@ namespace Final_Project_Tenslog.Controllers
                 CreatedAt = DateTime.UtcNow.AddHours(4),
                 IsRead = false,
                 IsDeleted = false,
+                FromUserId = follower.Id,
             };
 
             following.Nofications.Add(nofication);

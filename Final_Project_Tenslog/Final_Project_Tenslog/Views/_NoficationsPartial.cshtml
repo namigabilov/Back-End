@@ -4,30 +4,30 @@
 {
     <div class="navForPostComment text-light mb-3">
         <div>
-            <img src="~/assets/Photos/ProfilePhotos/@nofication.User.ProfilePhotoUrl" alt="">
+            <img src="~/assets/Photos/ProfilePhotos/@nofication.FromUser.ProfilePhotoUrl" alt="">
         </div>
         <div class="info">
-            <span style="display: block;">@nofication.User.UserName</span>
+            <span style="display: block;">@nofication.FromUser.UserName</span>
             @if ((int)nofication.NoficationType == 1)
             {
                 <span class="">Liked Your Photo</span>
                 <div>
-                    <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId"><img style="border-radius: 0;width: 50px; height: 50px;" src="assets/Photos/Posts/@nofication.Post.ImageUrl" alt=""></a>
+                    <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId"><img style="border-radius: 0;width: 50px; height: 50px;" src="~/assets/Photos/Posts/@nofication.Post.ImageUrl" alt=""></a>
                 </div>
             }
             else if ((int)nofication.NoficationType == 2)
             {
-                <span class="">Follow You</span>
+                <span class="">Wants To Follow You</span>
                 <div class="buttons">
-                    <button class="btn btn-primary p-1">Accept</button>
-                    <button class="btn btn-dark p-1">Cancel</button>
+                    <a asp-action="AcceptFollow" asp-controller="Profile" asp-route-id="@nofication.FromUserId" class="btn btn-primary p-1">Accept</a>
+                    <a asp-action="RejectFollow" asp-controller="Profile" asp-route-id="@nofication.FromUserId" class="btn btn-dark p-1">Cancel</a>
                 </div>
             }
             else
             {
                 <span class="">Add A comment</span>
                 <div>
-                    <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId"><img style="border-radius: 0;width: 50px; height: 50px;" src="assets/Photos/Posts/@nofication.Post.ImageUrl" alt=""></a>
+                    <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId"><img style="border-radius: 0;width: 50px; height: 50px;" src="~/assets/Photos/Posts/@nofication.Post.ImageUrl" alt=""></a>
                 </div>
             }
         </div>

@@ -273,6 +273,9 @@ namespace Final_Project_Tenslog.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<string>("FromUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -297,6 +300,8 @@ namespace Final_Project_Tenslog.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FromUserId");
 
                     b.HasIndex("PostId");
 
@@ -655,6 +660,11 @@ namespace Final_Project_Tenslog.Migrations
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.Nofication", b =>
                 {
+                    b.HasOne("Final_Project_Tenslog.Models.AppUser", "FromUser")
+                        .WithMany()
+                        .HasForeignKey("FromUserId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
                     b.HasOne("Final_Project_Tenslog.Models.Post", "Post")
                         .WithMany()
                         .HasForeignKey("PostId");
@@ -664,6 +674,8 @@ namespace Final_Project_Tenslog.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("FromUser");
 
                     b.Navigation("Post");
 

@@ -88,7 +88,8 @@ namespace Final_Project_Tenslog.Controllers
                     CreatedAt = DateTime.UtcNow.AddHours(4),
                     IsRead = false,
                     IsDeleted = false,
-                    PostId = post.Id
+                    PostId = post.Id,
+                    FromUserId = user.Id,
                 };
                 post.Likes.Add(like);
                 postOwner.Nofications.Add(nofication);
@@ -169,7 +170,8 @@ namespace Final_Project_Tenslog.Controllers
                 CreatedAt = DateTime.UtcNow.AddHours(4),
                 IsRead = false,
                 IsDeleted = false,
-                PostId = post.Id
+                PostId = post.Id,
+                FromUserId = appUser.Id,
             };
 
             post.Comments.Add(dbComment);
