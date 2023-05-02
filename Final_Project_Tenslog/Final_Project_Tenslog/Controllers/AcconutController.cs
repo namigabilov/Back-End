@@ -31,6 +31,83 @@ namespace Final_Project_Tenslog.Controllers
 
         }
         [HttpGet]
+        public async Task<IActionResult> ResetPass()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPass(ResetPasswordVM resetPasswordVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(resetPasswordVM);
+            }
+            AppUser appUser = await _userManager.FindByEmailAsync(resetPasswordVM.Email);
+
+            if (appUser == null)
+            {
+                ModelState.AddModelError("", $"{resetPasswordVM.Email} Emaile Malik User Tapilmadi !");
+                return View(resetPasswordVM);
+            }
+            string token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
+
+            string url = Url.Action("ResetPassword", "Acconut", new { id = appUser.Id, token = token }, HttpContext.Request.Scheme, HttpContext.Request.Host.ToString());
+
+            string tempalteFullPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "_FogetPasswordPartial.cshtml");
+
+            string templateContent = await System.IO.File.ReadAllTextAsync(tempalteFullPath);
+            
+            templateContent = templateContent.Replace("{{url}}", url);
+
+            MimeMessage mimeMessage = new MimeMessage();
+            mimeMessage.From.Add(MailboxAddress.Parse(_smtpSetting.Email));
+            mimeMessage.To.Add(MailboxAddress.Parse(appUser.Email));
+            mimeMessage.Subject = "Forget Password";
+            mimeMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            {
+                Text = templateContent
+            };
+            using (SmtpClient smtpClient = new SmtpClient())
+            {
+                await smtpClient.ConnectAsync(_smtpSetting.Host, _smtpSetting.Port, MailKit.Security.SecureSocketOptions.StartTls);
+                await smtpClient.AuthenticateAsync(_smtpSetting.Email, _smtpSetting.Password);
+                await smtpClient.SendAsync(mimeMessage);
+                await smtpClient.DisconnectAsync(true);
+                smtpClient.Dispose();
+            }
+
+            return RedirectToAction(nameof(Login));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ResetPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(string id, string token, RefleshPassword resetPasswordVM)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return BadRequest();
+            }
+            AppUser appUser = await _userManager.FindByIdAsync(id);
+
+            if (appUser == null)
+            {
+                return BadRequest();
+            }
+            IdentityResult identityResult = await _userManager.ResetPasswordAsync(appUser, token, resetPasswordVM.Password);
+            if (!identityResult.Succeeded)
+            {
+                return BadRequest();
+            }
+            return RedirectToAction("Login", "Acconut");
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Register()
         {
             return View();

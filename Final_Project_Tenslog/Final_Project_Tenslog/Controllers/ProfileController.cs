@@ -37,7 +37,9 @@ namespace Final_Project_Tenslog.Controllers
                 .Include(u=>u.Saveds)
                 .ThenInclude(s=>s.Post)
                 .Include(u => u.Followers)
+                .ThenInclude(c=>c.UserFollower)
                 .Include(u => u.Followings)
+                .ThenInclude(c=>c.UserFollowing)
                 .Include(u => u.Posts.Where(p => p.IsDeleted == false).OrderBy(u => u.CreatedAt))
                 .FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
 

@@ -220,7 +220,7 @@
                         <p>Please provide detailed information about the problem you are experiencing in writing. You will be contacted as soon as possible. Sincerely, Tenslog.</p>
                         <form asp-controller="settings" asp-action="Support" method="post">
                             <div class="name my-3">
-                                <h4 class="mx-2">Gender</h4>
+                                <h4 class="mx-2">Select Support Title</h4>
                                 <select class="form-control bg-dark text-light" asp-for="@Model.Support.SupportTitle" asp-items="@Html.GetEnumSelectList<SupportTitles>()">
                                 </select>
                             </div>

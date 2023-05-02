@@ -11,93 +11,95 @@
         </div>
 
         <div class="navigation">
-              <ul>
-                  <li class="navItems">
-                      <a asp-controller="Home" asp-action="Index">
+            <ul>
+                <li class="navItems">
+                    <a asp-controller="Home" asp-action="Index">
                         <i class="navIcons fa-solid fa-house"></i>
                         <span class="navs">Home</span>
-                      </a>
-                  </li>
-                  <li class="navItems">
-                      <a asp-controller="Reels" asp-action="Index">
+                    </a>
+                </li>
+                <li class="navItems">
+                    <a asp-controller="Reels" asp-action="Index">
                         <i class="navIcons fa-solid fa-magnifying-glass"></i>
-                          <span class="navs">Search</span>
-                      </a>
-                  </li>
-                  <li class="navItems">
-                      <a asp-action="Index" asp-controller="Direct">
-                          <i class="navIcons fa-solid fa-inbox"></i>
-                          <span class="navs">Messages</span>
-                      </a>
-                  </li>
-                  <li class="navItems">
-                      <div> 
+                        <span class="navs">Search</span>
+                    </a>
+                </li>
+                <li class="navItems">
+                    <a asp-action="Index" asp-controller="Direct">
+                        <i class="navIcons fa-solid fa-inbox"></i>
+                        <span class="navs">Messages</span>
+                    </a>
+                </li>
+                <li class="navItems">
+                    <div>
                         <a asp-action="Index" asp-controller="Nofications" data-toggle="modal" data-target="reelsModal">
                             <i class="navIcons fa-regular fa-heart"></i>
                             <span onclick="openNav()" class="navs">Nofications</span>
                             <i class="fa-solid d-none notificationIcon"></i>
                         </a>
-                      </div>
-                  </li>
-                  <li class="navItems">
+                    </div>
+                </li>
+                <li class="navItems">
                     <a asp-action="AddPost" asp-controller="Post">
-                          <i class="fa-solid navIcons fa-plus"></i>
-                           <span class="navs">Add Post</span>
-                     </a>
-                  </li>
-                  <li class="navItems">
-                      <a asp-action="Myprofile" asp-controller="Profile" >
-                          <span class="navIcons"><img style="width: 35px;height:35px;object-fit : cover;border-radius: 30px;" src="~/assets/Photos/ProfilePhotos/@Model.ProfilePhotoUrl" alt=""></span>
-                          <span class="navs">Profile</span>
-                      </a>
-                  </li>
-                  <div id="settingTable" class="settingsTab d-none">
-                      <ul>
-                          <li>
-                              <a asp-controller="settings" asp-action="EditProfile">
-                                  <span>Settings</span>
-                                  <span class="navIcons"><i class="fa-solid fa-gear"></i></span>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="">
-                                  <span >Have a Question </span>
-                                  <span class="navIcons"><i class="fa-solid fa-question"></i></span>
-                              </a>
-                          </li>
-                          <li>
-                              <a asp-controller="Acconut" asp-action="login" >
-                                  <span>Log Out</span>
-                                  <span class="navIcons"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
-                              </a>
-                          </li>
-                      </ul>
-                  </div>
-                  <li id="settings" class="navItems">
-                      <span class="navIcons"><i class="fa-solid fa-bars"></i></span>
-                      <span class="navs">Settings</span>
-                  </li>
-              </ul>
-            </div>
+                        <i class="fa-solid navIcons fa-plus"></i>
+                        <span class="navs">Add Post</span>
+                    </a>
+                </li>
+                <li class="navItems">
+                    <a asp-action="Myprofile" asp-controller="Profile">
+                        <span class="navIcons"><img style="width: 35px;height:35px;object-fit : cover;border-radius: 30px;" src="~/assets/Photos/ProfilePhotos/@Model.ProfilePhotoUrl" alt=""></span>
+                        <span class="navs">Profile</span>
+                    </a>
+                </li>
+                <div id="settingTable" class="settingsTab d-none">
+                    <ul>
+                        <li>
+                            <a asp-controller="settings" asp-action="EditProfile">
+                                <span>Settings</span>
+                                <span class="navIcons"><i class="fa-solid fa-gear"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span>Have a Question </span>
+                                <span class="navIcons"><i class="fa-solid fa-question"></i></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Acconut" asp-action="login">
+                                <span>Log Out</span>
+                                <span class="navIcons"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <li id="settings" class="navItems">
+                    <span class="navIcons"><i class="fa-solid fa-bars"></i></span>
+                    <span class="navs">Settings</span>
+                </li>
+            </ul>
+        </div>
     </div>
     <div style="  margin-left: 253px;" class="main">
         <div class="customContainer myProfileContent">
             <div class="headermyProfile">
-                <img src="~/assets/Photos/ProfilePhotos/@Model.ProfilePhotoUrl" alt="">
+                <div>
+                    <img src="~/assets/Photos/ProfilePhotos/@Model.ProfilePhotoUrl" alt="">
+                </div>
                 <div class="info text-light">
                     <div class="top">
                         <strong>@Model.UserName</strong>
-                        @if ( Model.HaveBlueTic)
+                        @if (Model.HaveBlueTic)
                         {
                             <i style="color: #3797F0;" class="fas fa-check-circle"></i>
                         }
-                        <button class="btn btn-light mx-4">Edit Profile</button>
+                        <a asp-controller="settings" asp-action="EditProfile" style="text-decoration:none ;color:#000" class="btn btn-light mx-4">Edit Profile</a>
                     </div>
                     <div class="postInfo my-4">
                         <div class="line">
                             <p><span>@(Model.Posts == null ? "0" : Model.Posts.Count())</span> Posts</p>
-                            <p><span>@(Model.Followers == null ? "0" : Model.Followers.Count())</span> Followers</p>
-                            <p><span>@(Model.Followings == null ? "0" : Model.Followings.Count())</span> Following</p>
+                            <p style="cursor:pointer" class="followersTab"><span>@(Model.Followers == null ? "0" : Model.Followers.Count())</span> Followers</p>
+                            <p style="cursor:pointer" class="followingsTab"><span>@(Model.Followings == null ? "0" : Model.Followings.Count())</span> Following</p>
                         </div>
                         <strong>@Model.Name @Model.SurName</strong>
                     </div>
@@ -119,10 +121,16 @@
                         </a>
                     </div>
                 </div>
-                <div class="myProfilePosts mt-4 row text-center">
+                <div class="myProfileFollowings myProfileTabs d-none mt-4 row text-center">
+                    @await Html.PartialAsync("_FollowingPartial.cshtml",Model.Followings)
+                </div>
+                <div class="myProfileFollowers myProfileTabs mt-4 row d-none text-center">
+                    @await Html.PartialAsync("_FollowersPartial.cshtml",Model.Followers)
+                </div>
+                <div class="myProfilePosts myProfileTabs mt-4 row text-center">
                     @await Html.PartialAsync("_ProfilePostPartial.cshtml",Model.Posts)
                 </div>
-                <div  class="myProfileSaveds mt-4 row text-center d-none">
+                <div class="myProfileSaveds myProfileTabs mt-4 row text-center d-none">
                     @await Html.PartialAsync("_ProfileSavedsPartial.cshtml",Model.Saveds)
                 </div>
 
@@ -192,7 +200,7 @@
             </div>
         </div><hr class=" text-light">
         <div class="row text-center text-light">
-            <div class="col-4">@(Model.Posts == null ? "0" : Model.Posts.Count() ) Post</div>
+            <div class="col-4">@(Model.Posts == null ? "0" : Model.Posts.Count()) Post</div>
             <div class="col-4">@(Model.Followers == null ? "0" : Model.Followers.Count()) Followers</div>
             <div class="col-4">@(Model.Followings == null ? "0" : Model.Followings.Count()) Following</div>
         </div>
@@ -201,13 +209,16 @@
             <div style="border-right: 1px solid #fff;  cursor: pointer;" class="col-6">
                 <i class="fa-solid fa-table-cells"></i>
             </div>
-            <div style="cursor: pointer;" class="col-6">
+            <div style="cursor: pointer;" class="col-6 switchSaveds">
                 <i class="fa-regular fa-bookmark"></i>
             </div>
         </div>
         <hr class=" text-light">
-        <div class="row profilePost text-center">
+        <div class="row profilePost d-none text-center">
             @await Html.PartialAsync("_ProfilePostPartial.cshtml",Model.Posts)
+        </div>
+        <div class="row profileSaved d-none text-center">
+            @await Html.PartialAsync("_ProfileSavedsPartial.cshtml",Model.Saveds)
         </div>
     </div>
 </div>

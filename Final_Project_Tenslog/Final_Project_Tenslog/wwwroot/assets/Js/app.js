@@ -42,8 +42,6 @@ $(document).ready(function () {
         }
     })
     $('.saveBtn').on('click', function () {
-        var saveBtn = "saveBtn" + $(this).data(id)
-        console.log(saveBtn)
         if ($('.saveBtn').hasClass('fa-solid')) {
             $('.saveBtn').addClass('fa-regular')
             $('.saveBtn').removeClass('fa-solid')
@@ -64,16 +62,30 @@ $(document).ready(function () {
             $('.likersArea').removeClass('d-none')
         }
     })
+
+
     $('.myPostsProfile').on('click', function (e) {
         e.preventDefault();
+        $('.myProfileTabs').addClass('d-none');
         $('.myProfilePosts').removeClass('d-none');
-        $('.myProfileSaveds').addClass('d-none');
+    })
+    $('.followersTab').on('click', function (e) {
+        e.preventDefault();
+        $('.myProfileTabs').addClass('d-none');
+        $('.myProfileFollowers').removeClass('d-none');
+    })
+    $('.followingsTab').on('click', function (e) {
+        e.preventDefault();
+        $('.myProfileTabs').addClass('d-none');
+        $('.myProfileFollowings').removeClass('d-none');
     })
     $('.mySavedProfile').on('click', function (e) {
         e.preventDefault();
+        $('.myProfileTabs').addClass('d-none');
         $('.myProfileSaveds').removeClass('d-none');
-        $('.myProfilePosts').addClass('d-none');
     })
+
+
     $('.edit').on('click', function (e) {
         e.preventDefault()
         if ($('.editProfile').hasClass('d-none')) {

@@ -83,7 +83,13 @@
     <div style="  margin-left: 253px;" class="main">
         <div class="customContainer myProfileContent">
             <div class="headermyProfile">
-                <img src="~/assets/Photos/ProfilePhotos/@Model.User.ProfilePhotoUrl" alt="">
+                <div>
+                    <img src="~/assets/Photos/ProfilePhotos/@Model.User.ProfilePhotoUrl" alt="">
+                    @if (Model.User.ConnectionId != null && Model.User.Followers.Any(c=>c.UserFollowerId == Model.MyProfile.Id) && Model.User.ActivtyStatusIsVisible)
+                    {
+                         <span class="activeIconForProfile"></span>
+                    }
+                </div>
                 <div class="info text-light">
                     <div class="top">
                         <strong>@Model.User.UserName</strong>

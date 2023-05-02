@@ -1801,3 +1801,11 @@ button:focus {
     border-radius: 4px;
     margin-left: 10px;
 }
+.activeIconForProfile {
+    padding: 10px;
+    position: absolute;
+    background: #5cec5c;
+    top: 6rem;
+    left: 42rem;
+    border-radius: 10px;
+}

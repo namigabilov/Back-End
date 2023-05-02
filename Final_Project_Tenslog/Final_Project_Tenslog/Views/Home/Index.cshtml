@@ -31,7 +31,7 @@
                   </li>
                   <li class="navItems">
                       <div> 
-                        <a asp-action="Index" asp-controller="Nofications" data-toggle="modal" data-target="reelsModal">
+                        <a data-toggle="modal" data-target="reelsModal">
                             <i class="navIcons fa-regular fa-heart"></i>
                             <span onclick="openNav()" class="navs">Nofications</span>
                             <i class="fa-solid d-none notificationIcon"></i>
@@ -104,7 +104,6 @@
                         <div class="suggestions text-light mt-2">
                             <div class="sug">
                                 <h6 class="my-4">Suggestions For You</h6>
-                                <a href="">See All</a>
                             </div>
                             <div class="profiles">
                                @await Html.PartialAsync("_SugPartial.cshtml",@Model.Users)
@@ -141,8 +140,7 @@
                 <i class="fa-solid fa-magnifying-glass"></i><span>Reels</span>
             </a>
             
-            <a class="nav-item" >
-                <input type="file" name="file" id="file" class="inputfile">
+            <a  asp-action="AddPost" asp-controller="Post" class="nav-item" >
                 <label for="file">
                     <i class="fa-solid fa-plus"></i>
                 </label>

@@ -4,7 +4,7 @@
 }
 <section>
     <div class="logo">
-        <img style="width: 14%;" src="assets/Photos/Logo/Tenslog.png" alt="">
+        <img style="width: 14%;" src="~/assets/Photos/Logo/Tenslog.png" alt="">
     </div>
     <div class="flex-container">
         <div class="content-container">
@@ -30,7 +30,8 @@
                     </div>
                     <br>
                     <input type="submit" value="SUBMIT" class="submit-btn">
-                    <a class="btn btn-primary mx-5" asp-action="Register" asp-controller="Acconut">Create One !</a>
+                    <a class="btn btn-primary mx-5" asp-action="Register" asp-controller="Acconut">Create New Acconut !</a>
+                    <a asp-controller="acconut" asp-action="ResetPass" class="btn btn-primary" style="text-decoration:none; color:#fff">Reset Password!</a>
                 </form>
             </div>
         </div>

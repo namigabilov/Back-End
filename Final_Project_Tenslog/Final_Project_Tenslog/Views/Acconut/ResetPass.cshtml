@@ -1,0 +1,29 @@
+﻿@model ResetPasswordVM
+@{
+    ViewData["Title"] = "ResetPass";
+}
+<section>
+    <div class="logo">
+        <img style="width: 14%;" src="~/assets/Photos/Logo/Tenslog.png" alt="">
+    </div>
+    <div class="flex-container">
+        <div class="content-container">
+            <div class="form-container">
+                <form method="post">
+                    <h1>
+                        Reset Password
+                    </h1>
+                    <div style="color:red;font-size:15px" asp-validation-summary="ModelOnly"></div>
+                    <span class="subtitle">Enter Your Accont Email </span>
+                    <br>
+                    <input class="form-control bg-dark text-light" asp-for="Email"><br />
+                    <span asp-validation-for="Email" style="color:red"></span>
+                    <br>
+                    <input type="submit" value="SUBMIT" class="submit-btn">
+                    <a class="btn btn-primary mx-5" asp-action="login" asp-controller="Acconut">Login !</a>
+                    <a class="btn btn-primary mx-5" asp-action="Register" asp-controller="Acconut">Create New Acconut !</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

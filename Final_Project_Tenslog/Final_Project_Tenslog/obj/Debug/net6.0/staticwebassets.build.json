@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hMzX7XAmj6KfOJp3Frg3x1jF74dJwP346tEEczutuWQ=",
+  "Hash": "AI6C4R7o0aQ0h5o7DP5LDkUAzXLVld5dwZEB8/0agVQ=",
   "Source": "Final_Project_Tenslog",
   "BasePath": "_content/Final_Project_Tenslog",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\Photos\\Logo\\Tenslog.png"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\Posts\\103191e9-318b-4925-8c16-531af90b1463-20230502141115654-IMG_6867.JPG",
+      "SourceId": "Final_Project_Tenslog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\",
+      "BasePath": "_content/Final_Project_Tenslog",
+      "RelativePath": "assets/Photos/Posts/103191e9-318b-4925-8c16-531af90b1463-20230502141115654-IMG_6867.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Photos\\Posts\\103191e9-318b-4925-8c16-531af90b1463-20230502141115654-IMG_6867.JPG"
     },
     {
       "Identity": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\Posts\\332d3009-b345-4f6e-949a-6efb865aa6b5-20230501222759506-DJMV9385.JPG",

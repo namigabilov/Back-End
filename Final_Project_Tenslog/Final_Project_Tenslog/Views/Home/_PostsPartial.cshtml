@@ -35,7 +35,7 @@
                                 <i class="fa-solid fa-paper-plane"></i>
                             </div>
                             <div class="right">
-                                <a style="color:#fff" data-id="@post.Id" asp-controller="Post" asp-action="Save" asp-route-id="@post.Id"><i class="@(post.Saved.Any(p=>p.UserId == Model.MyProfile.Id) ? "fa-solid" : "fa-regular") saveBtn fa-bookmark"></i></a>
+                                <a style="color:#fff" asp-controller="Post" asp-action="Save" asp-route-id="@post.Id"><i class="@(post.Saved.Any(p=>p.UserId == Model.MyProfile.Id) ? "fa-solid" : "fa-regular") saveBtn fa-bookmark"></i></a>
                             </div>
                         </div>
                         <span class="@postClass">@(post.Likes == null ? "0" : post.Likes.Count())</span><span> Likes</span>

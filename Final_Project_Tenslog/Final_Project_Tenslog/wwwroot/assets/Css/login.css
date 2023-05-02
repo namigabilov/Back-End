@@ -40,7 +40,6 @@ h1 {
 
 .flex-container {
     width: 100vw;
-    margin-top: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
