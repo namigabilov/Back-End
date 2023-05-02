@@ -29,6 +29,11 @@ namespace Final_Project_Tenslog.Controllers
         public async Task<IActionResult> MyProfile()
         {
             AppUser appUser = await _userManager.Users
+                .Include(c=>c.Saveds)
+                .Include(u=>u.Nofications)
+                .ThenInclude(c=>c.Post)
+                .Include(u => u.Nofications)
+                .ThenInclude(c => c.FromUser)
                 .Include(u=>u.Saveds)
                 .ThenInclude(s=>s.Post)
                 .Include(u => u.Followers)
@@ -50,6 +55,11 @@ namespace Final_Project_Tenslog.Controllers
                 .Include(u => u.Posts.Where(p => p.IsDeleted == false).OrderBy(u => u.CreatedAt))
                 .FirstOrDefaultAsync(u => u.Id == id),
                 MyProfile = await _userManager.Users
+                .Include(c=>c.Saveds)
+                .Include(u => u.Nofications)
+                .ThenInclude(c => c.Post)
+                .Include(u => u.Nofications)
+                .ThenInclude(c => c.FromUser)
                 .Include(u => u.Followers)
                 .Include(u => u.Followings)
                 .FirstOrDefaultAsync(u => u.UserName == User.Identity.Name)
@@ -67,12 +77,6 @@ namespace Final_Project_Tenslog.Controllers
         {
 
             AppUser appUser = await _context.Users.Include(u=>u.Nofications).FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
-
-            //Nofication nofication = new Nofication
-            //{
-            //    FromUserId = id,
-            //    UserId = appUser.Id
-            //};
             Nofication nofication = _context.Nofications.FirstOrDefault(u => u.FromUserId == id && u.UserId == appUser.Id);
             _context.Nofications.Remove(nofication);
 

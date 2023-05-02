@@ -1,10 +1,12 @@
 ﻿using Final_Project_Tenslog.DataAccessLayer;
 using Final_Project_Tenslog.Extentions;
+using Final_Project_Tenslog.Hubs;
 using Final_Project_Tenslog.Models;
 using Final_Project_Tenslog.ViewModels.PostViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
@@ -14,11 +16,13 @@ namespace Final_Project_Tenslog.Controllers
     public class PostController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly IHubContext<NoficationHub> _hub;
         private readonly IWebHostEnvironment _env;
         private readonly AppDbContext _context;
-        public PostController(UserManager<AppUser> userManager, AppDbContext context, IWebHostEnvironment env)
+        public PostController(UserManager<AppUser> userManager, AppDbContext context, IWebHostEnvironment env,IHubContext<NoficationHub> hub)
         {
             _userManager = userManager;
+            _hub = hub;
             _context = context;
             _env = env;
         }
@@ -95,6 +99,7 @@ namespace Final_Project_Tenslog.Controllers
                 postOwner.Nofications.Add(nofication);
             }
 
+            _hub.Clients.User(postOwner.Id).SendAsync("ReciveNotifyForFollow", "fa-heart");
 
             await _context.SaveChangesAsync();
 
@@ -177,6 +182,8 @@ namespace Final_Project_Tenslog.Controllers
             post.Comments.Add(dbComment);
             postOwner.Nofications.Add(nofication);
 
+            _hub.Clients.User(postOwner.Id).SendAsync("ReciveNotifyForFollow", "fa-comment");
+
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index), new { id = id });
@@ -235,10 +242,12 @@ namespace Final_Project_Tenslog.Controllers
             IEnumerable<Comment> comments = await _context.Comments.Where(c=>c.PostId == post.Id).ToListAsync();
             IEnumerable<Like> likes = await _context.Likes.Where(c => c.PostId == post.Id).ToListAsync() ;
             IEnumerable<Saved> saveds = await _context.Saveds.Where(c=>c.PostId == post.Id).ToListAsync() ;
+            IEnumerable<Nofication> nofications = await _context.Nofications.Where(c=>c.PostId == post.Id).ToListAsync() ;
             
 
             _context.Comments.RemoveRange(comments);
             _context.Likes.RemoveRange(likes);
+            _context.Nofications.RemoveRange(nofications);
             _context.Saveds.RemoveRange(saveds);
             _context.Posts.Remove(post);
             await _context.SaveChangesAsync();

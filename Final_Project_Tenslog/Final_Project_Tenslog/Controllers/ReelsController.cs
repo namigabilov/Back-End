@@ -18,7 +18,12 @@ namespace Final_Project_Tenslog.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            AppUser user = await _context.Users.FirstOrDefaultAsync(p=>p.UserName == User.Identity.Name);
+            AppUser user = await _context.Users
+                .Include(r=>r.Nofications)
+                .ThenInclude(n=>n.Post)
+                .Include(n=>n.Nofications)
+                .ThenInclude(n=>n.FromUser)
+                .FirstOrDefaultAsync(p=>p.UserName == User.Identity.Name);
 
             IEnumerable<Post> posts = await _context.Posts.Where(p=>p.User.IsPrivate == false).ToListAsync();
 

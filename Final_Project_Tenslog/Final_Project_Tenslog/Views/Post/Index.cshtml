@@ -11,74 +11,74 @@
         </div>
 
         <div class="navigation">
-            <ul>
-                <li class="navItems">
-                    <a asp-controller="Home" asp-action="Index">
+              <ul>
+                  <li class="navItems">
+                      <a asp-controller="Home" asp-action="Index">
                         <i class="navIcons fa-solid fa-house"></i>
                         <span class="navs">Home</span>
-                    </a>
-                </li>
-                <li class="navItems">
-                    <a asp-controller="Reels" asp-action="Index">
+                      </a>
+                  </li>
+                  <li class="navItems">
+                      <a asp-controller="Reels" asp-action="Index">
                         <i class="navIcons fa-solid fa-magnifying-glass"></i>
-                        <span class="navs">Search</span>
-                    </a>
-                </li>
-                <li class="navItems">
-                    <a asp-controller="direct" asp-action="Index">
-                        <i class="navIcons fa-solid fa-inbox"></i>
-                        <span class="navs">Messages</span>
-                    </a>
-                </li>
-                <li class="navItems">
-                    <div>
-                        <a asp-controller="Nofications" asp-action="Index" data-toggle="modal" data-target="reelsModal">
+                          <span class="navs">Search</span>
+                      </a>
+                  </li>
+                  <li class="navItems">
+                      <a asp-action="Index" asp-controller="Direct">
+                          <i class="navIcons fa-solid fa-inbox"></i>
+                          <span class="navs">Messages</span>
+                      </a>
+                  </li>
+                  <li class="navItems">
+                      <div> 
+                        <a asp-action="Index" asp-controller="Nofications" data-toggle="modal" data-target="reelsModal">
                             <i class="navIcons fa-regular fa-heart"></i>
                             <span onclick="openNav()" class="navs">Nofications</span>
+                            <i class="fa-solid d-none notificationIcon"></i>
                         </a>
-                    </div>
-                </li>
-                <li class="navItems">
-                    <input type="file" name="file" id="file" class="inputfile">
-                    <label for="file">
-                        <i class="fa-solid navIcons fa-plus"></i>
-                        <span class="navs">Add Post</span>
-                    </label>
-                </li>
-                <li class="navItems">
-                    <a asp-controller="Profile" asp-action="MyProfile">
-                        <span class="navIcons"><img style="width: 25px;border-radius: 30px;" src="~/assets/Photos/ProfilePhotos/@Model.MyProfile.ProfilePhotoUrl" alt=""></span>
-                        <span class="navs">Profile</span>
-                    </a>
-                </li>
-                <div id="settingTable" class="settingsTab d-none">
-                    <ul>
-                        <li>
-                            <a href="settings.html">
-                                <span>Settings</span>
-                                <span class="navIcons"><i class="fa-solid fa-gear"></i></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <span>Have a Question </span>
-                                <span class="navIcons"><i class="fa-solid fa-question"></i></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="login-register.html">
-                                <span>Log Out</span>
-                                <span class="navIcons"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <li id="settings" class="navItems">
-                    <span class="navIcons"><i class="fa-solid fa-bars"></i></span>
-                    <span class="navs">Settings</span>
-                </li>
-            </ul>
-        </div>
+                      </div>
+                  </li>
+                  <li class="navItems">
+                    <a asp-action="AddPost" asp-controller="Post">
+                          <i class="fa-solid navIcons fa-plus"></i>
+                           <span class="navs">Add Post</span>
+                     </a>
+                  </li>
+                  <li class="navItems">
+                      <a asp-action="Myprofile" asp-controller="Profile" >
+                          <span class="navIcons"><img style="width: 35px;height:35px;object-fit : cover;border-radius: 30px;" src="~/assets/Photos/ProfilePhotos/@Model.MyProfile.ProfilePhotoUrl" alt=""></span>
+                          <span class="navs">Profile</span>
+                      </a>
+                  </li>
+                  <div id="settingTable" class="settingsTab d-none">
+                      <ul>
+                          <li>
+                              <a asp-controller="settings" asp-action="EditProfile">
+                                  <span>Settings</span>
+                                  <span class="navIcons"><i class="fa-solid fa-gear"></i></span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="">
+                                  <span >Have a Question </span>
+                                  <span class="navIcons"><i class="fa-solid fa-question"></i></span>
+                              </a>
+                          </li>
+                          <li>
+                              <a asp-controller="Acconut" asp-action="login" >
+                                  <span>Log Out</span>
+                                  <span class="navIcons"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+                  <li id="settings" class="navItems">
+                      <span class="navIcons"><i class="fa-solid fa-bars"></i></span>
+                      <span class="navs">Settings</span>
+                  </li>
+              </ul>
+            </div>
     </div>
     <div style="margin-left: 250px;" class="main">
         <div class="row">

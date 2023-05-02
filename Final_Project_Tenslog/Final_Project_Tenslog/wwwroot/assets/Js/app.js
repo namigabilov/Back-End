@@ -42,6 +42,8 @@ $(document).ready(function () {
         }
     })
     $('.saveBtn').on('click', function () {
+        var saveBtn = "saveBtn" + $(this).data(id)
+        console.log(saveBtn)
         if ($('.saveBtn').hasClass('fa-solid')) {
             $('.saveBtn').addClass('fa-regular')
             $('.saveBtn').removeClass('fa-solid')

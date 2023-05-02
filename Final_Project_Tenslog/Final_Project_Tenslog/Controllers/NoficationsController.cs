@@ -19,9 +19,13 @@ namespace Final_Project_Tenslog.Controllers
             _context= context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            AppUser appUser = await _context.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+
+            IEnumerable<Nofication> nofications = await _context.Nofications.Include(n=>n.Post).Include(u=>u.FromUser).OrderByDescending(n=>n.CreatedAt).Where(n=>n.UserId == appUser.Id).ToListAsync();
+
+            return View(nofications);
         }
     }
 }

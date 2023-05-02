@@ -35,7 +35,7 @@ namespace Final_Project_Tenslog.Controllers
                 .ThenInclude(b => b.Followers)
                 .OrderBy(c => c.CreatedAt)
                 .Where(p => p.IsDeleted == false).OrderByDescending(c=>c.CreatedAt).ToListAsync(),
-                MyProfile = await _userManager.Users.Include(u=>u.Nofications).ThenInclude(c=>c.FromUser).FirstOrDefaultAsync(u => u.UserName == User.Identity.Name)
+                MyProfile = await _userManager.Users.Include(u=>u.Nofications.OrderByDescending(p=>p.CreatedAt)).ThenInclude(c=>c.FromUser).FirstOrDefaultAsync(u => u.UserName == User.Identity.Name)
             };
             SugVM sugVM = new SugVM
             {

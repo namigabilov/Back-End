@@ -25,7 +25,7 @@ namespace Final_Project_Tenslog.Models
         public IFormFile? File { get; set; }
 
         public IEnumerable<Post>? Posts { get; set; }
-        public List<Nofication> Nofications { get; set; }
+        public List<Nofication>? Nofications { get; set; }
         public IEnumerable<Saved>? Saveds { get; set; }
         public ICollection<Following>? Followings { get; set; }
         public ICollection<Follower>? Followers { get; set; }
