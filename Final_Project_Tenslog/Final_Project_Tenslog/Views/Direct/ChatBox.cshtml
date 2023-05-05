@@ -120,12 +120,15 @@
                                             <div class="msg-body">
                                                 <ul>
                                                     @await Html.PartialAsync("_MessagesPartial.cshtml",Model.Messages)
+                                                    <div class="forRealTimeChat">
+
+                                                    </div>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="send-box">
-                                            <form asp-controller="Direct" asp-action="SendMessage" asp-route-id="@Model.UserProfile.Id" method="post">
-                                                <input asp-for="@Model.WritedMessage" class="form-control " aria-label="message…" placeholder="Write message…">
+                                            <form asp-controller="Direct" asp-action="SendMessage" asp-route-id="@Model.UserProfile.UserName" method="post">
+                                                <input asp-for="@Model.WritedMessage.Message" class="form-control " aria-label="message…" placeholder="Write message…">
                                                 <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send</button>
                                             </form>
                                         </div>

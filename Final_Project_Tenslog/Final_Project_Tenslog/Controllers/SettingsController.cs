@@ -1,13 +1,9 @@
 ﻿using Final_Project_Tenslog.DataAccessLayer;
 using Final_Project_Tenslog.Models;
-using Final_Project_Tenslog.ViewModels.AcconutViewModel;
 using Final_Project_Tenslog.ViewModels.SettingsViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Configuration;
-using Stripe.Checkout;
-using Stripe;
 using Final_Project_Tenslog.Extentions; 
 
 namespace Final_Project_Tenslog.Controllers

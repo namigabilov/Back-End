@@ -41,6 +41,11 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+           name: "areas",
+           pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+         );
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Acconut}/{action=Login}/{id?}"
 );

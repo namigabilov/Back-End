@@ -62,10 +62,11 @@ namespace Final_Project_Tenslog.Controllers
 
             return View(chatBoxVM);
         }
-        public async void SendMessage(MessageVM writedMessage,string? id)
+        public async Task<IActionResult> SendMessage(MessageVM writedMessage,string? id)
         {
             AppUser MyProfile = await _userManager.FindByNameAsync(User.Identity.Name);
-            AppUser user = await _context.Users.FirstOrDefaultAsync(c => c.Id == id);
+
+            AppUser user = await _userManager.FindByNameAsync(id);
 
             if (_context.MyDirects.Any(c=>(c.WriteingWithUserId == MyProfile.Id && c.AppUserId == user.Id) || (c.WriteingWithUserId == user.Id && c.AppUserId == MyProfile.Id)))
             {
@@ -93,6 +94,8 @@ namespace Final_Project_Tenslog.Controllers
             }
 
             await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
         public IActionResult MobileChat()
