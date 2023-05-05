@@ -62,6 +62,39 @@ namespace Final_Project_Tenslog.Controllers
 
             return View(chatBoxVM);
         }
+        public async void SendMessage(MessageVM writedMessage,string? id)
+        {
+            AppUser MyProfile = await _userManager.FindByNameAsync(User.Identity.Name);
+            AppUser user = await _context.Users.FirstOrDefaultAsync(c => c.Id == id);
+
+            if (_context.MyDirects.Any(c=>(c.WriteingWithUserId == MyProfile.Id && c.AppUserId == user.Id) || (c.WriteingWithUserId == user.Id && c.AppUserId == MyProfile.Id)))
+            {
+                MyDirect myDirect = await _context.MyDirects.FirstOrDefaultAsync(c=>(c.WriteingWithUserId == MyProfile.Id && c.AppUserId == user.Id) || (c.WriteingWithUserId == user.Id && c.AppUserId == MyProfile.Id));
+
+                Message message = new Message
+                {
+                    MessageContent = writedMessage.Message,
+                    MyDirectId = myDirect.Id,
+                    CreatedAt = DateTime.UtcNow.AddHours(4),
+                    WhoWrite = MyProfile.Id
+                };
+
+                _context.Messages.Add(message);
+            }
+            else
+            {
+                MyDirect direct = new MyDirect
+                {
+                    AppUserId = MyProfile.Id,
+                    WriteingWithUserId = user.Id
+                };
+
+                _context.MyDirects.Add(direct);
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
         public IActionResult MobileChat()
         {
             return View();

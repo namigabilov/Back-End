@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mfM3cBjk9pLhdQzlvWEZkWjwytyDU4YlA/ZgvczG3QA=",
+  "Hash": "9UA6dY244B7cf6zT8XegBbaztYJQUpV14Yl4BrhBSac=",
   "Source": "Final_Project_Tenslog",
   "BasePath": "_content/Final_Project_Tenslog",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\Js\\bootstrap.js"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Js\\Chat.js",
+      "SourceId": "Final_Project_Tenslog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\",
+      "BasePath": "_content/Final_Project_Tenslog",
+      "RelativePath": "assets/Js/Chat.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Js\\Chat.js"
     },
     {
       "Identity": "C:\\Users\\ASUS\\Desktop\\Final Project\\Back-End\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Js\\login.js",

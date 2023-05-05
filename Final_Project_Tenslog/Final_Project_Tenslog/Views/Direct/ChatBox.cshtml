@@ -124,19 +124,19 @@
                                             </div>
                                         </div>
                                         <div class="send-box">
-                                            <form action="">
-                                                <input type="text" class="form-control " aria-label="message…" placeholder="Write message…">
-                                                <button type="button"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send</button>
+                                            <form asp-controller="Direct" asp-action="SendMessage" asp-route-id="@Model.UserProfile.Id" method="post">
+                                                <input asp-for="@Model.WritedMessage" class="form-control " aria-label="message…" placeholder="Write message…">
+                                                <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send</button>
                                             </form>
                                         </div>
                                     </div>
                                     <div class="call-container d-none">
                                         <div class="row">
                                             <div class="col-6">
-                                                <img src="~/assets/Photos/ProfilePhotos/download (1).jpg" alt="">
+                                                <img src="~/assets/Photos/ProfilePhotos/@Model.MyProfile.ProfilePhotoUrl" alt="">
                                             </div>
                                             <div class="col-6">
-                                                <img src="~/assets/Photos/ProfilePhotos/download (2).jpg" alt="">
+                                                <img src="~/assets/Photos/ProfilePhotos/@Model.UserProfile.ProfilePhotoUrl" alt="">
                                             </div>
                                         </div>
                                         <div class="actions">

@@ -9,5 +9,7 @@ namespace Final_Project_Tenslog.ViewModels.DirectViewModels
         public AppUser UserProfile { get; set; }
 
         public List<Message> Messages { get; set; }
+
+        public MessageVM WritedMessage { get; set; }
     }
 }
