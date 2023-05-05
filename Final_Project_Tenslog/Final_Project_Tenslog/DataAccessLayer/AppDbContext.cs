@@ -17,6 +17,8 @@ namespace Final_Project_Tenslog.DataAccessLayer
         public DbSet<Following> Followings { get; set; }
         public DbSet<Support> Supports { get; set; }
         public DbSet<Nofication> Nofications { get; set; }
+        public DbSet<MyDirect> MyDirects { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -53,7 +55,25 @@ namespace Final_Project_Tenslog.DataAccessLayer
                 .HasForeignKey(n => n.FromUserId)
                 .OnDelete(DeleteBehavior.NoAction)
                 .IsRequired(false);
-                    }
+            modelBuilder.Entity<MyDirect>()
+                .HasOne(d => d.AppUser)
+                .WithMany(u => u.Directs)
+                .HasForeignKey(d => d.AppUserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<MyDirect>()
+                .HasOne(d => d.WriteingWithUser)
+                .WithMany()
+                .HasForeignKey(d => d.WriteingWithUserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<MyDirect>()
+                .HasMany(d => d.Messages)
+                .WithOne(m => m.MyDirect)
+                .HasForeignKey(m => m.MyDirectId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+        }
 
 
     }

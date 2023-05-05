@@ -3,7 +3,6 @@ using Final_Project_Tenslog.Models;
 using Final_Project_Tenslog.ViewModels;
 using Final_Project_Tenslog.ViewModels.AcconutViewModel;
 using MailKit.Net.Smtp;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

@@ -163,17 +163,22 @@ namespace Final_Project_Tenslog.Controllers
                 _hub.Clients.User(following.Id).SendAsync("ReciveNotifyForFollow", "fa-user");
             }
 
-            Nofication nofication = new Nofication
+            if (!following.Nofications.Any(c=>c.FromUserId == follower.Id))
             {
-                NoficationType = (Enums.NoficationType)2,
-                UserId = follower.Id,
-                CreatedAt = DateTime.UtcNow.AddHours(4),
-                IsRead = false,
-                IsDeleted = false,
-                FromUserId = follower.Id,
-            };
+                Nofication nofication = new Nofication
+                {
+                    NoficationType = (Enums.NoficationType)2,
+                    UserId = follower.Id,
+                    CreatedAt = DateTime.UtcNow.AddHours(4),
+                    IsRead = false,
+                    IsDeleted = false,
+                    FromUserId = follower.Id,
+                };
 
-            following.Nofications.Add(nofication);
+                following.Nofications.Add(nofication);
+            }
+
+            
 
             await _context.SaveChangesAsync();
 

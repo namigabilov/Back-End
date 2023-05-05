@@ -1,0 +1,28 @@
+﻿@model List<Message>
+
+@if (Model != null && Model.Count() > 0)
+{
+    @foreach (Message message in Model)
+    {
+        if (message.WhoWrite != ViewBag.MyId)
+        {
+            <li class="sender">
+                <p>@message.MessageContent</p>
+                <span class="time text-light">@message.CreatedAt?.ToString("HH:mm")</span>
+            </li>
+        }
+        else
+        {
+            <li class="repaly">
+                <p>@message.MessageContent</p>
+                <span class="time text-light">@message.CreatedAt?.ToString("HH:mm")</span>
+            </li>
+        }
+
+    }
+
+}
+else
+{
+    <h3 class="text-center text-light m-auto">Start message</h3>
+}

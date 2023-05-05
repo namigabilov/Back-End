@@ -24,9 +24,10 @@ namespace Final_Project_Tenslog.Models
         [NotMapped]
         public IFormFile? File { get; set; }
 
+        public List<MyDirect> Directs { get; set; }
         public IEnumerable<Post>? Posts { get; set; }
         public List<Nofication>? Nofications { get; set; }
-        public IEnumerable<Saved>? Saveds { get; set; }
+        public List<Saved>? Saveds { get; set; }
         public ICollection<Following>? Followings { get; set; }
         public ICollection<Follower>? Followers { get; set; }
         public List<Support>? Supports { get; set; }

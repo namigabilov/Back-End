@@ -32,12 +32,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb251dFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Direct/ChatBox.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0XENoYXRCb3guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Direct/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Direct/MobileChat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0XE1vYmlsZUNoYXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Direct/_DirectUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0XF9EaXJlY3RVc2Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Direct/_MessagesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlyZWN0XF9NZXNzYWdlc1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/Desktop/Final Project/Back-End/Final_Project_Tenslog/Final_Project_Tenslog/Views/Home/Index.cshtml]

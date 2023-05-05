@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using NuGet.Configuration;
 using Stripe.Checkout;
 using Stripe;
-using Final_Project_Tenslog.Extentions;
+using Final_Project_Tenslog.Extentions; 
 
 namespace Final_Project_Tenslog.Controllers
 {
@@ -29,7 +29,12 @@ namespace Final_Project_Tenslog.Controllers
 
         public async Task<IActionResult> EditProfile()
         {
-            AppUser appUser = await _context.Users.FirstOrDefaultAsync(u=>u.UserName == User.Identity.Name);
+            AppUser appUser = await _context.Users
+                .Include(c=>c.Nofications)
+                .ThenInclude(c=>c.FromUser)
+                .Include(c=>c.Nofications)
+                .ThenInclude(c=>c.Post)
+                .FirstOrDefaultAsync(u=>u.UserName == User.Identity.Name);
 
             if (appUser == null) return BadRequest();
 
@@ -46,6 +51,21 @@ namespace Final_Project_Tenslog.Controllers
             };
 
             return View(settingsVM);
+        }
+        [HttpGet]
+        public async Task<IActionResult> DeleteProfilePhoto(string? id)
+        {
+            if (id == null) return BadRequest();
+
+            AppUser appUser = _context.Users.FirstOrDefault(U=>U.Id == id);
+
+            if (appUser == null) return NotFound();
+
+            appUser.ProfilePhotoUrl = "DefaultProfilePhoto.png";
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(EditProfile));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

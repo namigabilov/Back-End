@@ -251,6 +251,60 @@ namespace Final_Project_Tenslog.Migrations
                     b.ToTable("Likes");
                 });
 
+            modelBuilder.Entity("Final_Project_Tenslog.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MessageContent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MyDirectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WhoWrite")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MyDirectId");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("Final_Project_Tenslog.Models.MyDirect", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("WriteingWithUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("WriteingWithUserId");
+
+                    b.ToTable("MyDirects");
+                });
+
             modelBuilder.Entity("Final_Project_Tenslog.Models.Nofication", b =>
                 {
                     b.Property<int>("Id")
@@ -658,6 +712,36 @@ namespace Final_Project_Tenslog.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Final_Project_Tenslog.Models.Message", b =>
+                {
+                    b.HasOne("Final_Project_Tenslog.Models.MyDirect", "MyDirect")
+                        .WithMany("Messages")
+                        .HasForeignKey("MyDirectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MyDirect");
+                });
+
+            modelBuilder.Entity("Final_Project_Tenslog.Models.MyDirect", b =>
+                {
+                    b.HasOne("Final_Project_Tenslog.Models.AppUser", "AppUser")
+                        .WithMany("Directs")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Final_Project_Tenslog.Models.AppUser", "WriteingWithUser")
+                        .WithMany()
+                        .HasForeignKey("WriteingWithUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("WriteingWithUser");
+                });
+
             modelBuilder.Entity("Final_Project_Tenslog.Models.Nofication", b =>
                 {
                     b.HasOne("Final_Project_Tenslog.Models.AppUser", "FromUser")
@@ -768,6 +852,8 @@ namespace Final_Project_Tenslog.Migrations
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.AppUser", b =>
                 {
+                    b.Navigation("Directs");
+
                     b.Navigation("Followers");
 
                     b.Navigation("Followings");
@@ -779,6 +865,11 @@ namespace Final_Project_Tenslog.Migrations
                     b.Navigation("Saveds");
 
                     b.Navigation("Supports");
+                });
+
+            modelBuilder.Entity("Final_Project_Tenslog.Models.MyDirect", b =>
+                {
+                    b.Navigation("Messages");
                 });
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.Post", b =>

@@ -176,6 +176,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\Posts\332d3009-b345-4f6e-949a-6efb865aa6b5-20230501222759506-DJMV9385.JPG))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\Posts\3e64ced8-b95d-4636-8e2f-443ecab6108b-20230503111805097-Screenshot (38).png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final_Project_Tenslog</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final_Project_Tenslog</BasePath>
+      <RelativePath>assets/Photos/Posts/3e64ced8-b95d-4636-8e2f-443ecab6108b-20230503111805097-Screenshot (38).png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\Posts\3e64ced8-b95d-4636-8e2f-443ecab6108b-20230503111805097-Screenshot (38).png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\Posts\597237cd-e56b-437f-8c1d-b6e8f03d1d00-20230501221708738-2019-tesla-model3-lt-airporthero-low-101-1587061146.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Final_Project_Tenslog</SourceId>
@@ -335,6 +351,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\240eec54-836b-4aab-8868-23b67e900c3c-20230429210016445-IMG_7714.JPG))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\313d30bc-6682-46cb-a5d3-1c95c6d81eb1-20230503111054880-332d3009-b345-4f6e-949a-6efb865aa6b5-20230501222759506-DJMV9385.JPG))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final_Project_Tenslog</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final_Project_Tenslog</BasePath>
+      <RelativePath>assets/Photos/ProfilePhotos/313d30bc-6682-46cb-a5d3-1c95c6d81eb1-20230503111054880-332d3009-b345-4f6e-949a-6efb865aa6b5-20230501222759506-DJMV9385.JPG</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\313d30bc-6682-46cb-a5d3-1c95c6d81eb1-20230503111054880-332d3009-b345-4f6e-949a-6efb865aa6b5-20230501222759506-DJMV9385.JPG))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\50415af7-ada9-4442-a8e8-0455018aad5c-20230429210039938-IMG_7714.JPG))">
       <SourceType>Package</SourceType>

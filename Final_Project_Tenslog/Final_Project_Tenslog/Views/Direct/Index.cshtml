@@ -1,4 +1,5 @@
-﻿@{
+﻿@model DirectVM
+@{
     ViewData["Title"] = "Index";
 }
 <div class="desktop">
@@ -79,134 +80,12 @@
               </ul>
             </div>
     </div>
-    <div class="right" style="margin-left: 15rem;">
-        <section class="message-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="chat-area">
-                            <div class="chatlist">
-                                <div class="modal-dialog-scrollable">
-                                    <div class="modal-content">
-                                        <div class="chat-header">
-                                            <div class="msg-search">
-                                                <input type="text" class=" w-100 form-control bg-dark text-light" id="inlineFormInputGroup" placeholder="Search" aria-label="search">
-                                            </div>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="chat-lists">
-                                                <div class="tab-content" id="myTabContent">
-                                                    <div class="chat-list">
-                                                        <a class="chatListUser" href="">
-                                                            <img src="~/assets/Photos/ProfilePhotos/download.jpg" alt="">
-                                                            <div>
-                                                                <h3 class="text-light">Mehedi Hasan</h3>
-                                                                <p class="text-light">front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a class="chatListUser" href="">
-                                                            <img src="~/assets/Photos/ProfilePhotos/download.jpg" alt="">
-                                                            <div>
-                                                                <h3 class="text-light">Mehedi Hasan</h3>
-                                                                <p class="text-light">front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a class="chatListUser" href="">
-                                                            <img src="~/assets/Photos/ProfilePhotos/download.jpg" alt="">
-                                                            <div>
-                                                                <h3 class="text-light">Mehedi Hasan</h3>
-                                                                <p class="text-light">front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- chatbox -->
-                            <div class="chatbox">
-                                <div class="modal-dialog-scrollable">
-                                    <div class="modal-content chat-modal">
-                                        <div class="msg-head">
-                                            <div class="row align-items-center">
-                                                <div class="col-10">
-                                                    <a class="chatListUser" href="">
-                                                        <img style="width: 8%;" src="~/assets/Photos/ProfilePhotos/download.jpg" alt="">
-                                                        <div>
-                                                            <h3 class="text-light">Mehedi Hasan</h3>
-                                                            <p class="text-light">front end developer</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="col-2 right">
-                                                    <div class="text-light ">
-                                                        <i class="fa-solid fa-video startCall mx-3"></i>
-                                                        <i class="fa-solid startCall fa-phone"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="msg-body">
-                                                <ul>
-                                                    <li class="sender">
-                                                        <p>Salam Bu default Gonderilen Mesajdir</p>
-                                                        <span class="time text-light">10:06 am</span>
-                                                    </li>
-                                                    <li class="repaly">
-                                                        <p>Salam Bu Default Cavab Mesajidir </p>
-                                                        <span class="time text-light">10:20 am</span>
-                                                    </li>
-                                                    <li class="sender">
-                                                        <p>Salam Bu default Gonderilen Mesajdir</p>
-                                                        <span class="time text-light">10:06 am</span>
-                                                    </li>
-                                                    <li class="repaly">
-                                                        <p>Salam Bu Default Cavab Mesajidir </p>
-                                                        <span class="time text-light">10:20 am</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="send-box">
-                                            <form action="">
-                                                <input type="text" class="form-control " aria-label="message…" placeholder="Write message…">
-                                                <button type="button"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send</button>
-                                            </form>
-                                        </div>
 
-
-
-                                    </div>
-                                    <div class="call-container d-none">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <img src="~/assets/Photos/ProfilePhotos/download (1).jpg" alt="">
-                                            </div>
-                                            <div class="col-6">
-                                                <img src="~/assets/Photos/ProfilePhotos/download (2).jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="actions">
-                                            <i class="fa-solid fa-phone endCall"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- chatbox -->
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
+    <div class="direct-box-style">
+            <input placeholder="Start a new chat someone..." class="my-2 form-control bg-dark text-light">
+            @await Html.PartialAsync("_DirectUsers.cshtml",Model.MyDirects)
     </div>
-    </section>
-    <!-- char-area -->
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </div>
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>

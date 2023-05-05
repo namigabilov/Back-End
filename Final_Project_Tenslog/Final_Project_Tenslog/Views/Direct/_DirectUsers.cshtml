@@ -1,0 +1,25 @@
+﻿@model List<MyDirect>
+
+@foreach (MyDirect direct in Model)
+{
+    @if (ViewBag.MyId != direct.WriteingWithUserId)
+    {
+        <a asp-controller="Direct" asp-action="ChatBox" asp-route-id="@direct.WriteingWithUser.Id" style="display:flex ; margin-bottom:10px;align-items:center;text-decoration:none;color:#fff">
+            <img style="width:60px; height: 60px; object-fit:cover;border-radius:100%" src="~/assets/Photos/ProfilePhotos/@direct.WriteingWithUser.ProfilePhotoUrl">
+            <div style="margin-left:10px;margin-top:5px">
+                <span>@direct.WriteingWithUser.UserName</span>
+                <p>@direct.WriteingWithUser.Name @direct.WriteingWithUser.SurName</p>
+            </div>
+        </a>
+    }
+    else
+    {
+        <a asp-controller="Direct" asp-action="ChatBox" asp-route-id="@direct.AppUser.Id" style="display:flex ; margin-bottom:10px;align-items:center;text-decoration:none;color:#fff">
+            <img style="width:60px; height: 60px; object-fit:cover;border-radius:100%" src="~/assets/Photos/ProfilePhotos/@direct.AppUser.ProfilePhotoUrl">
+            <div style="margin-left:10px;margin-top:5px">
+                <span>@direct.AppUser.UserName</span>
+                <p>@direct.AppUser.Name @direct.AppUser.SurName</p>
+            </div>
+        </a>
+    }
+}

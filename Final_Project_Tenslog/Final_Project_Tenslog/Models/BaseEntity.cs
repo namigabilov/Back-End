@@ -4,7 +4,7 @@ namespace Final_Project_Tenslog.Models
 {
     public class BaseEntity
     {
-        public int Id { get; set; }
+        public int Id { get; set; } 
         public bool IsDeleted { get; set; }
         [StringLength(255)]
         public string? CreatedBy { get; set; }

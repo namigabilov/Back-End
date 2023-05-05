@@ -111,12 +111,14 @@ namespace Final_Project_Tenslog.Controllers
             if (id == null) return BadRequest();
 
             Post post = await _context.Posts
-                .Include(p=>p.Saved)
+                .Include(c=>c.Saved)
                 .Include(p => p.Likes.Where(l => l.IsDeleted == false)).FirstOrDefaultAsync(p => p.Id == id);
 
             if (post == null) return NotFound();
 
-            AppUser user = await _userManager.Users.FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
+            AppUser user = await _userManager.Users
+                .Include(c=>c.Saveds)
+                .FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
 
             bool isSaved = post.Saved.Any(s => s.UserId == user.Id && s.PostId == post.Id);
 
@@ -124,7 +126,7 @@ namespace Final_Project_Tenslog.Controllers
             {
                 Saved saved = post.Saved.FirstOrDefault(s => s.UserId == user.Id && s.PostId == post.Id);
 
-                post.Saved.Remove(saved);
+                user.Saveds.Remove(saved);
             }
             else
             {

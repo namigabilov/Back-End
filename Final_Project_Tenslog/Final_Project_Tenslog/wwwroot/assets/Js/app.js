@@ -259,7 +259,6 @@ $(document).ready(function () {
     var tabCycle = setInterval(tabChange, 5000)
     $(function () {
         $('.nav-tabs a').click(function (e) {
-            e.preventDefault();
             clearInterval(tabCycle);
             $(this).tab('show')
             tabCycle = setInterval(tabChange, 5000);

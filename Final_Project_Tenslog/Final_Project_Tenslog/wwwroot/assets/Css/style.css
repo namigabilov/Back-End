@@ -813,7 +813,7 @@ body {
     outline: 0;
     height: 100%;
     overflow: hidden;
-    width: 300px;
+    width: 100%;
     float: left;
     padding: 15px;
     background: #000;
@@ -1016,7 +1016,7 @@ a.add img {
 
         .msg-body ul li.sender {
             display: block;
-            width: 100%;
+            width: 98%;
             position: relative;
         }
 
@@ -1061,7 +1061,7 @@ a.add img {
 
         .msg-body ul li.repaly {
             display: block;
-            width: 100%;
+            width: 98%;
             text-align: right;
             position: relative;
         }
@@ -1095,10 +1095,6 @@ a.add img {
     .inputfile:focus + label {
         outline: 1px dotted #000;
         outline: -webkit-focus-ring-color auto 5px;
-    }
-
-    .inputfile + label * {
-        pointer-events: none;
     }
 
 .msg-body ul li.repaly p {
@@ -1703,7 +1699,14 @@ button:focus {
         font-size: 25px;
         margin-top: -10px;
     }
-
+.direct-box-style {
+    margin-left: 255px;
+    margin-top: 25px;
+    border: 1px solid;
+    height: 94vh;
+    border-radius: 7px;
+    padding: 15px;
+}
 .settingsMobile .rows a {
     text-decoration: none;
     color: #fff;
@@ -1753,7 +1756,9 @@ button:focus {
 }
 
     .chatListUser img {
-        width: 23%;
+        width: 60px;
+        height:60px;
+        object-fit:cover;
         margin-right: 7px;
         border-radius: 100%;
     }

@@ -45,6 +45,7 @@ app.MapControllerRoute(
     pattern: "{controller=Acconut}/{action=Login}/{id?}"
 );
 app.MapHub<NoficationHub>("/nofication");
+app.MapHub<ChatHub>("/chat");
 app.UseStaticFiles();
 app.Run();
 
