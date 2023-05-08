@@ -448,6 +448,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\8129dee3-0f92-4db6-bf42-423a42c2043d-20230429210001157-IMG_7714.JPG))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\c4ba3a44-b158-4e36-ac42-e50aea40938b-20230507114629273-Screenshot (23).png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final_Project_Tenslog</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final_Project_Tenslog</BasePath>
+      <RelativePath>assets/Photos/ProfilePhotos/c4ba3a44-b158-4e36-ac42-e50aea40938b-20230507114629273-Screenshot (23).png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\c4ba3a44-b158-4e36-ac42-e50aea40938b-20230507114629273-Screenshot (23).png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\DefaultProfilePhoto.png))">
       <SourceType>Package</SourceType>
       <SourceId>Final_Project_Tenslog</SourceId>

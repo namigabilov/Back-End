@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EAtdZmBiUf9mpsrY0gsPB0luiWtXhWMGLd8Z3icQvZE=",
+  "Hash": "+xOFYT66c+TAGW5tgtSqE53V4mmdqBituK8mtj51nGo=",
   "Source": "Final_Project_Tenslog",
   "BasePath": "_content/Final_Project_Tenslog",
   "Mode": "Default",
@@ -491,6 +491,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\Photos\\ProfilePhotos\\8129dee3-0f92-4db6-bf42-423a42c2043d-20230429210001157-IMG_7714.JPG"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Back-End-main\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\ProfilePhotos\\c4ba3a44-b158-4e36-ac42-e50aea40938b-20230507114629273-Screenshot (23).png",
+      "SourceId": "Final_Project_Tenslog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Back-End-main\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\",
+      "BasePath": "_content/Final_Project_Tenslog",
+      "RelativePath": "assets/Photos/ProfilePhotos/c4ba3a44-b158-4e36-ac42-e50aea40938b-20230507114629273-Screenshot (23).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Photos\\ProfilePhotos\\c4ba3a44-b158-4e36-ac42-e50aea40938b-20230507114629273-Screenshot (23).png"
     },
     {
       "Identity": "C:\\Users\\ASUS\\Desktop\\Back-End-main\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\assets\\Photos\\ProfilePhotos\\DefaultProfilePhoto.png",

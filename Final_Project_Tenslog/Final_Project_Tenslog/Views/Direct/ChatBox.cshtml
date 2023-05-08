@@ -18,7 +18,7 @@
                     <a href="index.html">
                         <i class="navIcons fa-solid fa-house"></i>
                         <span class="navs">Home</span>
-                    </a>
+                    </a> 
                 </li>
                 <li class="navItems">
                     <a href="/reels.html">
@@ -120,7 +120,7 @@
                                             <div class="msg-body">
                                                 <ul>
                                                     @await Html.PartialAsync("_MessagesPartial.cshtml",Model.Messages)
-                                                    <div class="forRealTimeChat">
+                                                    <div id="forRealTimeChat">
 
                                                     </div>
                                                 </ul>
@@ -128,8 +128,9 @@
                                         </div>
                                         <div class="send-box">
                                             <form asp-controller="Direct" asp-action="SendMessage" asp-route-id="@Model.UserProfile.UserName" method="post">
-                                                <input asp-for="@Model.WritedMessage.Message" class="form-control " aria-label="message…" placeholder="Write message…">
-                                                <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send</button>
+                                                <input id="userConnectionId" value="@Model.UserProfile.ConnectionId" type="hidden" />
+                                                <input asp-for="@Model.WritedMessage.Message" id="realTimeChatInput" class="form-control " aria-label="message…" placeholder="Write message…">
+                                                <button id="realTimeChatSendButton" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send</button>
                                             </form>
                                         </div>
                                     </div>

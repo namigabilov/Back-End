@@ -11,5 +11,7 @@ namespace Final_Project_Tenslog.ViewModels.SettingsViewModel
         public SecurityVM? Security { get; set; }
 
         public Support? Support { get; set; }
+
+        public VerificationRequest Request { get; set; }
     }
 }

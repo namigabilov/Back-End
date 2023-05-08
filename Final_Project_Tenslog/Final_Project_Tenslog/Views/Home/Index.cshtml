@@ -100,6 +100,11 @@
                                 <br><span>@Model.MyProfile.Name @Model.MyProfile.SurName</span>
                                 </div>
                             </div>
+                            <div class="right text-light">
+                                @if(User.Identity.IsAuthenticated && User.IsInRole("SuperAdmin")){
+                                    <a asp-area="manage" asp-controller="Home" asp-action="Index" style="text-decoration:none">Admin Panel</a>
+                                }
+                            </div>
                         </div>
                         <div class="suggestions text-light mt-2">
                             <div class="sug">

@@ -512,6 +512,28 @@ namespace Final_Project_Tenslog.Migrations
                     b.ToTable("Supports");
                 });
 
+            modelBuilder.Entity("Final_Project_Tenslog.Models.VerificationRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Accepted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("VerificationRequests");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -795,6 +817,17 @@ namespace Final_Project_Tenslog.Migrations
                     b.HasOne("Final_Project_Tenslog.Models.AppUser", "User")
                         .WithMany("Supports")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Final_Project_Tenslog.Models.VerificationRequest", b =>
+                {
+                    b.HasOne("Final_Project_Tenslog.Models.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });

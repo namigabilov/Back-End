@@ -20,8 +20,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEhvbWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/Posts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFBvc3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/Posts/_PostPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFBvc3RzXF9Qb3N0UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/Shared/_UsersPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNoYXJlZFxfVXNlcnNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFVzZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/_ViewImports.cshtml]

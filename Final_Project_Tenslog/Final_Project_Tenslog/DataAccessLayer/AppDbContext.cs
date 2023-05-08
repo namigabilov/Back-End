@@ -19,6 +19,7 @@ namespace Final_Project_Tenslog.DataAccessLayer
         public DbSet<Nofication> Nofications { get; set; }
         public DbSet<MyDirect> MyDirects { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<VerificationRequest> VerificationRequests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

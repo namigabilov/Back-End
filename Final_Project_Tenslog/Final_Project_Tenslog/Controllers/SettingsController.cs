@@ -258,6 +258,35 @@ namespace Final_Project_Tenslog.Controllers
 
             return RedirectToAction("Index","Home");
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> VerificationAdded(string? id)
+        {
+            AppUser appUser = await _context.Users.FirstOrDefaultAsync(c => c.Id == id);
+
+            if (appUser == null )
+            {
+                return NotFound();
+            }
+
+            if (appUser.Request != null)
+            {
+                return RedirectToAction(nameof(EditProfile));
+            }
+            VerificationRequest request = new VerificationRequest
+            {
+                UserId = appUser.Id,
+                Accepted = false
+            };
+
+            appUser.Request = request;
+
+            await _context.VerificationRequests.AddAsync(request);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("MyProfile","Profile");
+        }
 
     }
     

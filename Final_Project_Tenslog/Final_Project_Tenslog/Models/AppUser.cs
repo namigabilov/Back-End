@@ -23,8 +23,9 @@ namespace Final_Project_Tenslog.Models
 
         [NotMapped]
         public IFormFile? File { get; set; }
-
-        public List<MyDirect> Directs { get; set; }
+        [NotMapped]
+        public VerificationRequest Request { get; set; }
+        public List<MyDirect>? Directs { get; set; }
         public IEnumerable<Post>? Posts { get; set; }
         public List<Nofication>? Nofications { get; set; }
         public List<Saved>? Saveds { get; set; }

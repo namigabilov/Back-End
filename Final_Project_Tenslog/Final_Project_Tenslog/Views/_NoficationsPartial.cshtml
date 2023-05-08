@@ -1,62 +1,66 @@
 ﻿@model IEnumerable<Nofication>
 
-@foreach (Nofication nofication in Model)
-{
-    <div class="navForPostComment text-light mb-3">
-        <div style="margin-right: 20px">
-            <img src="~/assets/Photos/ProfilePhotos/@nofication.FromUser.ProfilePhotoUrl" alt="">
-        </div>
-        <span style="display: block;">@nofication.FromUser.UserName</span>
-        @if ((int)nofication.NoficationType == 1)
-        {
-            if (nofication.Post.ImageUrl.EndsWith(".MOV") || nofication.Post.ImageUrl.EndsWith(".mp4") || nofication.Post.ImageUrl.EndsWith(".MP4"))
-            {
-                <span class="">Liked Your Video</span>
-                <div>
-                    <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId">
-                        <video style="border-radius: 0;width: 50px; height: 50px;" alt="">
-                            <source src="~/assets/Photos/Posts/@nofication.Post.ImageUrl" type="video/mp4">
-                        </video>
-                    </a>
-                </div>
-            }
-            else
-            {
-                <span class="">Liked Your Photo</span>
-                <div>
-                    <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId"><img style="border-radius: 0;width: 50px; height: 50px;" src="~/assets/Photos/Posts/@nofication.Post.ImageUrl" alt=""></a>
-                </div>
+    @if(Model != null && Model.Count() > 0){
 
-            }
-        }
-        else if ((int)nofication.NoficationType == 2)
-        {
-            <span style="margin-left:2px" class="w-100">Wants To Follow You</span>
-            <div class="buttons text-end">
-                <a asp-action="AcceptFollow" asp-controller="Profile" asp-route-id="@nofication.FromUserId" class="btn btn-primary p-1">Accept</a>
-                <a asp-action="RejectFollow" asp-controller="Profile" asp-route-id="@nofication.FromUserId" class="btn btn-dark p-1">Cancel</a>
+    @foreach (Nofication nofication in Model)
+    {
+        <div class="navForPostComment text-light mb-3">
+            <div style="margin-right: 20px">
+                <img src="~/assets/Photos/ProfilePhotos/@nofication.FromUser.ProfilePhotoUrl" alt="">
             </div>
-        }
-        else
-        {
-            if (nofication.Post.ImageUrl.EndsWith(".MOV") || nofication.Post.ImageUrl.EndsWith(".mp4") || nofication.Post.ImageUrl.EndsWith(".MP4"))
+            <span style="display: block;">@nofication.FromUser.UserName</span>
+            @if ((int)nofication.NoficationType == 1)
             {
-                <span class="">Add a comment video</span>
-                <div>
-                    <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId">
-                        <video style="border-radius: 0;width: 50px; height: 50px;" alt="">
-                            <source src="~/assets/Photos/Posts/@nofication.Post.ImageUrl" type="video/mp4">
-                        </video>
-                    </a>
+                if (nofication.Post.ImageUrl.EndsWith(".MOV") || nofication.Post.ImageUrl.EndsWith(".mp4") || nofication.Post.ImageUrl.EndsWith(".MP4"))
+                {
+                    <span class="">Liked Your Video</span>
+                    <div>
+                        <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId">
+                            <video style="border-radius: 0;width: 50px; height: 50px;" alt="">
+                                <source src="~/assets/Photos/Posts/@nofication.Post.ImageUrl" type="video/mp4">
+                            </video>
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <span class="">Liked Your Photo</span>
+                    <div>
+                        <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId"><img style="border-radius: 0;width: 50px; height: 50px;" src="~/assets/Photos/Posts/@nofication.Post.ImageUrl" alt=""></a>
+                    </div>
+
+                }
+            }
+            else if ((int)nofication.NoficationType == 2)
+            {
+                <span style="margin-left:2px" class="w-100">Wants To Follow You</span>
+                <div class="buttons text-end">
+                    <a asp-action="AcceptFollow" asp-controller="Profile" asp-route-id="@nofication.FromUserId" class="btn btn-primary p-1">Accept</a>
+                    <a asp-action="RejectFollow" asp-controller="Profile" asp-route-id="@nofication.FromUserId" class="btn btn-dark p-1">Cancel</a>
                 </div>
             }
             else
             {
-                <span class="">Add a comment Photo</span>
-                <div>
-                    <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId"><img style="border-radius: 0;width: 50px; height: 50px;" src="~/assets/Photos/Posts/@nofication.Post.ImageUrl" alt=""></a>
-                </div>
+                if (nofication.Post.ImageUrl.EndsWith(".MOV") || nofication.Post.ImageUrl.EndsWith(".mp4") || nofication.Post.ImageUrl.EndsWith(".MP4"))
+                {
+                    <span class="">Add a comment video</span>
+                    <div>
+                        <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId">
+                            <video style="border-radius: 0;width: 50px; height: 50px;" alt="">
+                                <source src="~/assets/Photos/Posts/@nofication.Post.ImageUrl" type="video/mp4">
+                            </video>
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <span class="">Add a comment Photo</span>
+                    <div>
+                        <a asp-controller="Post" asp-action="Index" asp-route-id="@nofication.PostId"><img style="border-radius: 0;width: 50px; height: 50px;" src="~/assets/Photos/Posts/@nofication.Post.ImageUrl" alt=""></a>
+                    </div>
+                }
             }
-        }
-    </div>
-}
+        </div>
+    }
+
+    }

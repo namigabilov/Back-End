@@ -1,0 +1,21 @@
+﻿@model UsersVM
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="table-responsive m-5">
+    <table class="table text-start align-middle table-bordered table-hover mb-0">
+        <thead>
+            <tr class="text-white">
+                <th scope="col">Username</th>
+                <th scope="col">Name & SurName</th>
+                <th scope="col">IsVerificated</th>
+                <th scope="col">Post Count</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @await Html.PartialAsync("/Areas/Manage/Views/Shared/_UsersPartial.cshtml",Model.Users)
+        </tbody>
+    </table>
+</div>
