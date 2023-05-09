@@ -7,6 +7,6 @@ namespace Final_Project_Tenslog.Enums
         Support ,
         Help ,
         ICantLogin,
-        PaymentMethods
+        Verification
     }
 }

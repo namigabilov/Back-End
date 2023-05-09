@@ -1,4 +1,4 @@
-﻿@model UsersVM
+﻿@model PageNatedList<AppUser>
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,6 +6,7 @@
     <table class="table text-start align-middle table-bordered table-hover mb-0">
         <thead>
             <tr class="text-white">
+                <th>No</th>
                 <th scope="col">Username</th>
                 <th scope="col">Name & SurName</th>
                 <th scope="col">IsVerificated</th>
@@ -15,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            @await Html.PartialAsync("/Areas/Manage/Views/Shared/_UsersPartial.cshtml",Model.Users)
+            @await Html.PartialAsync("/Areas/Manage/Views/Shared/_UsersPartial.cshtml",Model)
         </tbody>
     </table>
 </div>

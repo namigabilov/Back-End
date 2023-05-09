@@ -5,7 +5,7 @@
     var postImage = $"postImage{post.Id}";
     if (post.User.IsPrivate)
     {
-        if (post.User.Followers.Any(u => u.UserFollowerId == Model.MyProfile.Id))
+        if (post.User.Followers.Any(u => u.UserFollowerId == Model.MyProfile.Id) || post.User.UserName == User.Identity.Name)
         {
             <div class="post">
                 <div class="card bg-dark text-light" style="border:1px solid #383838">

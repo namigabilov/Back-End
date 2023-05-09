@@ -28,6 +28,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEhvbWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/Home/_UsersPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEhvbWVcX1VzZXJzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/Posts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFBvc3RzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -42,6 +46,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/Shared/_UsersPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNoYXJlZFxfVXNlcnNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/Support/AnswerSupport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFN1cHBvcnRcQW5zd2VyU3VwcG9ydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/Support/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFN1cHBvcnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/Support/_SupportPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFN1cHBvcnRcX1N1cHBvcnRQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Areas/Manage/Views/User/Index.cshtml]
@@ -174,6 +190,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Views/Settings/EditProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ3NcRWRpdFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Views/Settings/_SupportAnswers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ3NcX1N1cHBvcnRBbnN3ZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/Desktop/Back-End-main/Final_Project_Tenslog/Final_Project_Tenslog/Views/Shared/_EmailConfrimPartial.cshtml]

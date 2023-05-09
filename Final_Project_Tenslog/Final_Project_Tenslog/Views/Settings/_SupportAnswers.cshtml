@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Support>
+
+<div >
+    @foreach (Support support in Model)
+    {
+        <div class="p-3" style="border:1px solid gray">
+            <p>Date : @support.CreatedAt?.ToString("yyyy dd MMMM HH:mm")</p>
+            <strong>Your Problem Title : @support.SupportTitle</strong>
+            <p>Your Problem : @support.Description</p>
+            <p>Admins Answer : @support.AdminAnswer</p>
+        </div>
+    }
+</div>  

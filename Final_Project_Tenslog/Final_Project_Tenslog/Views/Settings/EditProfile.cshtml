@@ -228,6 +228,9 @@
                             <textarea placeholder="Write the problem here..." class="form-control bg-dark text-light" asp-for="@Model.Support.Description" cols="2" rows="3"></textarea>
                             <button type="submit" class="btn btn-primary my-4">Sumbit</button>
                         </form>
+                         <div>
+                            @await Html.PartialAsync("_SupportAnswers.cshtml",Model.Supports)
+                        </div>
                     </div>
                     <div class="tabSetting verification d-none">
                         <h5>Verification Request</h5>
@@ -247,6 +250,7 @@
                                 }
                             </form>
                         </div>
+                       
                     </div>
                 </div>
             </div>

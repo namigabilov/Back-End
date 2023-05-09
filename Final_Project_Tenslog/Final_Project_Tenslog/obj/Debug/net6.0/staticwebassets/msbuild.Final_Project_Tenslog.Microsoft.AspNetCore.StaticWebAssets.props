@@ -336,6 +336,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\0596e188-5b51-4c97-9a17-de5ce8cf8d85-20230501233848976-IMG_2579.JPG))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\218e1661-5bdf-44c0-8553-13af3d3970ad-20230509161409960-IMG_0775.JPG))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final_Project_Tenslog</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final_Project_Tenslog</BasePath>
+      <RelativePath>assets/Photos/ProfilePhotos/218e1661-5bdf-44c0-8553-13af3d3970ad-20230509161409960-IMG_0775.JPG</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\218e1661-5bdf-44c0-8553-13af3d3970ad-20230509161409960-IMG_0775.JPG))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\240eec54-836b-4aab-8868-23b67e900c3c-20230429210016445-IMG_7714.JPG))">
       <SourceType>Package</SourceType>
       <SourceId>Final_Project_Tenslog</SourceId>
@@ -416,6 +432,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\615dd411-a9bb-4584-be05-13ce7ee501f6-20230429210034443-IMG_7714.JPG))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\6d0ed971-d2cb-4593-ab66-e8e5ae2a65ef-20230509161128654-XECF7241.JPG))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final_Project_Tenslog</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final_Project_Tenslog</BasePath>
+      <RelativePath>assets/Photos/ProfilePhotos/6d0ed971-d2cb-4593-ab66-e8e5ae2a65ef-20230509161128654-XECF7241.JPG</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\6d0ed971-d2cb-4593-ab66-e8e5ae2a65ef-20230509161128654-XECF7241.JPG))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\8129dee3-0f92-4db6-bf42-423a42c2043d-20230429210001157-IMG_7714.JPG))">
       <SourceType>Package</SourceType>
       <SourceId>Final_Project_Tenslog</SourceId>
@@ -431,6 +463,54 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\8129dee3-0f92-4db6-bf42-423a42c2043d-20230429210001157-IMG_7714.JPG))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\8a2f32dc-1be4-4558-99bb-5fbc59374549-20230509161219070-XECF7241.JPG))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final_Project_Tenslog</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final_Project_Tenslog</BasePath>
+      <RelativePath>assets/Photos/ProfilePhotos/8a2f32dc-1be4-4558-99bb-5fbc59374549-20230509161219070-XECF7241.JPG</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\8a2f32dc-1be4-4558-99bb-5fbc59374549-20230509161219070-XECF7241.JPG))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\9625f273-6057-440b-b686-3b0b6d3ced97-20230509161141832-XECF7241.JPG))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final_Project_Tenslog</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final_Project_Tenslog</BasePath>
+      <RelativePath>assets/Photos/ProfilePhotos/9625f273-6057-440b-b686-3b0b6d3ced97-20230509161141832-XECF7241.JPG</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\9625f273-6057-440b-b686-3b0b6d3ced97-20230509161141832-XECF7241.JPG))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\a2e71bd1-28fa-42af-b327-665b0d1910b3-20230509161012457-XECF7241.JPG))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final_Project_Tenslog</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final_Project_Tenslog</BasePath>
+      <RelativePath>assets/Photos/ProfilePhotos/a2e71bd1-28fa-42af-b327-665b0d1910b3-20230509161012457-XECF7241.JPG</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\a2e71bd1-28fa-42af-b327-665b0d1910b3-20230509161012457-XECF7241.JPG))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\ProfilePhotos\c4ba3a44-b158-4e36-ac42-e50aea40938b-20230507114629273-Screenshot (23).png))">
       <SourceType>Package</SourceType>

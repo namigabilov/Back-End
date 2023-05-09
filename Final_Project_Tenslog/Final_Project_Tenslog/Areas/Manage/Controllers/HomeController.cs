@@ -21,13 +21,16 @@ namespace Final_Project_Tenslog.Areas.Manage.Controllers
         {
             AppUser appUser = await _context.Users.FirstOrDefaultAsync(c => c.UserName == User.Identity.Name);
 
-            IEnumerable<AppUser> users = await _context.Users.Take(7).Include(c=>c.Posts).Where(c=>c.EmailConfirmed == true).ToListAsync();
+            IEnumerable<AppUser> users = await _context.Users.Take(3).Include(c=>c.Posts).Where(c=>c.EmailConfirmed == true).ToListAsync();
 
             HomeVM vm = new HomeVM
             {
                 MyProfile = appUser,
-                Users = users
+                Users = users,
+                Posts = await _context.Posts.ToListAsync(),
+                Supports = await _context.Supports.ToListAsync(),
             };
+            TempData["page"] = "home";
             return View(vm);
         }
     }

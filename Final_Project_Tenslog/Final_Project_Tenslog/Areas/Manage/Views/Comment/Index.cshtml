@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Comment>
+﻿@model PageNatedList<Comment>
 @{
     ViewData["Title"] = "Index";
 }
@@ -9,6 +9,7 @@
         <table class="table table-hover">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th scope="col">Post</th>
                     <th scope="col">Comment Owner</th>
                     <th scope="col">Commented At</th>

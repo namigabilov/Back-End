@@ -1,5 +1,6 @@
 ﻿using Final_Project_Tenslog.DataAccessLayer;
 using Final_Project_Tenslog.Models;
+using Final_Project_Tenslog.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,13 +18,13 @@ namespace Final_Project_Tenslog.Areas.Manage.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex = 1)
         {
-            IEnumerable<VerificationRequest> requests = await _context.VerificationRequests
+            IQueryable<VerificationRequest> requests = _context.VerificationRequests
                 .Include(c=>c.User)
-                .Where(c => c.Accepted == false).ToListAsync();
-
-            return View(requests);
+                .Where(c => c.Accepted == false);
+            TempData["page"] = "verification";
+            return View(PageNatedList<VerificationRequest>.Create(requests,pageIndex,4));
         }
         public async Task<IActionResult> AcceptRequest(string? id)
         {

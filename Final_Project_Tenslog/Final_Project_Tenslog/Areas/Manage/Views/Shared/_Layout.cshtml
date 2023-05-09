@@ -59,11 +59,12 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a asp-controller="Home" asp-action="Index" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a asp-controller="User" asp-action="Index" class="nav-item nav-link"><i class="fa-solid fa-user me-2"></i>Users</a>
-                    <a asp-controller="Posts" asp-action="Index" class="nav-item nav-link"><i class="fa-brands fa-usps me-2"></i>Posts</a>
-                    <a asp-controller="Comment" asp-action="Index" class="nav-item nav-link"><i class="fa-solid fa-comment me-2"></i>Comments</a>
-                    <a asp-controller="Verification" asp-action="Index" class="nav-item nav-link"><i class="fa-solid fa-check me-2"></i>Verifications</a>
+                    <a asp-controller="Home" asp-action="Index" class="nav-item nav-link @(TempData["page"] == "home" ? "active" : "")"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a asp-controller="User" asp-action="Index" class="nav-item nav-link @(TempData["page"] == "user" ? "active" : "")"><i class="fa-solid fa-user me-2"></i>Users</a>
+                    <a asp-controller="Posts" asp-action="Index" class="nav-item nav-link @(TempData["page"] == "post" ? "active" : "")"><i class="fa-brands fa-usps me-2"></i>Posts</a>
+                    <a asp-controller="Comment" asp-action="Index" class="nav-item nav-link @(TempData["page"] == "comment" ? "active" : "")"><i class="fa-solid fa-comment me-2"></i>Comments</a>
+                    <a asp-controller="Verification" asp-action="Index" class="nav-item nav-link @(TempData["page"] == "verification" ? "active" : "")"><i class="fa-solid fa-check me-2"></i>Verifications</a>
+                    <a asp-controller="Support" asp-action="Index" class="nav-item nav-link @(TempData["page"] == "support" ? "active" : "")"><i class="fa-regular fa-circle-question me-2"></i>Support</a>
                 </div>
             </nav>
         </div>
@@ -92,14 +93,9 @@
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary rounded-top p-4">
-                    <div class="row">
+                    <div class="row text-center">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved.
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                            <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                            &copy;  Tenslog, All Right Reserved.
                         </div>
                     </div>
                 </div>

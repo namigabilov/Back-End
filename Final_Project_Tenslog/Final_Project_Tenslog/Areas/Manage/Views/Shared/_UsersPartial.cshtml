@@ -1,14 +1,36 @@
-﻿@model IEnumerable<AppUser>
-
-
-@foreach (AppUser user in Model)
+﻿@model PageNatedList<AppUser>
+@{
+    int no = ((Model.PageIndex - 1) * 4) + 1;
+}
+@if (Model != null && Model.Count() > 0)
 {
-    <tr>
-        <td>@user.UserName</td>
-        <td>@user.Name @user.SurName</td>
-        <td>@user.HaveBlueTic</td>
-        <td>@user.Posts.Count()</td>
-        <td>@(user.ConnectionId == null ? "Ofline" : "Online")</td>
-        <td><a target="_blank" class="btn btn-sm btn-primary" asp-area="" asp-controller="profile" asp-action="UserProfile" asp-route-id="@user.Id">Go Profile</a></td>
-    </tr>
+    @foreach (AppUser user in Model)
+    {
+        <tr>
+            <td>@no</td>
+            <td>@user.UserName</td>
+            <td>@user.Name @user.SurName</td>
+            <td>@user.HaveBlueTic</td>
+            <td>@user.Posts.Count()</td>
+            <td>@(user.ConnectionId == null ? "Ofline" : "Online")</td>
+            <td><a target="_blank" class="btn btn-sm btn-primary" asp-area="" asp-controller="profile" asp-action="UserProfile" asp-route-id="@user.Id">Go Profile</a></td>
+        </tr>
+        no++;
+    }
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @if (Model.PageIndex > 1)
+            {
+                <li class="page-item"><a class="page-link" asp-controller="User" asp-action="index" asp-route-pageIndex="@(Model.PageIndex - 1)">&laquo</a></li>
+            }
+            @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+            {
+                <li class="page-item @(Model.PageIndex == i ? "active" :"")"><a class="page-link" asp-controller="User" asp-action="index" asp-route-pageIndex="@i">@i</a></li>
+            }
+            @if (Model.PageIndex < Model.TotalPage)
+            {
+                <li class="page-item"><a class="page-link" asp-controller="User" asp-action="index" asp-route-pageIndex="@(Model.PageIndex + 1)">&raquo</a></li>
+            }
+        </ul>
+    </nav>
 }

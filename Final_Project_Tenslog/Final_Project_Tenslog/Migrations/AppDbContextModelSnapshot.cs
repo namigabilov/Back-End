@@ -468,6 +468,9 @@ namespace Final_Project_Tenslog.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("AdminAnswer")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -522,9 +525,6 @@ namespace Final_Project_Tenslog.Migrations
 
                     b.Property<bool>("Accepted")
                         .HasColumnType("bit");
-
-                    b.Property<string>("ReasonFromAdmin")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()

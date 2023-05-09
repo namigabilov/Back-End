@@ -47,7 +47,8 @@ namespace Final_Project_Tenslog.Controllers
             {
                 User = appUser,
                 Security = securityVM,
-                Request = request
+                Request = request,
+                Supports = await _context.Supports.Where(c=>c.IsRead && c.UserId == appUser.Id).ToListAsync()
             };
 
             return View(settingsVM);
@@ -253,7 +254,8 @@ namespace Final_Project_Tenslog.Controllers
                 Description = settings.Support.Description,
                 SupportTitle = settings.Support.SupportTitle,
                 IsDeleted = false,
-                UserId = appUser.Id
+                UserId = appUser.Id,
+                CreatedAt = DateTime.UtcNow.AddHours(4)
             };
 
             appUser.Supports.Add(support);

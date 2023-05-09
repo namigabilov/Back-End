@@ -28,7 +28,8 @@ namespace Final_Project_Tenslog.Controllers
                 .ThenInclude(c=>c.Post)
                 .FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
 
-            var followingIds = appUser.Followings.Select(f => f.UserFollowingId);
+            IEnumerable<string> followingIds = appUser.Followings.Select(f => f.UserFollowingId);
+            followingIds = followingIds.Append(appUser.Id);
 
             PostsVM postsVM = new PostsVM
             {
@@ -40,7 +41,6 @@ namespace Final_Project_Tenslog.Controllers
                     .ThenInclude(b => b.Followings)
                     .Include(u => u.User)
                     .ThenInclude(b => b.Followers)
-                    .OrderBy(c => c.CreatedAt)
                     .Where(p => p.IsDeleted == false && followingIds.Contains(p.UserId)).OrderByDescending(c => c.CreatedAt).ToListAsync(),
                 MyProfile = await _userManager.Users.Include(u => u.Nofications.OrderByDescending(p => p.CreatedAt)).ThenInclude(c => c.FromUser).FirstOrDefaultAsync(u => u.UserName == User.Identity.Name)
             };
@@ -54,7 +54,6 @@ namespace Final_Project_Tenslog.Controllers
                 Posts = postsVM,
                 Users = sugVM,
                 MyProfile = appUser
-
             };
 
             return View(homeVM);

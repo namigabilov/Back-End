@@ -10,7 +10,9 @@ namespace Final_Project_Tenslog.Models
 
         public SupportTitles SupportTitle { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
+
+        public string? AdminAnswer { get; set; }
 
         public bool IsRead { get; set; }
     }

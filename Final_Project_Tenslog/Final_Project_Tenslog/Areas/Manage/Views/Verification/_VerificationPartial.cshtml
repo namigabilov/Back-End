@@ -1,23 +1,48 @@
-﻿@model IEnumerable<VerificationRequest>
-
-@foreach (VerificationRequest verification in Model)
+﻿@model PageNatedList<VerificationRequest>
+@{
+    int no = ((Model.PageIndex - 1) * 4) + 1;
+}
+@if (Model != null && Model.Count() > 0)
 {
-    <div class="accordion-item bg-transparent">
-        <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+    @foreach (VerificationRequest verification in Model)
+    {
+        <div class="accordion-item bg-transparent">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapse_@verification.Id" aria-expanded="true"
                 aria-controls="collapseOne">
-                @verification.User.UserName ( @verification.User.Name @verification.User.SurName ) asks for BlueTick verification
-            </button>
-        </h2>
-        <div id="collapse_@verification.Id" class="accordion-collapse collapse"
+                    @verification.User.UserName ( @verification.User.Name @verification.User.SurName ) asks for BlueTick verification
+                </button>
+            </h2>
+            <div id="collapse_@verification.Id" class="accordion-collapse collapse"
          aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <div class="text-end my-3">
-                    <a asp-controller="verification" asp-action="AcceptRequest" asp-route-id="@verification.UserId" class="btn btn-success">Accept</a>
-                    <a asp-controller="verification" asp-action="RejectRequest" asp-route-id="@verification.UserId" class="btn btn-danger">Reject</a>
+                <div class="accordion-body">
+                    <div class="text-end my-3">
+                        <a asp-controller="verification" asp-action="AcceptRequest" asp-route-id="@verification.UserId" class="btn btn-success">Accept</a>
+                        <a asp-controller="verification" asp-action="RejectRequest" asp-route-id="@verification.UserId" class="btn btn-danger">Reject</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @if (Model.PageIndex > 1)
+            {
+                <li class="page-item"><a class="page-link" asp-controller="verification" asp-action="index" asp-route-pageIndex="@(Model.PageIndex - 1)">&laquo</a></li>
+            }
+            @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+            {
+                <li class="page-item @(Model.PageIndex == i ? "active" :"")"><a class="page-link" asp-controller="verification" asp-action="index" asp-route-pageIndex="@i">@i</a></li>
+            }
+            @if (Model.PageIndex < Model.TotalPage)
+            {
+                <li class="page-item"><a class="page-link" asp-controller="verification" asp-action="index" asp-route-pageIndex="@(Model.PageIndex + 1)">&raquo</a></li>
+            }
+        </ul>
+    </nav>
+}
+else
+{
+    <h4 class="text-center ">There are no messages to confirm</h4>
 }

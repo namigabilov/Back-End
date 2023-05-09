@@ -1,0 +1,16 @@
+﻿@model IEnumerable<AppUser>
+
+@if (Model != null && Model.Count() > 0)
+{
+    @foreach (AppUser user in Model)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Name @user.SurName</td>
+            <td>@user.HaveBlueTic</td>
+            <td>@user.Posts.Count()</td>
+            <td>@(user.ConnectionId == null ? "Ofline" : "Online")</td>
+            <td><a target="_blank" class="btn btn-sm btn-primary" asp-area="" asp-controller="profile" asp-action="UserProfile" asp-route-id="@user.Id">Go Profile</a></td>
+        </tr>
+    }
+}

@@ -12,6 +12,8 @@ namespace Final_Project_Tenslog.ViewModels.SettingsViewModel
 
         public Support? Support { get; set; }
 
-        public VerificationRequest Request { get; set; }
+        public VerificationRequest? Request { get; set; }
+
+        public IEnumerable<Support>? Supports { get; set; }
     }
 }

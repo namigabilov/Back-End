@@ -1,5 +1,6 @@
 ﻿using Final_Project_Tenslog.DataAccessLayer;
 using Final_Project_Tenslog.Models;
+using Final_Project_Tenslog.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +17,13 @@ namespace Final_Project_Tenslog.Areas.Manage.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex = 1)
         {
-            IEnumerable<Comment> comments = await _context.Comments.Include(c=>c.User).Include(c=>c.Post).ToListAsync();
+            IQueryable<Comment> comments =  _context.Comments.Include(c=>c.User).Include(c=>c.Post);
 
-            return View(comments);
+            TempData["page"] = "comment";
+
+            return View(PageNatedList<Comment>.Create(comments,pageIndex,4));
         }
     }
 }

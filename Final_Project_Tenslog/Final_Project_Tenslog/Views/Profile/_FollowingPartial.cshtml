@@ -7,7 +7,7 @@
         {
             <div class="my-3 text-light" style="display:flex;justify-content:space-between;align-items:center">
                 <div style="display:flex;justify-content:start;align-items:center">
-                    <div style="margin-right">
+                    <div style="">
                         <img style="width:50px;height:50px;border-radius:25px;object-fit:cover" src="~/assets/Photos/ProfilePhotos/@user.UserFollowing.ProfilePhotoUrl" alt="">
                     </div>
                     <a asp-controller="profile" asp-action="userprofile" asp-route-id="@user.UserFollowing.Id" style="text-decoration: none; color: #fff;"><span class="postOwnerName">@user.UserFollowing.UserName</span></a>
@@ -21,7 +21,6 @@
                 </div>
             </div>
         }
-
     }
     else
     {

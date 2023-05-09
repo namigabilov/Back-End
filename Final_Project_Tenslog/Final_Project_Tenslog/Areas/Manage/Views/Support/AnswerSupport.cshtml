@@ -1,0 +1,16 @@
+﻿@model Support
+@{
+    ViewData["Title"] = "AnswerSupport";
+}
+<div class="col-10 m-5 text-light">
+    <form asp-controller="support" asp-action="AnswerSupport">
+        <h5 style="color:#fff !important">User : @Model.User.UserName (@Model.User.Name @Model.User.SurName)</h5>
+        <h4 style="color:#fff !important">Problem : @Model.Description</h4>
+        <div class="form-floating">
+            <textarea asp-for="AdminAnswer" class="form-control" placeholder="Leave a comment here"
+                      id="floatingTextarea" style="height: 150px;"></textarea>
+            <label for="floatingTextarea">Comments</label>
+        </div>
+        <button class="btn btn-success my-3" type="submit">Sumbit</button>
+    </form>
+</div>

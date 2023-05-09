@@ -1,5 +1,7 @@
 ﻿using Final_Project_Tenslog.Areas.Manage.ViewModels;
 using Final_Project_Tenslog.DataAccessLayer;
+using Final_Project_Tenslog.Models;
+using Final_Project_Tenslog.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,13 +20,11 @@ namespace Final_Project_Tenslog.Areas.Manage.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex = 1)
         {
-            UsersVM vm = new UsersVM
-            {
-                Users = await _context.Users.Include(c => c.Posts).Where(c => c.EmailConfirmed == true).ToListAsync()
-            };
-            return View(vm);
+            IQueryable<AppUser> users = _context.Users.Include(c=>c.Posts).Where(c=>c.EmailConfirmed);
+            TempData["page"] = "user";
+            return View(PageNatedList<AppUser>.Create(users,pageIndex,4));
         }
     }
 }
