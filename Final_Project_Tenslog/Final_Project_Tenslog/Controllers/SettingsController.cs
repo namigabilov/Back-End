@@ -34,6 +34,9 @@ namespace Final_Project_Tenslog.Controllers
 
             if (appUser == null) return BadRequest();
 
+            VerificationRequest request = await _context.VerificationRequests.FirstOrDefaultAsync(c => c.UserId == appUser.Id);
+            
+
             SecurityVM securityVM = new SecurityVM
             {
                 IsPrivate = appUser.IsPrivate,
@@ -44,6 +47,7 @@ namespace Final_Project_Tenslog.Controllers
             {
                 User = appUser,
                 Security = securityVM,
+                Request = request
             };
 
             return View(settingsVM);

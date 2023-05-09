@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Comment>
+
+@foreach (Comment comment in Model)
+{
+    <tr>
+        <th scope="row">
+            @if (comment.Post.ImageUrl.EndsWith(".MOV") || comment.Post.ImageUrl.EndsWith(".mp4") || comment.Post.ImageUrl.EndsWith(".MP4"))
+            {
+                <video style="border-radius: 0;width: 70px; height: 70px;" alt="">
+                    <source src="~/assets/Photos/Posts/@comment.Post.ImageUrl" type="video/mp4">
+                </video>
+            }
+            else
+            {
+                <img style="width:70px;height:70px;object-fit:cover" src="~/assets/Photos/Posts/@comment.Post.ImageUrl" />
+
+            }
+        </th>
+        <td>@comment.User.UserName</td>
+        <td>@comment.CreatedAt?.ToString("MMM dd HH:mm")</td>
+        <td>@(comment.Description.Length > 10 ? comment.Description.Substring(0, 10) + "..." : comment.Description)</td>
+        <td><a target="_blank" class="btn btn-primary" asp-area="" asp-controller="Post" asp-action="Index" asp-route-id="@comment.Post.Id">Go Post</a></td>
+    </tr>
+}   

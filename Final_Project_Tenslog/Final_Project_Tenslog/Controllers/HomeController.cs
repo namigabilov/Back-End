@@ -23,7 +23,10 @@ namespace Final_Project_Tenslog.Controllers
 
         public async Task<IActionResult> Index()
         {
-            AppUser appUser = await _userManager.Users.Include(c=>c.Followings).FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+            AppUser appUser = await _userManager.Users.Include(c=>c.Followings)
+                .Include(u => u.Nofications.OrderByDescending(p => p.CreatedAt))
+                .ThenInclude(c=>c.Post)
+                .FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
 
             var followingIds = appUser.Followings.Select(f => f.UserFollowingId);
 

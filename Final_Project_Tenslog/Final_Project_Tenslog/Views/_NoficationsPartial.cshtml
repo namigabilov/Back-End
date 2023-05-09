@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Nofication>
 
-    @if(Model != null && Model.Count() > 0){
-
+@if (Model != null && Model.Count() > 0)
+{
     @foreach (Nofication nofication in Model)
     {
         <div class="navForPostComment text-light mb-3">
@@ -33,11 +33,18 @@
             }
             else if ((int)nofication.NoficationType == 2)
             {
-                <span style="margin-left:2px" class="w-100">Wants To Follow You</span>
-                <div class="buttons text-end">
-                    <a asp-action="AcceptFollow" asp-controller="Profile" asp-route-id="@nofication.FromUserId" class="btn btn-primary p-1">Accept</a>
-                    <a asp-action="RejectFollow" asp-controller="Profile" asp-route-id="@nofication.FromUserId" class="btn btn-dark p-1">Cancel</a>
-                </div>
+                if (nofication.User.IsPrivate)
+                {
+                    <span style="margin-left:2px" class="w-100">Wants To Follow You</span>
+                    <div class="buttons text-end">
+                        <a asp-action="AcceptFollow" asp-controller="Profile" asp-route-id="@nofication.FromUserId" class="btn btn-primary p-1">Accept</a>
+                        <a asp-action="RejectFollow" asp-controller="Profile" asp-route-id="@nofication.FromUserId" class="btn btn-dark p-1">Cancel</a>
+                    </div>
+                }
+                else
+                {
+                    <span style="margin-left:10px" class="w-100">Started Follow You</span>
+                }
             }
             else
             {
@@ -63,4 +70,4 @@
         </div>
     }
 
-    }
+}

@@ -227,7 +227,7 @@ namespace Final_Project_Tenslog.Controllers
                 post.Description = "";
             }
             await _context.Posts.AddAsync(post);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(); 
             return RedirectToAction("Index","Home");
         }
         [HttpGet]

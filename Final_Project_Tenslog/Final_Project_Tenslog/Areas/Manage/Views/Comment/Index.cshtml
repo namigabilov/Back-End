@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Comment>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-sm-12 col-xl-11 m-5">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Hoverable Table</h6>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Post</th>
+                    <th scope="col">Comment Owner</th>
+                    <th scope="col">Commented At</th>
+                    <th scope="col">Comment</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @await Html.PartialAsync("_CommentsPartial.cshtml",Model)
+            </tbody>
+        </table>
+    </div>
+</div>

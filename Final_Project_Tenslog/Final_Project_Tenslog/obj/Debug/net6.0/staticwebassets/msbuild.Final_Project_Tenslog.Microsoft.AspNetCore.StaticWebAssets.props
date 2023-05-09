@@ -256,22 +256,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\Posts\73158d06-befb-4a15-af77-36cf993e1c1f-20230501221520184-40-1024x576.jpg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\Posts\7505dde3-ac1d-4b94-a8f4-23453c9135f9-20230501222517892-kartof_220421_2.jpg))">
-      <SourceType>Package</SourceType>
-      <SourceId>Final_Project_Tenslog</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Final_Project_Tenslog</BasePath>
-      <RelativePath>assets/Photos/Posts/7505dde3-ac1d-4b94-a8f4-23453c9135f9-20230501222517892-kartof_220421_2.jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\Posts\7505dde3-ac1d-4b94-a8f4-23453c9135f9-20230501222517892-kartof_220421_2.jpg))</OriginalItemSpec>
-    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\Photos\Posts\8ba775fc-69f3-4cfc-b8c0-0cf92f658f11-20230501221732494-tesla-model-3.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Final_Project_Tenslog</SourceId>

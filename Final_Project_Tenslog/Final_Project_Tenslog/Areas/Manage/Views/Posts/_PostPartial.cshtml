@@ -3,12 +3,24 @@
 @foreach (Post post in Model)
 {
     <tr>
-        <th scope="row"><img style="width:70px" src="~/assets/Photos/Posts/@post.ImageUrl" /></th>
+        <th scope="row">
+            @if (post.ImageUrl.EndsWith(".MOV") || post.ImageUrl.EndsWith(".mp4") || post.ImageUrl.EndsWith(".MP4"))
+            {
+                <video style="border-radius: 0;width: 70px; height: 70px;" alt="">
+                    <source src="~/assets/Photos/Posts/@post.ImageUrl" type="video/mp4">
+                </video>
+            }
+            else
+            {
+                <img style="width:70px;height:70px;object-fit:cover" src="~/assets/Photos/Posts/@post.ImageUrl" />
+
+            }
+        </th>
         <td>@post.User.UserName</td>
         <td>@post.CreatedAt?.ToString("MMM dd HH:mm")</td>
         <td>@post.Likes.Count()</td>
         <td>@post.Comments.Count()</td>
-        <td><a target="_blank" class="btn btn-sm btn-primary" asp-area="" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">Go Post</a></td>
+        <td><a target="_blank" class="btn btn-primary" asp-area="" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">Go Post</a></td>
+        <td><a target="_blank" class="btn btn-danger" asp-area="" asp-controller="Post" asp-action="DeletePost" asp-route-id="@post.Id">Delete Post</a></td>
     </tr>
-
-}
+}   

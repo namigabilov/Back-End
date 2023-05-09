@@ -231,12 +231,21 @@
                     </div>
                     <div class="tabSetting verification d-none">
                         <h5>Verification Request</h5>
-                        <p>If the payment is approved, your account will be verified</p>
+                        <p>If Tenslog approves, the Account will be Confirmed</p>
                         <div class="paymet">
-                            <p>Total Amount 10$</p>
+                            <p>@(Model.User.HaveBlueTic ? "Your Acconut Verified !" : "")</p>
+                            @if(Model.Request != null){
+                                <p>@(Model.Request.Accepted ? "" : "Your Acconut Checking in progress !")</p>
+                            }
                             <form asp-controller="settings" asp-action="VerificationAdded" asp-route-id="@Model.User.Id" method="post" id="paymentForVerfication">
-                            <button id="sumbitForVerification" class="btn btn-primary" type="sumbit">Sumbit</button>
-                        </form>
+                                @if(Model.Request != null)
+                                {
+                                    <button id="sumbitForVerification" class="btn btn-primary" @((Model.User.HaveBlueTic || !Model.Request.Accepted) ? "disabled":"") type="sumbit">Sumbit</button>
+                                }else
+                                {
+                                    <button id="sumbitForVerification" class="btn btn-primary" @((Model.User.HaveBlueTic) ? "disabled":"") type="sumbit">Sumbit</button>
+                                }
+                            </form>
                         </div>
                     </div>
                 </div>

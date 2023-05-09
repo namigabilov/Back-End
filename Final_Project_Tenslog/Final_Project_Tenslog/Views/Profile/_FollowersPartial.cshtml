@@ -11,7 +11,7 @@
                         <img style="width:50px;height:50px;border-radius:25px;object-fit:cover" src="~/assets/Photos/ProfilePhotos/@user.UserFollower.ProfilePhotoUrl" alt="">
                     </div>
                     <a asp-controller="profile" asp-action="userprofile" asp-route-id="@user.UserFollower.Id" style="text-decoration: none; color: #fff;"><span class="postOwnerName">@user.UserFollower.UserName</span></a>
-                    @if (user.User.HaveBlueTic)
+                    @if (user.UserFollower.HaveBlueTic)
                     {
                         <i style="color: #3797F0;font-size: 16px;margin-left: 10px;" class="fas fa-check-circle"></i>
                     }

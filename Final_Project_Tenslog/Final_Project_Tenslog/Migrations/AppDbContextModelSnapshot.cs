@@ -523,6 +523,9 @@ namespace Final_Project_Tenslog.Migrations
                     b.Property<bool>("Accepted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ReasonFromAdmin")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
