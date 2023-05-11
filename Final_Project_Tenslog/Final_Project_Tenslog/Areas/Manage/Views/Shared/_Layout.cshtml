@@ -79,6 +79,14 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
+                <div class="nav-item dropdown text-end">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="fa fa-bell me-lg-2"></i>
+                        <span class="d-none d-lg-inline-flex">Notificatin</span>
+                    </a>
+                    <div id="adminPanelNotif" class=" dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                    </div>
+                </div>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link ">
@@ -117,6 +125,9 @@
     <script src="~/manage/lib/tempusdominus/js/moment.min.js"></script>
     <script src="~/manage/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="~/manage/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/manage/signalr/dist/webworker/signalr.min.js"></script>
+    <script src="~/manage/js/nofication.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Template Javascript -->
     <script src="~/manage/js/main.js"></script>

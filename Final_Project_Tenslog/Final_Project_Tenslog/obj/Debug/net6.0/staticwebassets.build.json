@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mvb7USxpwkzvpyMRf3T4WIJjrYv6ojD+jqvAGykEkiY=",
+  "Hash": "MYAYDmZRsSbjFimdEkNpq/TBOli4PNGqEnuKNUFHW68=",
   "Source": "Final_Project_Tenslog",
   "BasePath": "_content/Final_Project_Tenslog",
   "Mode": "Default",
@@ -746,6 +746,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manage\\js\\main.js"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Back-End-main\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\manage\\js\\nofication.js",
+      "SourceId": "Final_Project_Tenslog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Back-End-main\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\",
+      "BasePath": "_content/Final_Project_Tenslog",
+      "RelativePath": "manage/js/nofication.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\manage\\js\\nofication.js"
     },
     {
       "Identity": "C:\\Users\\ASUS\\Desktop\\Back-End-main\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\manage\\lib\\chart\\chart.min.js",
@@ -2514,6 +2531,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manage\\scss\\bootstrap\\scss\\vendor\\_rfs.scss"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Back-End-main\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\manage\\signalr\\dist\\webworker\\signalr.min.js",
+      "SourceId": "Final_Project_Tenslog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Back-End-main\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\",
+      "BasePath": "_content/Final_Project_Tenslog",
+      "RelativePath": "manage/signalr/dist/webworker/signalr.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\manage\\signalr\\dist\\webworker\\signalr.min.js"
     }
   ]
 }

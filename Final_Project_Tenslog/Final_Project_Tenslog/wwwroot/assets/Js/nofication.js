@@ -1,7 +1,5 @@
 ﻿let connection = new signalR.HubConnectionBuilder().withUrl("/nofication").build();
 connection.start();
-console.log(connection)
-
 
 connection.on("ReciveNotifyForFollow", function myfunction(message, type, userId) {
     $('.notificationIcon').addClass(message);

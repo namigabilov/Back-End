@@ -25,11 +25,17 @@ namespace Final_Project_Tenslog.Hubs
                 appUser.ConnectionId = Context.ConnectionId;
 
                 await _userManager.UpdateAsync(appUser);
-            }
+
+                if (_httpContext.HttpContext.User.IsInRole("SuperAdmin"))
+                {
+                    await Groups.AddToGroupAsync(appUser.ConnectionId, "admins");
+                }
+            }   
         }
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
             AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.ConnectionId == Context.ConnectionId);
+
             if (appUser != null)
             {
                 appUser.ConnectionId = null;

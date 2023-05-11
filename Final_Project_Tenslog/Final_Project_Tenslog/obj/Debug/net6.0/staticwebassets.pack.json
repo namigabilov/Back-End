@@ -173,6 +173,10 @@
       "PackagePath": "staticwebassets\\manage\\js\\main.js"
     },
     {
+      "Id": "C:\\Users\\ASUS\\Desktop\\Back-End-main\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\manage\\js\\nofication.js",
+      "PackagePath": "staticwebassets\\manage\\js\\nofication.js"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\Desktop\\Back-End-main\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\manage\\lib\\chart\\chart.min.js",
       "PackagePath": "staticwebassets\\manage\\lib\\chart\\chart.min.js"
     },
@@ -587,6 +591,10 @@
     {
       "Id": "C:\\Users\\ASUS\\Desktop\\Back-End-main\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\manage\\scss\\bootstrap\\scss\\vendor\\_rfs.scss",
       "PackagePath": "staticwebassets\\manage\\scss\\bootstrap\\scss\\vendor\\_rfs.scss"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\Back-End-main\\Final_Project_Tenslog\\Final_Project_Tenslog\\wwwroot\\manage\\signalr\\dist\\webworker\\signalr.min.js",
+      "PackagePath": "staticwebassets\\manage\\signalr\\dist\\webworker\\signalr.min.js"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Final_Project_Tenslog.Microsoft.AspNetCore.StaticWebAssets.props",

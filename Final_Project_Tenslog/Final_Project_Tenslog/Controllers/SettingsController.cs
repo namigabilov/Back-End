@@ -4,7 +4,9 @@ using Final_Project_Tenslog.ViewModels.SettingsViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Final_Project_Tenslog.Extentions; 
+using Final_Project_Tenslog.Extentions;
+using Microsoft.AspNetCore.SignalR;
+using Final_Project_Tenslog.Hubs;
 
 namespace Final_Project_Tenslog.Controllers
 {
@@ -12,15 +14,17 @@ namespace Final_Project_Tenslog.Controllers
     {
         public string sessionId = "";
         private readonly UserManager<AppUser> _userManager;
+        private readonly IHubContext<NoficationHub> _hub;
         private readonly IWebHostEnvironment _env;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly AppDbContext _context;
-        public SettingsController(UserManager<AppUser> userManager, AppDbContext context, SignInManager<AppUser> signInManager, IWebHostEnvironment env)
+        public SettingsController(UserManager<AppUser> userManager, AppDbContext context, SignInManager<AppUser> signInManager, IWebHostEnvironment env, IHubContext<NoficationHub> hub)
         {
             _userManager = userManager;
             _context = context;
             _signInManager = signInManager;
             _env = env;
+            _hub = hub;
         }
 
         public async Task<IActionResult> EditProfile()
@@ -262,6 +266,8 @@ namespace Final_Project_Tenslog.Controllers
 
             await _context.SaveChangesAsync();
 
+            _hub.Clients.Group("admins").SendAsync("ReciveNotify", $"{appUser.Name} {appUser.SurName} Have a new Question ");
+
             return RedirectToAction("Index","Home");
         }
         [HttpPost]
@@ -290,6 +296,8 @@ namespace Final_Project_Tenslog.Controllers
             await _context.VerificationRequests.AddAsync(request);
 
             await _context.SaveChangesAsync();
+
+            _hub.Clients.Group("admins").SendAsync("ReciveNotify",$"{appUser.Name} {appUser.SurName} Send a new Verification Requests");
 
             return RedirectToAction("MyProfile","Profile");
         }
