@@ -486,7 +486,6 @@ namespace Final_Project_Tenslog.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -513,6 +512,23 @@ namespace Final_Project_Tenslog.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Supports");
+                });
+
+            modelBuilder.Entity("Final_Project_Tenslog.Models.Swears", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Words")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Swears");
                 });
 
             modelBuilder.Entity("Final_Project_Tenslog.Models.VerificationRequest", b =>

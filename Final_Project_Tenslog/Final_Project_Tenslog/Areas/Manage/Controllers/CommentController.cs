@@ -19,7 +19,7 @@ namespace Final_Project_Tenslog.Areas.Manage.Controllers
 
         public async Task<IActionResult> Index(int pageIndex = 1)
         {
-            IQueryable<Comment> comments =  _context.Comments.Include(c=>c.User).Include(c=>c.Post);
+            IQueryable<Comment> comments =  _context.Comments.OrderByDescending(c=>c.CreatedAt).Include(c=>c.User).Include(c=>c.Post);
 
             TempData["page"] = "comment";
 

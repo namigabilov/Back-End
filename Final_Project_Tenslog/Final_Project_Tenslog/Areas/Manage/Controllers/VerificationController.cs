@@ -4,7 +4,6 @@ using Final_Project_Tenslog.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Stripe.Identity;
 
 namespace Final_Project_Tenslog.Areas.Manage.Controllers
 {

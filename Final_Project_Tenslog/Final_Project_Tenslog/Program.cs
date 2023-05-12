@@ -28,8 +28,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
     options.User.RequireUniqueEmail = true;
 
     options.Lockout.AllowedForNewUsers = true;
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromHours(10);
-    options.Lockout.MaxFailedAccessAttempts = 3;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromHours(3);
+    options.Lockout.MaxFailedAccessAttempts = 5;
 })
 .AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();

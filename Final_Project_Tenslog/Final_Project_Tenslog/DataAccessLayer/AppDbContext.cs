@@ -20,6 +20,7 @@ namespace Final_Project_Tenslog.DataAccessLayer
         public DbSet<MyDirect> MyDirects { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<VerificationRequest> VerificationRequests { get; set; }
+        public DbSet<Swears> Swears { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

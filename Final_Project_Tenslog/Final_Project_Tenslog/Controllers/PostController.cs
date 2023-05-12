@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Final_Project_Tenslog.Controllers
 {
@@ -159,6 +160,18 @@ namespace Final_Project_Tenslog.Controllers
             AppUser postOwner = await _context.Users.Include(p=>p.Nofications).FirstOrDefaultAsync(p => p.Id == post.UserId);
 
             if (post == null) return NotFound();
+
+            List<Swears> swears = await _context.Swears.ToListAsync();
+
+            foreach (Swears swear in swears)
+            {
+                if (comment.Description.ToLowerInvariant().Contains(swear.Words.ToLowerInvariant()))
+                {
+                    string pattern = swear.Words;
+                    string censor = new string('*', swear.Words.Length);
+                    comment.Description = Regex.Replace(comment.Description, pattern, censor);
+                }
+            }
 
             Comment dbComment = new Comment
             {

@@ -21,7 +21,7 @@ namespace Final_Project_Tenslog.Areas.Manage.Controllers
 
         public IActionResult Index(int pageIndex = 1)
         {
-            IQueryable<Support> supports = _context.Supports.Include(c=>c.User).Where(c=>c.IsRead ==false);
+            IQueryable<Support> supports = _context.Supports.OrderByDescending(c=>c.CreatedAt).Include(c=>c.User).Where(c=>c.IsRead ==false);
             TempData["page"] = "support";
             return View(PageNatedList<Support>.Create(supports,pageIndex,4));
         }
