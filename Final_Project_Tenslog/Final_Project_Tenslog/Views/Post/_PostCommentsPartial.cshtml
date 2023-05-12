@@ -7,7 +7,7 @@
             <div style="margin-right:5px;">
                 <img src="~/assets/Photos/ProfilePhotos/@comment.User.ProfilePhotoUrl" alt="">
             </div>
-            <a style="text-decoration: none; color: #fff;" href="profile.html"><span class="postOwnerName">@comment.User.UserName</span></a>
+            <a style="text-decoration: none; color: #fff;" asp-controller="Profile" asp-action="UserProfile" asp-route-id="@comment.UserId"><span class="postOwnerName">@comment.User.UserName</span></a>
             @if (comment.User.HaveBlueTic)
             {
                 <i style="color: #3797F0;font-size: 16px;margin-left: 10px;" class="fas fa-check-circle"></i>

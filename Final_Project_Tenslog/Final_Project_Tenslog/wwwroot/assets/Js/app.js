@@ -1,4 +1,25 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
+    $('.sharePost').on('click', function (e) {
+        e.preventDefault();
+        var link = $(this).attr('href');
+        var rootLink = window.location.origin;
+        var url = rootLink + link;
+        console.log(url);
+
+        var tempInput = document.createElement('input');
+        tempInput.setAttribute('value', url);
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        Swal.fire({
+            text: "Link kopyalandı!",
+            icon: "success",
+            timer: 1500,
+            showConfirmButton: false
+        });
+    });
+
     $('#searchUserInput').on('keyup', function () {
         console.log($(this).val())
         if ($(this).val() != "") {
@@ -107,20 +128,13 @@ $(document).ready(function () {
     })
     $('.addSavedPost').on('click', function (e) {
         e.preventDefault()
-        Swal.fire({
-            position: 'bottom-end',
-            icon: 'success',
-            title: 'Your work has been saved',
-            showConfirmButton: false,
-            timer: 1000
-        })
         var id = $(this).data('id');
         fetch('/post/save/' + id)
             .then(res => {
                 return res.json();
             })
             .then(data => {
-                console.log(data);
+                throw data;
             });
     })
     $('.verificationBtn').on('click', function (e) {

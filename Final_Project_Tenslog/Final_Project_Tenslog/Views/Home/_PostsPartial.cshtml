@@ -32,10 +32,10 @@
                         <div class="actions">
                             <div class="left">
                                 <a class="addLikePost" data-id="@post.Id" style="color: #fff" asp-controller="Post" asp-action="Like" asp-route-id="@post.Id"><i class="@(post.Likes.Any(p=>p.UserId == Model.MyProfile.Id) ? "activeForLike fa-solid" : "fa-regular") fa-heart like"></i></a>                                <a class="text-light" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id"><i class="fa-regular fa-comment"></i></a>
-                                <i class="fa-solid fa-paper-plane"></i>
+                                <a style="color:#fff" class="sharePost" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id"><i class="fa-solid fa-paper-plane"></i></a>
                             </div>
                             <div class="right">
-                                <a style="color:#fff" asp-controller="Post" asp-action="Save" asp-route-id="@post.Id"><i class="@(post.Saved.Any(p=>p.UserId == Model.MyProfile.Id) ? "fa-solid" : "fa-regular") saveBtn fa-bookmark"></i></a>
+                                <a class="addSavedPost" style="color:#fff" asp-controller="Post" asp-action="Save" asp-route-id="@post.Id"><i class="@(post.Saved.Any(p=>p.UserId == Model.MyProfile.Id) ? "fa-solid" : "fa-regular") saveBtn fa-bookmark"></i></a>
                             </div>
                         </div>
                         <span class="@postClass">@(post.Likes == null ? "0" : post.Likes.Count())</span><span> Likes</span>
@@ -82,10 +82,10 @@
                         <div class="left">
                             <a class="addLikePost" data-id="@post.Id" style="color: #fff" asp-controller="Post" asp-action="Like" asp-route-id="@post.Id"><i class="@(post.Likes.Any(p=>p.UserId == Model.MyProfile.Id) ? "activeForLike fa-solid" : "fa-regular") fa-heart like"></i></a>
                             <a class="text-light" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id"><i class="fa-regular fa-comment"></i></a>
-                            <i class="fa-solid fa-paper-plane"></i>
+                            <a style="color:#fff" class="sharePost" asp-controller="Post" asp-action="Index" asp-route-id="@post.Id"><i class="fa-solid fa-paper-plane"></i></a>
                         </div>
                         <div class="right">
-                            <a data-id="@post.Id" style="color:#fff" asp-controller="Post" asp-action="Save" asp-route-id="@post.Id"><i class="@(post.Saved.Any(p=>p.UserId == Model.MyProfile.Id) ? "fa-solid" : "fa-regular") saveBtn fa-bookmark"></i></a>
+                            <a class="addSavedPost" data-id="@post.Id" style="color:#fff" asp-controller="Post" asp-action="Save" asp-route-id="@post.Id"><i class="@(post.Saved.Any(p=>p.UserId == Model.MyProfile.Id) ? "fa-solid" : "fa-regular") saveBtn fa-bookmark"></i></a>
                         </div>
                     </div>
                     <span class="@postClass">@(post.Likes == null ? "0" : post.Likes.Count()) </span><span> Likes</span>

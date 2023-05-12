@@ -8,6 +8,7 @@ connection.on("ReciveNotifyForFollow", function myfunction(message, type, userId
         $('.notificationIcon').addClass('d-none');
         $('.notificationIcon').removeClass(message);
     }, 5000);
+    location.reload()
     if (type == 2) {
         fetch('/Nofications/AddNofication?userId=' + userId + '?notificationType=2')
             .then(res => {

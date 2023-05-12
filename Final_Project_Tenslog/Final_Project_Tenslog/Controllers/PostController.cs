@@ -37,7 +37,12 @@ namespace Final_Project_Tenslog.Controllers
             }
             PostVM postVM = new PostVM
             {
-                MyProfile = await _userManager.FindByNameAsync(User.Identity.Name),
+                MyProfile = await _context.Users
+                .Include(c=>c.Nofications)
+                .ThenInclude(c=>c.FromUser)
+                .Include(c=>c.Nofications)
+                .ThenInclude(c=>c.Post)
+                .FirstOrDefaultAsync(c=>c.UserName == User.Identity.Name),
                 Post = await _context.Posts
                 .Include(p=>p.Comments.OrderBy(c=>c.CreatedAt).Where(c=>c.IsDeleted== false))
                 .ThenInclude(c=>c.User)
@@ -74,6 +79,13 @@ namespace Final_Project_Tenslog.Controllers
             {
                 Final_Project_Tenslog.Models.Like like = post.Likes.FirstOrDefault(p => p.UserId == user.Id && p.PostId == post.Id);
 
+                Nofication nofication = await _context.Nofications.FirstOrDefaultAsync(c => c.PostId == post.Id && c.FromUserId == user.Id && c.UserId == postOwner.Id);
+
+                if (nofication != null)
+                {
+                    _context.Nofications.Remove(nofication);
+                }
+
                 post.Likes.Remove(like);
             }
             else
@@ -98,9 +110,9 @@ namespace Final_Project_Tenslog.Controllers
                 };
                 post.Likes.Add(like);
                 postOwner.Nofications.Add(nofication);
-            }
 
-            _hub.Clients.User(postOwner.Id).SendAsync("ReciveNotifyForFollow", "fa-heart");
+                _hub.Clients.User(postOwner.Id).SendAsync("ReciveNotifyForFollow", "fa-heart");
+            }
 
             await _context.SaveChangesAsync();
 
@@ -206,7 +218,12 @@ namespace Final_Project_Tenslog.Controllers
         [HttpGet]
         public async Task<IActionResult> AddPost()
         {
-            return View();
+            AppUser user = await _userManager.Users.FirstOrDefaultAsync(p => p.UserName == User.Identity.Name);
+            AddPostVM vM = new AddPostVM
+            {
+                MyProfile = user
+            };
+            return View(vM);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
