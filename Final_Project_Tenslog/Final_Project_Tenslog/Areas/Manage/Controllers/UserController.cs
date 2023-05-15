@@ -26,5 +26,29 @@ namespace Final_Project_Tenslog.Areas.Manage.Controllers
             TempData["page"] = "user";
             return View(PageNatedList<AppUser>.Create(users,pageIndex,4));
         }
-    }
+        public async Task<IActionResult> BlockUser(string? id)
+        {
+            if (id == null) return BadRequest();
+
+            AppUser user = await _context.Users.FirstOrDefaultAsync(c => c.Id == id);
+            
+            if (user == null) return NotFound();
+
+            user.İsBlock = true;
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> SearchUser(string? search)
+        {
+            if (search == null)
+            {
+                return NoContent();
+            }
+            IEnumerable<AppUser> users = await _context.Users.Include(c=>c.Posts).Where(u => u.UserName.ToLower().Contains(search.ToLower()) || u.Name.ToLower().Contains(search.ToLower())).ToListAsync();
+
+            return PartialView("~/Areas/Manage/Views/User/_UsersPartial.cshtml", users);
+        }
+    }   
 }

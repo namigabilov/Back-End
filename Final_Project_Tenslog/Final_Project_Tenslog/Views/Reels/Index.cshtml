@@ -117,29 +117,27 @@
         </div>
     </div>
     <div class="mobileHome">
-        <nav>
+     <nav>
             <a class="nav-item" asp-controller="Home" asp-action="Index">
                 <i class="fa-solid fa-house"></i><span>Home</span>
             </a>
-
+            
             <a class="nav-item" asp-controller="Reels" asp-action="Index">
-                <i class="fa-solid fa-magnifying-glass"></i><span>Activity</span>
+                <i class="fa-solid fa-magnifying-glass"></i><span>Reels</span>
             </a>
-
-            <a class="nav-item" href="#">
-                <input type="file" name="file" id="file" class="inputfile">
+            
+            <a  asp-action="AddPost" asp-controller="Post" class="nav-item" >
                 <label for="file">
                     <i class="fa-solid fa-plus"></i>
                 </label>
             </a>
 
-            <a class="nav-item" href="activty.html">
+            <a class="nav-item" asp-action="Index" asp-controller="Nofications">
                 <i class="fa-regular fa-heart"></i><span>Nofications</span>
             </a>
-
-            <a class="nav-item" asp-controller="Profile" asp-action="Index">
-                <img src="~/assets/Photos/ProfilePhotos/download.jpg" alt=""><span>Profile</span>
-            </a>
+             <a class="nav-item" asp-controller="Profile" asp-action="Myprofile">
+               <img src="~/assets/Photos/ProfilePhotos/@Model.User.ProfilePhotoUrl" alt=""><span>Profile</span>
+             </a>
         </nav>
         <div class="mx-1">
             <div class=" text-center my-4">

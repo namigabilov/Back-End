@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AppUser>
+
+<div>
+
+    <div class="table-responsive m-5">
+        <table class="table text-start align-middle table-bordered table-hover mb-0">
+            <thead>
+                <tr class="text-white">
+                    <th scope="col">Username</th>
+                    <th scope="col">Name & SurName</th>
+                    <th scope="col">IsVerificated</th>
+                    <th scope="col">Post Count</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count() > 0)
+                {
+                    @foreach (AppUser user in Model)
+                    {
+                        <tr>
+                            <td>@user.UserName</td>
+                            <td>@user.Name @user.SurName</td>
+                            <td>@user.HaveBlueTic</td>
+                            <td>@user.Posts.Count()</td>
+                            <td>@(user.ConnectionId == null ? "Ofline" : "Online")</td>
+                            <td><a target="_blank" class="btn btn-sm btn-primary" asp-area="" asp-controller="profile" asp-action="UserProfile" asp-route-id="@user.Id">Go Profile</a></td>
+                            <td><a target="_blank" class="btn btn-sm btn-primary" asp-area="manage" asp-controller="User" asp-action="BlockUser" asp-route-id="@user.Id">Block User</a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

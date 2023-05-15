@@ -56,7 +56,7 @@ namespace Final_Project_Tenslog.Controllers
             string tempalteFullPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "_FogetPasswordPartial.cshtml");
 
             string templateContent = await System.IO.File.ReadAllTextAsync(tempalteFullPath);
-            
+
             templateContent = templateContent.Replace("{{url}}", url);
 
             MimeMessage mimeMessage = new MimeMessage();
@@ -143,35 +143,36 @@ namespace Final_Project_Tenslog.Controllers
 
             await _userManager.AddToRoleAsync(appUser, "Member");
 
-            string token = await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
-            string url = Url.Action("EmailConfirm", "Acconut", new { id = appUser.Id, token = token }, HttpContext.Request.Scheme, HttpContext.Request.Host.ToString());
+            //string token = await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
+            //string url = Url.Action("EmailConfirm", "Acconut", new { id = appUser.Id, token = token }, HttpContext.Request.Scheme, HttpContext.Request.Host.ToString());
 
-            string tempalteFullPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "_EmailConfrimPartial.cshtml");
+            //string tempalteFullPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "_EmailConfrimPartial.cshtml");
 
-            string templateContent = await System.IO.File.ReadAllTextAsync(tempalteFullPath);
+            //string templateContent = await System.IO.File.ReadAllTextAsync(tempalteFullPath);
 
-            templateContent = templateContent.Replace("{{name}}", appUser.Name);
-            templateContent = templateContent.Replace("{{surname}}", appUser.SurName);
-            templateContent = templateContent.Replace("{{url}}", url);
+            //templateContent = templateContent.Replace("{{name}}", appUser.Name);
+            //templateContent = templateContent.Replace("{{surname}}", appUser.SurName);
+            //templateContent = templateContent.Replace("{{url}}", url);
 
 
-            MimeMessage mimeMessage = new MimeMessage();
-            mimeMessage.From.Add(MailboxAddress.Parse(_smtpSetting.Email));
-            mimeMessage.To.Add(MailboxAddress.Parse(appUser.Email));
-            mimeMessage.Subject = "Email Confirm";
-            mimeMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
-            {
-                Text = templateContent
-            };
-            using (SmtpClient smtpClient = new SmtpClient())
-            {
-                smtpClient.CheckCertificateRevocation = false;
-                await smtpClient.ConnectAsync(_smtpSetting.Host, _smtpSetting.Port, MailKit.Security.SecureSocketOptions.StartTls);
-                await smtpClient.AuthenticateAsync(_smtpSetting.Email, _smtpSetting.Password);
-                await smtpClient.SendAsync(mimeMessage);
-                await smtpClient.DisconnectAsync(true);
-                smtpClient.Dispose();
-            }
+            //MimeMessage mimeMessage = new MimeMessage();
+            //mimeMessage.From.Add(MailboxAddress.Parse(_smtpSetting.Email));
+            //mimeMessage.To.Add(MailboxAddress.Parse(appUser.Email));
+            //mimeMessage.Subject = "Email Confirm";
+            //mimeMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            //{
+            //    Text = templateContent
+            //};
+            //using (SmtpClient smtpClient = new SmtpClient())
+            //{
+            //    smtpClient.CheckCertificateRevocation = false;
+            //    await smtpClient.ConnectAsync(_smtpSetting.Host, _smtpSetting.Port, MailKit.Security.SecureSocketOptions.StartTls);
+            //    await smtpClient.AuthenticateAsync(_smtpSetting.Email, _smtpSetting.Password);
+            //    await smtpClient.SendAsync(mimeMessage);
+            //    await smtpClient.DisconnectAsync(true);
+            //    smtpClient.Dispose();
+            //}
+
             return RedirectToAction(nameof(Login));
         }
         [HttpGet]
@@ -218,6 +219,11 @@ namespace Final_Project_Tenslog.Controllers
             }
             AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedEmail == loginVM.Email.Trim().ToUpperInvariant());
 
+            if (appUser.İsBlock == true)
+            {
+                ModelState.AddModelError("", "Hesabiniz Birdefelik Bloklanıb !");
+                return View(loginVM);
+            }
 
             if (appUser == null && !(await _userManager.CheckPasswordAsync(appUser, loginVM.Password)))
             {
@@ -225,27 +231,21 @@ namespace Final_Project_Tenslog.Controllers
                 return View(loginVM);
             }
 
-            if (appUser.EmailConfirmed)
-            {
-                Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager
-               .PasswordSignInAsync(appUser, loginVM.Password, loginVM.RemindMe, true);
-                if (signInResult.IsLockedOut)
-                {
 
-                    ModelState.AddModelError("", $"Hesabiniz Blokalnib Hesabin Acilma Tarixi : {appUser.LockoutEnd?.ToString("dd MMMM yyyy HH:mm")} (+4 Utc)");
-                    return View(loginVM);
-                }
-                if (!signInResult.Succeeded)
-                {
-                    ModelState.AddModelError("", $"Email ve ya Sifre Yanlisdir Duzgun Sifreni Daxil Etmek Ucun Son {3 - appUser.AccessFailedCount} Haqqiniz Qalib !!");
-                    return View(loginVM);
-                }
-            }
-            else
+            Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager
+           .PasswordSignInAsync(appUser, loginVM.Password, loginVM.RemindMe, true);
+            if (signInResult.IsLockedOut)
             {
-                ModelState.AddModelError("", "Email Tesdiq Olunmayib LogIn Prosesi Uğursuzdur !");
+
+                ModelState.AddModelError("", $"Hesabiniz Blokalnib Hesabin Acilma Tarixi : {appUser.LockoutEnd?.ToString("dd MMMM yyyy HH:mm")} (+4 Utc)");
                 return View(loginVM);
             }
+            if (!signInResult.Succeeded)
+            {
+                ModelState.AddModelError("", $"Sifre Yanlisdir Duzgun Sifreni Daxil Etmek Ucun Son {3 - appUser.AccessFailedCount} Haqqiniz Qalib !!");
+                return View(loginVM);
+            }
+
 
             return RedirectToAction("Index", "Home");
         }

@@ -15,6 +15,7 @@ namespace Final_Project_Tenslog.Models
         public Nullable<DateTime> JoinedDate { get; set; }
         public string? Gender { get; set; }
         public bool IsPrivate { get; set; } = false;
+        public bool İsBlock { get; set; } = false;
         public bool ActivtyStatusIsVisible { get; set; } = false;
         public bool HaveBlueTic { get; set; } = false;
         public string? ProfilePhotoUrl { get; set; }
