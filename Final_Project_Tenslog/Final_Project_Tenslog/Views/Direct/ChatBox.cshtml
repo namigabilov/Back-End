@@ -121,11 +121,9 @@
                                             </div>
                                         </div>
                                         <div class="send-box">
-                                            <form asp-controller="Direct" asp-action="SendMessage" asp-route-id="@Model.UserProfile.UserName" method="post">
-                                                <input id="userConnectionId" value="@Model.UserProfile.ConnectionId" type="hidden" />
-                                                <input asp-for="@Model.WritedMessage.Message" id="realTimeChatInput" class="form-control " aria-label="message…" placeholder="Write message…">
+                                                <input id="userId" value="@Model.UserProfile.Id" type="hidden" />
+                                                <input id="realTimeChatInput" class="form-control " aria-label="message…" placeholder="Write message…">
                                                 <button id="realTimeChatSendButton" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send</button>
-                                            </form>
                                         </div>
                                     </div>
                                     <div class="call-container d-none">

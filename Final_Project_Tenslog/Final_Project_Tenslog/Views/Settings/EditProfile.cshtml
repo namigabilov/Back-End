@@ -269,30 +269,28 @@
     </div>
 </div>
 <div class="mobileHome">
-    <nav>
-        <a class="nav-item" href="index.html">
-            <i class="fa-solid fa-house"></i><span>Home</span>
-        </a>
+     <nav>
+            <a class="nav-item" asp-controller="Home" asp-action="Index">
+                <i class="fa-solid fa-house"></i><span>Home</span>
+            </a>
+            
+            <a class="nav-item" asp-controller="Reels" asp-action="Index">
+                <i class="fa-solid fa-magnifying-glass"></i><span>Reels</span>
+            </a>
+            
+            <a  asp-action="AddPost" asp-controller="Post" class="nav-item" >
+                <label for="file">
+                    <i class="fa-solid fa-plus"></i>
+                </label>
+            </a>
 
-        <a class="nav-item" href="reels.html">
-            <i class="fa-solid fa-magnifying-glass"></i><span>Activity</span>
-        </a>
-
-        <a class="nav-item" href="#">
-            <input type="file" name="file" id="file" class="inputfile">
-            <label for="file">
-                <i class="fa-solid fa-plus"></i>
-            </label>
-        </a>
-
-        <a class="nav-item" href="activty.html">
-            <i class="fa-regular fa-heart"></i><span>Nofications</span>
-        </a>
-
-        <a class="nav-item" href="MyProfile.html">
-            <img src="assets/Photos/ProfilePhotos/download.jpg" alt=""><span>Profile</span>
-        </a>
-    </nav>
+            <a class="nav-item" asp-action="Index" asp-controller="Nofications">
+                <i class="fa-regular fa-heart"></i><span>Nofications</span>
+            </a>
+             <a class="nav-item" asp-controller="Profile" asp-action="Myprofile">
+               <img src="~/assets/Photos/ProfilePhotos/@Model.User.ProfilePhotoUrl" alt=""><span>Profile</span>
+             </a>
+        </nav>
     <div class="settingsMobile">
         <div class="info text-light">
             <img src="assets/Photos/Logo/Tenslog.png" alt=""> <span>Tenslog</span>

@@ -1,33 +1,37 @@
-﻿connection = new signalR.HubConnectionBuilder().withUrl("/ChatBox").build();
-connection.start();
-console.log("chat hub connected")
-$(document).ready(function () { 
-    connection.on("ReceiveMessage", function (message) {
-        // Gelen mesajı "forRealTimeChat" divine ekleme
-        var chatDiv = $("#forRealTimeChat");
-        chatDiv.append('<li>' + message + '</li>');
+﻿ connection = new signalR.HubConnectionBuilder().withUrl("/chat").build();
+
+connection.start().then(function () {
+}).catch(function (err) {
+    return console.error(err.toString());
+});
+console.log(connection)
+
+connection.on("ReceiveMessage", function (time, myMesage, message) {
+    var li = document.createElement("li");
+    if (myMesage) {
+        li.classList.add("sender");
+    }
+    else {
+        li.classList.add("repaly");
+    }
+    var p = document.createElement("p");
+    p.textContent = message;
+    li.appendChild(p);
+
+    var span = document.createElement("span");
+    span.classList.add("time", "text-light");
+    span.textContent = time;
+    li.appendChild(span);
+
+    var containerElement = document.getElementById("forRealTimeChat");
+    containerElement.appendChild(liElement);
+});
+
+document.getElementById("realTimeChatSendButton").addEventListener("click", function (event) {
+    var userId = document.getElementById("userId").value;
+    var message = document.getElementById("realTimeChatInput").value;
+    connection.invoke("SendMessage", userId,message).catch(function (err) {
+        return console.error(err.toString());
     });
-
-    // SignalR bağlantısını başlatma
-    connection.start()
-        .then(function () {
-            // Bağlantı başarılı
-            console.log("SignalR bağlantısı başarıyla kuruldu.");
-        })
-        .catch(function (error) {
-            // Bağlantı hatası
-            console.error("SignalR bağlantısı kurulurken bir hata oluştu: " + error);
-        });
-
-        var messageInput = $("#realTimeChatInput");
-        var message = messageInput.val();
-
-        // Mesajı sunucuya gönderme
-        connection.invoke("SendMessage", message)
-            .catch(function (error) {
-                console.error("Mesaj gönderilirken bir hata oluştu: " + error);
-            });
-
-        messageInput.val(""); 
-    });
-})
+    event.preventDefault();
+});

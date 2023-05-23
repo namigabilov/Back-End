@@ -242,7 +242,7 @@ namespace Final_Project_Tenslog.Controllers
             }
             if (!signInResult.Succeeded)
             {
-                ModelState.AddModelError("", $"Sifre Yanlisdir Duzgun Sifreni Daxil Etmek Ucun Son {3 - appUser.AccessFailedCount} Haqqiniz Qalib !!");
+                ModelState.AddModelError("", $"Sifre Yanlisdir Duzgun Sifreni Daxil Etmek Ucun Son {5 - appUser.AccessFailedCount} Haqqiniz Qalib !!");
                 return View(loginVM);
             }
 

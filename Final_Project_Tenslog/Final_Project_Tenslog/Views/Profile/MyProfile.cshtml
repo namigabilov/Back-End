@@ -185,10 +185,7 @@
                         {
                             <i style="color: #3797F0;" class="fas fa-check-circle"></i>
                         }
-                        <a href="settings.html"><i class="fa-solid fa-gear text-light" style="font-size: 20px;"></i></a>
-                    </div>
-                    <div class="bottom">
-                        <button class="btn btn-light">Edit Profile</button>
+                        <a asp-controller="settings" asp-action="EditProfile"><i class="fa-solid fa-gear text-light" style="font-size: 20px;"></i></a>
                     </div>
                 </div>
             </div>
@@ -212,7 +209,7 @@
             </div>
         </div>
         <hr class=" text-light">
-        <div class="row profilePost d-none text-center">
+        <div class="row profilePost text-center">
             @await Html.PartialAsync("_ProfilePostPartial.cshtml",Model.Posts)
         </div>
         <div class="row profileSaved d-none text-center">
